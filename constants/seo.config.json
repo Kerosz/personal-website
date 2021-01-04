@@ -1,0 +1,10 @@
+{
+  "title": "Developer Portfolio",
+  "titleTemplate": "%s - Andrei Chirila",
+  "description": "My portfolio website",
+  "twitter": {
+    "handle": "@chirila_",
+    "site": "@chirila_",
+    "cardType": "summary_large_image"
+  }
+}
