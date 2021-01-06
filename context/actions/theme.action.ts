@@ -1,10 +1,10 @@
 export interface ThemeAction {
   type: 'TOGGLE_THEME';
-  theme: THEME_MODE;
+  theme: THEME_OPTION;
 }
 
-export type THEME_MODE = 'Light' | 'Dark';
+export type THEME_OPTION = 'light' | 'dark';
 
-export const toggleTheme = (newThemeMode: THEME_MODE): ThemeAction => {
-  return { type: 'TOGGLE_THEME', theme: newThemeMode };
+export const applyTheme = (newThemeOption: THEME_OPTION): ThemeAction => {
+  return { type: 'TOGGLE_THEME', theme: newThemeOption };
 };

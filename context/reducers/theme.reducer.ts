@@ -1,7 +1,7 @@
 import { ThemeAction } from '../actions/theme.action';
 
 export interface ThemeState {
-  themeMode: string;
+  themeOption: string;
 }
 
 let defaultThemeMode;
@@ -16,7 +16,7 @@ if (typeof window !== 'undefined') {
 }
 
 export const initialThemeState: ThemeState = {
-  themeMode: defaultThemeMode || 'Light',
+  themeOption: defaultThemeMode || 'light',
 };
 
 export default function themeReducer(state: ThemeState, action: ThemeAction) {
@@ -24,7 +24,7 @@ export default function themeReducer(state: ThemeState, action: ThemeAction) {
     case 'TOGGLE_THEME':
       return {
         ...state,
-        themeMode: action.theme,
+        themeOption: action.theme,
       };
     default:
       return state;

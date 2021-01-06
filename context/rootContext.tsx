@@ -3,7 +3,7 @@ import themeReducer, { initialThemeState } from './reducers/theme.reducer';
 
 const GlobalContext = createContext<any>({});
 
-// GlobalContext.displayName = 'GlobalContext';
+GlobalContext.displayName = 'GlobalContext';
 
 const GlobalContextProvider: FC = ({ children }) => {
   const [theme, themeDispatch] = useReducer(themeReducer, initialThemeState);

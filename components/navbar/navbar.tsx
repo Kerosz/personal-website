@@ -1,26 +1,28 @@
 import { FC, useEffect } from 'react';
 import { useGlobalContext } from 'context/rootContext';
-import { toggleTheme } from '@actions/theme.action';
+import { applyTheme } from '@actions/theme.action';
+
+import { Button } from '@lib/ui';
 
 const Navbar: FC = () => {
-  const { themeMode, themeDispatch } = useGlobalContext();
+  const { themeOption, themeDispatch } = useGlobalContext();
 
   const handleThemeMode = () => {
-    if (themeMode === 'Light') {
-      themeDispatch(toggleTheme('Dark'));
+    if (themeOption === 'light') {
+      themeDispatch(applyTheme('dark'));
     } else {
-      themeDispatch(toggleTheme('Light'));
+      themeDispatch(applyTheme('light'));
     }
   };
 
   useEffect(() => {
-    localStorage.setItem('theme-mode', themeMode);
-  }, [themeMode]);
+    localStorage.setItem('theme-mode', themeOption);
+  }, [themeOption]);
 
   return (
     <>
       <h1>Navbar</h1>
-      <button onClick={handleThemeMode}>Switch</button>
+      <Button variant='outlined' label='Switch' onClick={handleThemeMode} />
     </>
   );
 };
