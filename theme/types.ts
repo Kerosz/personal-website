@@ -3,7 +3,7 @@ declare module 'styled-components' {
 }
 
 export interface ThemeModeProps {
-  palette?: {
+  palette: {
     background: string;
     text: string;
   };
@@ -11,7 +11,7 @@ export interface ThemeModeProps {
 
 export interface BaseThemeProps extends ThemeModeProps {
   mode?: string;
-  colors?: {
+  colors: {
     black: string;
     white: string;
     gray: {
@@ -26,7 +26,7 @@ export interface BaseThemeProps extends ThemeModeProps {
       '900': string;
     };
   };
-  font?: {
+  font: {
     size: {
       xs: string;
       sm: string;

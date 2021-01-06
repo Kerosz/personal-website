@@ -46,11 +46,9 @@ const Theme: FC = ({ children }) => {
   const theme = themeConstructor(themeBasedOnMode);
 
   return (
-    <ThemeProvider theme={theme}>
-      <ThemeProvider theme={{ mode: themeOption as string }}>
-        <GlobalStyles />
-        {children}
-      </ThemeProvider>
+    <ThemeProvider theme={{ ...theme, mode: themeOption as string }}>
+      <GlobalStyles />
+      {children}
     </ThemeProvider>
   );
 };
