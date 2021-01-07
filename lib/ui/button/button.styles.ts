@@ -37,9 +37,11 @@ const buttonVariants = theme.variants('mode', 'variant', {
 
 export const ButtonWrapper = styled.button<ButtonProps>`
   display: inline-block;
+  height: fit-content;
+  width: fit-content;
   font-weight: 700;
-  text-transform: uppercase;
   letter-spacing: 0.05rem;
+  text-transform: uppercase;
   border: 2px solid transparent;
   outline: none;
   cursor: pointer;

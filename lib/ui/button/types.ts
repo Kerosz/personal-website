@@ -1,10 +1,11 @@
-import { ButtonHTMLAttributes, JSXElementConstructor } from 'react';
+import * as React from 'react';
 
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   /**
    * What type variant to use
    */
-  component?: string | JSXElementConstructor<any>;
+  component?: string | React.JSXElementConstructor<any>;
   /**
    * What type variant to use
    */
