@@ -1,10 +1,10 @@
-import { useEffect } from 'react';
+import React, { FC, useEffect } from 'react';
 import { useGlobalContext } from 'context/rootContext';
 import { applyTheme } from '@actions/theme.action';
 
-import { Button } from '@lib/ui';
+import Branding from './branding';
 
-const ThemeSwitcher = () => {
+const ThemeSwitcher: FC = ({ children }) => {
   const { themeOption, themeDispatch } = useGlobalContext();
 
   const handleThemeMode = () => {
@@ -31,7 +31,7 @@ const ThemeSwitcher = () => {
     localStorage.setItem('theme-mode', themeOption);
   }, [themeOption]);
 
-  return <Button label='Switch' variant='outlined' onClick={handleThemeMode} />;
+  return <div onClick={handleThemeMode}>{children}</div>;
 };
 
 export default ThemeSwitcher;

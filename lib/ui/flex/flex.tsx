@@ -36,6 +36,14 @@ export interface FlexOptions {
    * Sets the flex `height` to 0
    */
   noHeight?: boolean;
+  /**
+   * Shorthand for `margin` property
+   */
+  m?: string;
+  /**
+   * Shorthand for `padding` property
+   */
+  p?: string;
 }
 
 export interface FlexProps extends HTMLUiProps<'div'>, FlexOptions {

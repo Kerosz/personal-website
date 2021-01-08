@@ -22,14 +22,12 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    font-family: ${(props) =>
-      props.theme.font.family
-        .primary}, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen','Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    font-family:  'Segoe UI', 'Roboto', 'Oxygen','Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
     overscroll-behavior: none;
     overflow-x: hidden;
     overflow-y: auto;
     background: ${(props) => props.theme.palette.background};
-    color: ${(props) => props.theme.palette.text}
+    color: ${(props) => props.theme.palette.text.main}
   }
 
   img {

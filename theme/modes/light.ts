@@ -3,7 +3,7 @@ import { ThemeModeProps } from '../theme.types';
 const lightMode: ThemeModeProps = {
   palette: {
     background: '#F7FAFC',
-    text: '#171923',
+    text: { main: '#171923', accent: '#4A5568' },
   },
 };
 

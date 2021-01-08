@@ -5,7 +5,10 @@ declare module 'styled-components' {
 export interface ThemeModeProps {
   palette: {
     background: string;
-    text: string;
+    text: {
+      main: string;
+      accent: string;
+    };
   };
 }
 
