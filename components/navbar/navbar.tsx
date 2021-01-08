@@ -1,12 +1,14 @@
 import { FC } from 'react';
-import { Flex, Container } from '@lib/ui';
-import ThemeSwitcher from './theme-swithcer';
+import { Flex, Container, Text } from '@lib/ui';
+import ThemeSwitcher from './theme-switcher';
 
 const Navbar: FC = () => {
   return (
     <Container fluid>
       <Flex justify='space-between' align='center'>
-        <h1>Navbar</h1>
+        <Text component='h1' casing='uppercase'>
+          Navbar
+        </Text>
         <ThemeSwitcher />
       </Flex>
     </Container>

@@ -1,6 +1,6 @@
-import Head from 'next/head';
 import { FC } from 'react';
-import { SeoArgs } from './types';
+import { SeoArgs } from './seo.types';
+import Head from 'next/head';
 import generateMeta from './generate-meta';
 
 /**
@@ -15,6 +15,7 @@ import generateMeta from './generate-meta';
  * @param {Array} [extraMeta] - Add extra meta tags to be rendered
  *
  * @example
+ * jsx```
  *    const config = {
  *       "title": "Site title",
  *       "titleTemplate": "%s - Template",
@@ -22,6 +23,7 @@ import generateMeta from './generate-meta';
  *    }
  *
  *    <SEO {...config} />
+ * ```
  */
 const SEO: FC<SeoArgs> = (args): JSX.Element => {
   return (

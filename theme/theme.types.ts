@@ -27,6 +27,10 @@ export interface BaseThemeProps extends ThemeModeProps {
     };
   };
   font: {
+    family: {
+      primary: string;
+      secondary: string;
+    };
     size: {
       xs: string;
       sm: string;

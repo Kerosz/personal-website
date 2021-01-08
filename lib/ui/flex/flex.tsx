@@ -1,48 +1,66 @@
-import { FC } from 'react';
+import { __DEV__ } from '@lib/utils/assertion';
+import { FC, forwardRef, JSXElementConstructor } from 'react';
 import { HTMLUiProps } from '../ui.types';
 import { FlexWrapper } from './flex.styles';
 
 export interface FlexOptions {
   /**
-   * Shorthand for `alignItems` style prop
+   * The CSS `align-items` property
    */
   align?: string;
   /**
-   * Shorthand for `justifyContent` style prop
+   * The CSS `justify-content` property
    */
   justify?: string;
   /**
-   * Shorthand for `flexWrap` style prop
+   * The CSS `flex-wrap` property
    */
   wrap?: string;
   /**
-   * Shorthand for `flexDirection` style prop
+   * The CSS `flex-direction` property
    */
   direction?: string;
   /**
-   * Shorthand for `flexBasis` style prop
+   * The CSS `flex-basis` property
    */
-  basis?: string;
+  basis?: string | number;
   /**
-   * Shorthand for `flexGrow` style prop
+   * The CSS `flex-grow` property
    */
-  grow?: string;
+  grow?: string | number;
   /**
-   * Shorthand for `flexShrink` style prop
+   * The CSS `flex-shrink` property
    */
-  shrink?: string;
+  shrink?: string | number;
   /**
    * Sets the flex `height` to 0
    */
   noHeight?: boolean;
 }
 
-export interface FlexProps extends HTMLUiProps<'div'>, FlexOptions {}
+export interface FlexProps extends HTMLUiProps<'div'>, FlexOptions {
+  /**
+   * The wrapper `element` of the component
+   */
+  component?: string | JSXElementConstructor<any>;
+}
 
-const Flex: FC<FlexProps> = (props) => {
-  const { children, ...rest } = props;
+/**
+ * Used to render a `div` with the css property set to `flex`.
+ *
+ */
+const Flex: FC<FlexProps> = forwardRef((props, flexRef) => {
+  const { children, component, ...rest } = props;
 
-  return <FlexWrapper {...rest}>{children}</FlexWrapper>;
-};
+  return (
+    <FlexWrapper ref={flexRef} as={component} {...rest}>
+      {children}
+    </FlexWrapper>
+  );
+});
+
+if (__DEV__) {
+  Flex.displayName = 'Flex';
+}
 
 export default Flex;

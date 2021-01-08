@@ -5,22 +5,29 @@ const GlobalStyles = createGlobalStyle`
   ${normalize}
 
   * {
+    box-sizing: border-box;
     list-style: none;
     text-decoration: none;
+    outline: none;
     font-size: 1.6rem;
     /* cursor: none; */
   }
 
   html {
+    -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-    box-sizing: border-box;
+    text-rendering: optimizeLegibility;
+    text-size-adjust: 100%;
     font-size: 62.5%;
   }
 
   body {
-    font-family: 'Poppins', BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen','Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    font-family: ${(props) =>
+      props.theme.font.family
+        .primary}, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen','Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
     overscroll-behavior: none;
     overflow-x: hidden;
+    overflow-y: auto;
     background: ${(props) => props.theme.palette.background};
     color: ${(props) => props.theme.palette.text}
   }

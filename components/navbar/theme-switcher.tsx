@@ -31,7 +31,7 @@ const ThemeSwitcher = () => {
     localStorage.setItem('theme-mode', themeOption);
   }, [themeOption]);
 
-  return <Button variant='outlined' label='Switch' onClick={handleThemeMode} />;
+  return <Button label='Switch' variant='outlined' onClick={handleThemeMode} />;
 };
 
 export default ThemeSwitcher;

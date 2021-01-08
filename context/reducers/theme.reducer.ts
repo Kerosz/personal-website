@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { ThemeAction } from '../actions/theme.action';
 
 export interface ThemeState {
@@ -6,7 +5,7 @@ export interface ThemeState {
 }
 
 export const initialThemeState: ThemeState = {
-  themeOption: 'light',
+  themeOption: 'dark',
 };
 
 export default function themeReducer(state: ThemeState, action: ThemeAction) {

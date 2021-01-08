@@ -1,4 +1,4 @@
-import { SeoArgs } from './types';
+import { SeoArgs } from './seo.types';
 
 const defaultArgs = {
   title: 'Page',

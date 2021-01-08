@@ -1,13 +1,22 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import { ButtonProps } from './types';
-import Button from './button';
+import Button, { ButtonProps } from './button';
 
 export default {
   title: 'Component/Button',
   component: Button,
   argTypes: {
     bgColor: { control: 'color' },
+    onClick: {
+      table: {
+        category: 'Events',
+      },
+    },
+    size: {
+      table: {
+        category: 'Sizes',
+      },
+    },
   },
 } as Meta;
 

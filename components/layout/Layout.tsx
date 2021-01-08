@@ -9,7 +9,7 @@ const Layout: FC = ({ children }) => {
   return (
     <>
       <Navbar />
-      <Container>
+      <Container maxW='1170px'>
         <main>{children}</main>
         <Footer />
       </Container>

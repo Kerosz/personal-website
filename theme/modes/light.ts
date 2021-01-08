@@ -1,4 +1,4 @@
-import { ThemeModeProps } from 'theme/types';
+import { ThemeModeProps } from '../theme.types';
 
 const lightMode: ThemeModeProps = {
   palette: {

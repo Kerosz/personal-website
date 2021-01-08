@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { ThemeProvider } from 'styled-components';
-import { BaseThemeProps, ThemeModeProps } from './types';
+import { BaseThemeProps, ThemeModeProps } from './theme.types';
 import { useGlobalContext } from '../context/rootContext';
 import GlobalStyles from './global-styles';
 import darkMode from './modes/dark';
@@ -24,6 +24,10 @@ function themeConstructor(themeBasedOnMode: ThemeModeProps): BaseThemeProps {
       },
     },
     font: {
+      family: {
+        primary: 'Poppins',
+        secondary: 'Major Mono Display',
+      },
       size: {
         xs: '12px',
         sm: '14px',

@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import theme from 'styled-theming';
-import { ButtonProps } from './types';
+import { ButtonProps } from './button';
 
 const buttonVariants = theme.variants('mode', 'variant', {
   default: {
@@ -13,24 +13,24 @@ const buttonVariants = theme.variants('mode', 'variant', {
   },
   filled: {
     light: css`
-      border: 0.4rem solid black;
+      border-color: black;
       background-color: black;
       color: white;
     `,
     dark: css`
-      border: 0.4rem solid white;
+      border-color: white;
       background-color: white;
       color: black;
     `,
   },
   outlined: {
     light: css`
-      border: 0.4rem solid black;
-      color: black !important;
+      border-color: black;
+      color: black;
     `,
     dark: css`
-      border: 0.4rem solid white;
-      color: white !important;
+      border-color: white;
+      color: white;
     `,
   },
 }) as any;
@@ -42,7 +42,8 @@ export const ButtonWrapper = styled.button<ButtonProps>`
   font-weight: 700;
   letter-spacing: 0.05rem;
   text-transform: uppercase;
-  border: 2px solid transparent;
+  background: transparent;
+  border: 0.4rem solid transparent;
   outline: none;
   cursor: pointer;
 
