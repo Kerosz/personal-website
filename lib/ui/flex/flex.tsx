@@ -1,4 +1,4 @@
-import { __DEV__ } from '@lib/utils/assertion';
+// import { __DEV__ } from '@lib/utils/assertion';
 import { FC, forwardRef, JSXElementConstructor } from 'react';
 import { HTMLUiProps } from '../ui.types';
 import { FlexWrapper } from './flex.styles';
@@ -67,8 +67,8 @@ const Flex: FC<FlexProps> = forwardRef((props, flexRef) => {
   );
 });
 
-if (__DEV__) {
-  Flex.displayName = 'Flex';
-}
+// if (__DEV__) {
+//   Flex.displayName = 'Flex';
+// }
 
 export default Flex;

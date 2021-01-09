@@ -4,6 +4,7 @@ import { FlexProps } from './flex';
 export const FlexWrapper = styled.div<FlexProps>`
   position: relative;
   display: flex;
+  max-width: 100%;
 
   ${(props) =>
     props.p &&

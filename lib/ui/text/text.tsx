@@ -1,5 +1,5 @@
 import { FC, forwardRef } from 'react';
-import { __DEV__ } from '@lib/utils/assertion';
+// import { __DEV__ } from '@lib/utils/assertion';
 import { TextWrapper } from './text.styles';
 import { TextProps } from './text.types';
 
@@ -17,8 +17,8 @@ const Text: FC<TextProps> = forwardRef((props, textRef) => {
   );
 });
 
-if (__DEV__) {
-  Text.displayName = 'Text';
-}
+// if (__DEV__) {
+//   Text.displayName = 'Text';
+// }
 
 export default Text;

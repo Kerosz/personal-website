@@ -4,7 +4,7 @@ import { applyTheme } from '@actions/theme.action';
 
 import Branding from './branding';
 
-const ThemeSwitcher: FC = ({ children }) => {
+const ThemeSwitcher: FC = () => {
   const { themeOption, themeDispatch } = useGlobalContext();
 
   const handleThemeMode = () => {
@@ -31,7 +31,7 @@ const ThemeSwitcher: FC = ({ children }) => {
     localStorage.setItem('theme-mode', themeOption);
   }, [themeOption]);
 
-  return <div onClick={handleThemeMode}>{children}</div>;
+  return <Branding onClick={handleThemeMode} />;
 };
 
 export default ThemeSwitcher;

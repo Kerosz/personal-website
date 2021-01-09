@@ -40,6 +40,13 @@ function themeConstructor(themeBasedOnMode: ThemeModeProps): BaseThemeProps {
         '5xl': '48px',
       },
     },
+    breakpoints: {
+      xl: '@media screen and (min-width: 80em)',
+      lg: '@media screen and (min-width: 62em)',
+      md: '@media screen and (min-width: 48em)',
+      sm: '@media screen and (min-width: 37.5em)',
+      xs: '@media screen and (min-width: 30em)',
+    },
     ...themeBasedOnMode,
   };
 }

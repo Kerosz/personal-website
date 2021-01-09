@@ -1,9 +1,8 @@
-import { Flex } from '@lib/ui';
-import { Text } from './hero.styles';
+import { Text, HeroWrapper } from './hero.styles';
 
 const Hero = () => {
   return (
-    <Flex direction='column' m='50px 0'>
+    <HeroWrapper component='section' direction='column'>
       <Text align='right'>
         <span>“</span>C<span>oM</span>BININ<span>G</span>
       </Text>
@@ -14,7 +13,7 @@ const Hero = () => {
         <span>A</span>ND DESI<span>G</span>N <span>.</span>
         <span>”</span>
       </Text>
-    </Flex>
+    </HeroWrapper>
   );
 };
 

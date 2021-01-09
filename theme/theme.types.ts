@@ -46,4 +46,29 @@ export interface BaseThemeProps extends ThemeModeProps {
       '5xl': string;
     };
   };
+  /**
+   * Theme breakpoints values
+   */
+  breakpoints: {
+    /**
+     * Breakpoint for `1280px` and above
+     */
+    xl: string;
+    /**
+     * Breakpoint for `992px` and above
+     */
+    lg: string;
+    /**
+     * Breakpoint for `768px` and above
+     */
+    md: string;
+    /**
+     * Breakpoint for `600px` and above
+     */
+    sm: string;
+    /**
+     * Breakpoint for `480px` and above
+     */
+    xs: string;
+  };
 }

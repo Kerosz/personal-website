@@ -1,5 +1,5 @@
 import { FC, forwardRef, JSXElementConstructor } from 'react';
-import { __DEV__ } from '@lib/utils/assertion';
+// import { __DEV__ } from '@lib/utils/assertion';
 import { HTMLUiProps } from '../ui.types';
 import { ContainerWrapper } from './container.styles';
 
@@ -35,8 +35,8 @@ const Container: FC<ContainerProps> = forwardRef((props, containerRef) => {
   );
 });
 
-if (__DEV__) {
-  Container.displayName = 'Container';
-}
+// if (__DEV__) {
+//   Container.displayName = 'Container';
+// }
 
 export default Container;

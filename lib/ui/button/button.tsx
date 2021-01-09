@@ -1,5 +1,5 @@
 import { FC, forwardRef } from 'react';
-import { __DEV__ } from '@lib/utils/assertion';
+// import { __DEV__ } from '@lib/utils/assertion';
 import { HTMLUiProps } from '../ui.types';
 import { ButtonWrapper } from './button.styles';
 
@@ -83,8 +83,8 @@ const Button: FC<ButtonProps> = forwardRef((props, buttonRef) => {
   );
 });
 
-if (__DEV__) {
-  Button.displayName = 'Button';
-}
+// if (__DEV__) {
+//   Button.displayName = 'Button';
+// }
 
 export default Button;
