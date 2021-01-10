@@ -8,11 +8,15 @@ const About = () => {
   return (
     <AboutWrapper component='section' direction='column'>
       <Title subHeading='About' heading='Who am I?' />
-      {bioData.map((bio) => (
-        <Text key={bio.id} component='p'>
-          {bio.text}
-        </Text>
-      ))}
+      {bioData.map((bio) => {
+        return (
+          <Text
+            key={bio.id}
+            component='p'
+            dangerouslySetInnerHTML={{ __html: bio.text }}
+          />
+        );
+      })}
     </AboutWrapper>
   );
 };

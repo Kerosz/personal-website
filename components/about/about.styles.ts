@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { Flex } from '@lib/ui';
 
 export const AboutWrapper = styled(Flex)`
-  /* m='13.5% 0' */
   margin: 7% 0;
 
   ${(props) => props.theme.breakpoints.sm} {
@@ -45,8 +44,14 @@ export const AboutWrapper = styled(Flex)`
     }
 
     & > span {
+      color: ${(props) =>
+        props.theme.mode === 'dark'
+          ? props.theme.colors.green[400]
+          : props.theme.colors.red[700]};
+      font-weight: 500;
       font-size: inherit;
-      font-family: ${(props) => props.theme.font.family.secondary};
+      font-style: italic;
+      text-decoration: line-through;
     }
 
     &:last-of-type {
