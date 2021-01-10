@@ -19,6 +19,7 @@ const Template: Story<TextProps> = (args) => {
 
 export const Basic = Template.bind({});
 Basic.args = {
+  fit: false,
   color: 'black',
   size: '16px',
   line: '22px',

@@ -9,6 +9,18 @@ export interface ContainerOptions {
    */
   maxW?: string;
   /**
+   * The CSS `height` property
+   */
+  height?: string;
+  /**
+   * The CSS `margin` property
+   */
+  m?: string;
+  /**
+   * The CSS `pedding` property
+   */
+  p?: string;
+  /**
    * Sets the container to `max-width` of `100%`
    */
   fluid?: boolean;

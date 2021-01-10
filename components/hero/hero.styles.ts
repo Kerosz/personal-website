@@ -2,7 +2,7 @@ import { Text as UiText, Flex } from '@lib/ui';
 import styled from 'styled-components';
 
 export const HeroWrapper = styled(Flex)`
-  margin-top: 10rem;
+  margin-top: 15vh;
 
   @media screen and (max-width: 40em) {
     padding: 2rem 0;
@@ -10,6 +10,10 @@ export const HeroWrapper = styled(Flex)`
 
   @media screen and (max-width: 28em) {
     padding: 3.5rem 0;
+  }
+
+  @media (min-height: 1025px) and (max-width: 1400px) {
+    margin-top: 12vh;
   }
 `;
 

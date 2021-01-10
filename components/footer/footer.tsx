@@ -1,7 +1,8 @@
+import { Flex } from '@lib/ui';
 import { FC } from 'react';
 
 const Footer: FC = () => {
-  return <h1>Footer...</h1>;
+  return <Flex component='footer'>Footer</Flex>;
 };
 
 export default Footer;

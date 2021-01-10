@@ -29,6 +29,9 @@ const Template: Story<ContainerProps> = (args) => {
 
 export const Basic = Template.bind({});
 Basic.args = {
+  height: 'initial',
   maxW: '640px',
   fluid: false,
+  m: '0',
+  p: '0',
 };

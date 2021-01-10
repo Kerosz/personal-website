@@ -6,45 +6,50 @@ export const AppBar = styled(Flex)`
   top: 0;
   left: 0;
   background: transparent;
-  backdrop-filter: blur(0.2rem);
+  backdrop-filter: blur(0.3rem);
   width: 100%;
-  height: 10rem;
+  height: 15vh;
   align-items: center;
   z-index: 99;
 
   & svg {
     margin-right: 0.8rem;
-    max-width: 7.2rem;
+    max-width: 12.5vmin;
 
     ${(props) => props.theme.breakpoints.xs} {
       margin-right: 1rem;
     }
   }
+
+  @media (min-height: 1025px) and (max-width: 1400px) {
+    height: 12vh;
+  }
 `;
 
 export const Text = styled(UiText)`
-  font-size: 2.4rem;
+  font-size: 6.7vw;
   font-weight: 400;
   text-transform: uppercase;
 
   ${(props) => props.theme.breakpoints.xs} {
-    font-size: 2.6rem;
+    font-size: 5.6vw;
   }
 
   ${(props) => props.theme.breakpoints.sm} {
-    font-size: 3rem;
+    font-size: 4.6vw;
   }
 
   ${(props) => props.theme.breakpoints.md} {
-    font-size: 3.3rem;
+    font-size: 3.9vw;
   }
 
   ${(props) => props.theme.breakpoints.lg} {
-    font-size: 3.55rem;
+    font-size: 3.6vw;
   }
 
   ${(props) => props.theme.breakpoints.xl} {
-    font-size: 3.8rem;
+    font-size: calc(0.8rem + 2vw);
+    /* font-size: calc(1.35em + 2vmin); */
   }
 
   & > span {

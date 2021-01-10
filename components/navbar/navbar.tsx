@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import Link from 'next/link';
 import ThemeSwitcher from './theme-switcher';
 
@@ -9,7 +9,7 @@ import { Container, Flex } from '@lib/ui';
 const Navbar: FC = () => {
   return (
     <AppBar component='header'>
-      <Container maxW='95%'>
+      <Container maxW='96%'>
         <Flex justify='space-between' align='center'>
           <Flex align='center' grow='1'>
             <ThemeSwitcher />

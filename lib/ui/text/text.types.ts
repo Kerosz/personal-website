@@ -54,6 +54,10 @@ export interface TextOptions {
    * The CSS `color` property
    */
   color?: string;
+  /**
+   * The CSS `color` property
+   */
+  fit?: boolean;
 }
 
 export interface TextProps extends HTMLUiProps<'p'>, TextOptions {
