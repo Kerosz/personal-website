@@ -7,6 +7,34 @@ interface TitleProps {
   heading: string;
 }
 
+// Add staggering effect to the children of the container
+const letterContainerVariants = {
+  before: {},
+  after: { transition: { staggerChildren: 0.03 } },
+};
+
+// Variants for animating each letter
+const letterVariants = {
+  before: {
+    opacity: 0,
+    y: 20,
+    transition: {
+      type: 'spring',
+      damping: 16,
+      stiffness: 200,
+    },
+  },
+  after: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: 'spring',
+      damping: 16,
+      stiffness: 200,
+    },
+  },
+};
+
 const Title: FC<TitleProps> = ({ subHeading, heading }) => {
   return (
     <TitleWrapper direction='column'>

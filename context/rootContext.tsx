@@ -1,26 +1,38 @@
-import { createContext, useContext, useReducer, FC } from 'react';
+import { createContext, useContext, useReducer, FC, Dispatch } from 'react';
 import { __DEV__ } from '@lib/utils/assertion';
-import themeReducer, { initialThemeState } from './reducers/theme.reducer';
+import { UiAction } from '@actions/ui.action';
+import uiReducer, { initialUiState, UiState } from './reducers/ui.reducer';
 
-const GlobalContext = createContext<any>({});
-
-if (__DEV__) {
-  GlobalContext.displayName = 'GlobalContext';
+interface ContextProps extends UiState {
+  uiDispatch: Dispatch<UiAction>;
 }
 
-const GlobalContextProvider: FC = ({ children }) => {
-  const [theme, themeDispatch] = useReducer(themeReducer, initialThemeState);
+const defaultContextState = ({
+  ...initialUiState,
+  uiDispatch: null,
+} as unknown) as ContextProps;
 
-  const value = {
-    ...theme,
-    themeDispatch,
+const GlobalContext = createContext(defaultContextState);
+
+const GlobalContextProvider: FC = ({ children }) => {
+  const [ui, uiDispatch] = useReducer(uiReducer, initialUiState);
+
+  const providerValue = {
+    ...ui,
+    uiDispatch,
   };
 
   return (
-    <GlobalContext.Provider value={value}>{children}</GlobalContext.Provider>
+    <GlobalContext.Provider value={providerValue}>
+      {children}
+    </GlobalContext.Provider>
   );
 };
 
 export const useGlobalContext = () => useContext(GlobalContext);
 
 export default GlobalContextProvider;
+
+if (__DEV__) {
+  GlobalContext.displayName = 'GlobalContext';
+}

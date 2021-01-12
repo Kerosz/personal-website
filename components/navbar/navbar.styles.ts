@@ -8,16 +8,42 @@ export const AppBar = styled(Flex)`
   background: transparent;
   backdrop-filter: blur(0.3rem);
   width: 100%;
-  height: 15vh;
+  height: 13vh;
   align-items: center;
   z-index: 99;
 
+  &:after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: ${(props) => props.theme.palette.background};
+    opacity: 0.96;
+    z-index: -1;
+  }
+
   & svg {
-    margin-right: 0.8rem;
-    max-width: 12.5vmin;
+    max-width: 14.5vmin;
 
     ${(props) => props.theme.breakpoints.xs} {
+      max-width: 12.5vmin;
+    }
+
+    ${(props) => props.theme.breakpoints.sm} {
+      max-width: 11.5vmin;
       margin-right: 1rem;
+    }
+
+    ${(props) => props.theme.breakpoints.md} {
+      max-width: 11vmin;
+    }
+  }
+
+  ${(props) => props.theme.breakpoints.sm} {
+    & .menu {
+      display: none;
     }
   }
 
@@ -27,29 +53,36 @@ export const AppBar = styled(Flex)`
 `;
 
 export const Text = styled(UiText)`
-  font-size: 6.7vw;
-  font-weight: 400;
-  text-transform: uppercase;
+  display: none;
+  font-size: 4.8vw;
+  font-weight: 700;
+  padding: 1rem;
+  margin-right: 0.3vw;
+  cursor: pointer;
+
+  &:last-of-type {
+    margin-right: 0;
+  }
 
   ${(props) => props.theme.breakpoints.xs} {
-    font-size: 5.6vw;
+    font-size: 4.3vw;
   }
 
   ${(props) => props.theme.breakpoints.sm} {
-    font-size: 4.6vw;
+    display: flex;
+    font-size: calc(1.3rem + 0.9vw);
   }
 
   ${(props) => props.theme.breakpoints.md} {
-    font-size: 3.9vw;
+    font-size: calc(1.15rem + 0.9vw);
   }
 
   ${(props) => props.theme.breakpoints.lg} {
-    font-size: 3.6vw;
+    font-size: calc(0.95rem + 0.9vw);
   }
 
   ${(props) => props.theme.breakpoints.xl} {
-    font-size: calc(0.8rem + 2vw);
-    /* font-size: calc(1.35em + 2vmin); */
+    font-size: calc(0.6rem + 1vw);
   }
 
   & > span {
@@ -60,8 +93,13 @@ export const Text = styled(UiText)`
 `;
 
 export const BurgerMenu = styled.div`
+  display: block;
   position: relative;
   cursor: pointer;
+
+  ${(props) => props.theme.breakpoints.sm} {
+    display: none;
+  }
 
   & > span {
     display: block;

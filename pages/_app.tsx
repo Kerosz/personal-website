@@ -15,7 +15,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       <Head />
       <GlobalContextProvider>
         <Theme>
-          <AnimatePresence initial={false} exitBeforeEnter>
+          <AnimatePresence exitBeforeEnter>
             <Layout>
               <Component {...pageProps} />
             </Layout>

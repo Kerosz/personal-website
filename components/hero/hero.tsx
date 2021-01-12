@@ -7,7 +7,7 @@ const Hero = () => {
         <span>“</span>C<span>oM</span>BININ<span>G</span>
       </Text>
       <Text>
-        FN<span>N</span>CTION<span>A</span>LITY
+        FU<span>N</span>CTION<span>A</span>LITY
       </Text>
       <Text align='right'>
         <span>A</span>ND DESI<span>G</span>N <span>.</span>

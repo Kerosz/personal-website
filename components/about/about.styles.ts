@@ -54,6 +54,15 @@ export const AboutWrapper = styled(Flex)`
       text-decoration: line-through;
     }
 
+    & .bold {
+      text-decoration: none;
+      font-weight: 700;
+      color: ${(props) => props.theme.palette.text.main};
+      -webkit-text-fill-color: ${(props) => props.theme.palette.background};
+      -webkit-text-stroke-width: 2px;
+      -webkit-text-stroke-color: ${(props) => props.theme.palette.text.main};
+    }
+
     &:last-of-type {
       margin: 0;
     }

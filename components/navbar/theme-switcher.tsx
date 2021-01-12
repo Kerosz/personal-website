@@ -1,17 +1,17 @@
 import React, { FC, useEffect } from 'react';
 import { useGlobalContext } from 'context/rootContext';
-import { applyTheme } from '@actions/theme.action';
+import { applyTheme } from '@actions/ui.action';
 
 import Branding from './branding';
 
 const ThemeSwitcher: FC = () => {
-  const { themeOption, themeDispatch } = useGlobalContext();
+  const { themeOption, uiDispatch } = useGlobalContext();
 
   const handleThemeMode = () => {
     if (themeOption === 'light') {
-      themeDispatch(applyTheme('dark'));
+      uiDispatch(applyTheme('dark'));
     } else {
-      themeDispatch(applyTheme('light'));
+      uiDispatch(applyTheme('light'));
     }
   };
 
@@ -23,7 +23,7 @@ const ThemeSwitcher: FC = () => {
       | null;
 
     if (themeModeFromStorage) {
-      themeDispatch(applyTheme(themeModeFromStorage));
+      uiDispatch(applyTheme(themeModeFromStorage));
     }
   }, []);
 

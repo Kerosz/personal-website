@@ -27,21 +27,17 @@ export const TitleWrapper = styled(Flex)`
   }
 
   & > h2 {
-    font-size: 7.2vw;
-    margin: 4.7% 0 13%;
+    font-size: calc(4rem + (80 - 38) * ((100vw - 320px) / (1600 - 320)));
+    line-height: calc(4rem + (80 - 38) * ((100vw - 320px) / (1600 - 320)));
+    font-weight: 700;
+    margin: 4.9% 0 13%;
 
     ${(props) => props.theme.breakpoints.xs} {
-      margin: 4.4% 0 11%;
-      font-size: 6.1vw;
+      margin: 4.6% 0 11%;
     }
 
     ${(props) => props.theme.breakpoints.sm} {
-      margin: 3.7% 0 9.5%;
-      font-size: 6.1vw;
-    }
-
-    ${(props) => props.theme.breakpoints.md} {
-      font-size: 6vw;
+      margin: 4% 0 9.5%;
     }
   }
 `;

@@ -7,7 +7,7 @@ import bioData from '@constants/bio';
 const About = () => {
   return (
     <AboutWrapper component='section' direction='column'>
-      <Title subHeading='About' heading='Who am I?' />
+      <Title subHeading='Introduction' heading='Who am I?' />
       {bioData.map((bio) => {
         return (
           <Text
