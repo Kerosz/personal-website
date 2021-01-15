@@ -31,6 +31,7 @@ export const TitleWrapper = styled(Flex)`
     line-height: calc(4rem + (80 - 38) * ((100vw - 320px) / (1600 - 320)));
     font-weight: 700;
     margin: 4.9% 0 13%;
+    text-transform: uppercase;
 
     ${(props) => props.theme.breakpoints.xs} {
       margin: 4.6% 0 11%;

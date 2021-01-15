@@ -7,11 +7,11 @@ import { TextProps } from './text.types';
  * Used to render a paragraph or any text element
  *
  */
-const Text: FC<TextProps> = forwardRef((props, textRef) => {
+const Text = forwardRef<HTMLElement, TextProps>((props, ref) => {
   const { children, component, to, ...rest } = props;
 
   return (
-    <TextWrapper as={component} href={to} ref={textRef} {...rest}>
+    <TextWrapper as={component} href={to} ref={ref} {...rest}>
       {children}
     </TextWrapper>
   );

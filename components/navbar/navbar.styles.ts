@@ -55,7 +55,7 @@ export const AppBar = styled(Flex)`
 export const Text = styled(UiText)`
   display: none;
   font-size: 4.8vw;
-  font-weight: 700;
+  font-weight: 600;
   padding: 1rem;
   margin-right: 0.3vw;
   cursor: pointer;

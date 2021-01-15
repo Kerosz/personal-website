@@ -57,11 +57,11 @@ export interface FlexProps extends HTMLUiProps<'div'>, FlexOptions {
  * Used to render a `div` with the css property set to `flex`.
  *
  */
-const Flex: FC<FlexProps> = forwardRef((props, flexRef) => {
+const Flex = forwardRef<HTMLElement, FlexProps>((props, ref) => {
   const { children, component, ...rest } = props;
 
   return (
-    <FlexWrapper ref={flexRef} as={component} {...rest}>
+    <FlexWrapper ref={ref} as={component} {...rest}>
       {children}
     </FlexWrapper>
   );

@@ -2,6 +2,7 @@ import { Text as UiText, Flex } from '@lib/ui';
 import styled from 'styled-components';
 
 export const HeroWrapper = styled(Flex)`
+  font-family: ${(props) => props.theme.font.family.heading};
   margin-top: 13vh;
 
   @media screen and (max-width: 40em) {

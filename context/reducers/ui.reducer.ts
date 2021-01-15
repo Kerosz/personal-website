@@ -6,7 +6,7 @@ export interface UiState {
 }
 
 export const initialUiState: UiState = {
-  themeOption: 'dark',
+  themeOption: 'light',
   isTransition: true,
 };
 

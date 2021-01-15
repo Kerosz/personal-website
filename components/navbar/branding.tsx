@@ -1,17 +1,28 @@
 import { FC, SVGProps } from 'react';
 import { useGlobalContext } from 'context/rootContext';
 
-interface BrandProps extends SVGProps<SVGSVGElement> {}
+interface BrandProps extends SVGProps<SVGSVGElement> {
+  invert?: boolean;
+}
 
 const Branding: FC<BrandProps> = (props) => {
+  const { invert, ...restProps } = props;
   const { themeOption } = useGlobalContext();
-  const fillColor = themeOption === 'light' ? 'black' : 'white';
+  let fillColor = themeOption === 'light' ? 'black' : 'white';
+
+  if (invert) {
+    if (fillColor === 'black') {
+      fillColor = 'white';
+    } else {
+      fillColor = 'black';
+    }
+  }
 
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 673.59 583.45'
-      {...props}>
+      {...restProps}>
       <defs></defs>
       <g id='branding_2' data-name='branding_2'>
         <g id='branding_1' data-name='branding_1'>

@@ -18,7 +18,9 @@
       "@lib/*": ["lib/*"],
       "@components/*": ["components/*"],
       "@constants/*": ["constants/*"],
-      "@actions/*": ["context/actions/*"]
+      "@actions/*": ["context/actions/*"],
+      "@animations/*": ["components/animations/*"],
+      "@hooks/*": ["hooks/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.js"],

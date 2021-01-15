@@ -22,7 +22,9 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    font-family:  'Segoe UI', 'Roboto', 'Oxygen','Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    font-family: ${(props) =>
+      props.theme.font.family
+        .primary}, 'Segoe UI', 'Roboto', 'Oxygen','Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
     overscroll-behavior: none;
     overflow-x: hidden;
     overflow-y: auto;

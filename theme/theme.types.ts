@@ -37,6 +37,7 @@ export interface BaseThemeProps extends ThemeModeProps {
     family: {
       primary: string;
       secondary: string;
+      heading: string;
     };
     size: {
       xs: string;

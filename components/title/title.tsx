@@ -1,50 +1,36 @@
 import { FC } from 'react';
-import { Devider, Text } from '@lib/ui';
+import { Devider, Text, Flex } from '@lib/ui';
 import { TitleWrapper } from './title.styles';
+import { motion } from 'framer-motion';
+import useIsVisible from '@hooks/use-is-visible';
+
+import MotionWord from '@animations/motion-word';
 
 interface TitleProps {
   subHeading: string;
   heading: string;
 }
 
-// Add staggering effect to the children of the container
-const letterContainerVariants = {
-  before: {},
-  after: { transition: { staggerChildren: 0.03 } },
-};
-
-// Variants for animating each letter
-const letterVariants = {
-  before: {
-    opacity: 0,
-    y: 20,
-    transition: {
-      type: 'spring',
-      damping: 16,
-      stiffness: 200,
-    },
-  },
-  after: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      type: 'spring',
-      damping: 16,
-      stiffness: 200,
-    },
-  },
-};
+const MotionText = motion.custom(Text);
+const MotionDevider = motion.custom(Devider);
 
 const Title: FC<TitleProps> = ({ subHeading, heading }) => {
   return (
     <TitleWrapper direction='column'>
-      <Text component='h4' weight='400' m='0 0 2.4%'>
+      <MotionText component='h4' weight='400' m='0 0 2.4%'>
         {subHeading}
-      </Text>
-      <Devider />
-      <Text component='h2' size='5.9vw' casing='uppercase' fit>
-        {heading}
-      </Text>
+      </MotionText>
+      <MotionDevider />
+      <Flex component='h2' direction='row'>
+        {heading.split(' ').map((letter, idx) => (
+          <MotionWord
+            key={`${letter}-motion-${idx}`}
+            initialDelay={0.25}
+            index={idx}>
+            {letter}&nbsp;
+          </MotionWord>
+        ))}
+      </Flex>
     </TitleWrapper>
   );
 };

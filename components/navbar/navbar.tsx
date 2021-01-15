@@ -14,6 +14,8 @@ const navTextTransition = {
   staggerChildren: 0.06,
 };
 
+const MotionText = motion.custom(Text);
+
 const Navbar: FC = () => {
   return (
     <AppBar component='header'>
@@ -23,8 +25,7 @@ const Navbar: FC = () => {
           <Flex component='nav' align='center' className='desktop'>
             {navbarLinks.map((link) => (
               <Link key={link.id} href={link.path}>
-                <Text
-                  as={motion.div}
+                <MotionText
                   whileHover={{
                     scale: 1.113,
                     rotate: -3,
@@ -36,7 +37,7 @@ const Navbar: FC = () => {
                     transition: navTextTransition,
                   }}>
                   #{link.label}
-                </Text>
+                </MotionText>
               </Link>
             ))}
           </Flex>

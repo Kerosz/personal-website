@@ -49,6 +49,7 @@ function themeConstructor(themeBasedOnMode: ThemeModeProps): BaseThemeProps {
       family: {
         primary: 'Poppins',
         secondary: 'Major Mono Display',
+        heading: 'Segoe UI',
       },
       size: {
         xs: '12px',
