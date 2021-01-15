@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { Devider, Text, Flex } from '@lib/ui';
 import { TitleWrapper } from './title.styles';
 import { motion } from 'framer-motion';
-import useIsVisible from '@hooks/use-is-visible';
+// import useIsVisible from '@hooks/use-is-visible';
 
 import MotionWord from '@animations/motion-word';
 

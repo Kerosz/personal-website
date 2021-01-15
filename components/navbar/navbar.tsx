@@ -1,11 +1,10 @@
 import { FC } from 'react';
-import Link from 'next/link';
-import ThemeSwitcher from './theme-switcher';
-import navbarLinks from '@constants/navbar';
-
 import { motion } from 'framer-motion';
 import { AppBar, Text, BurgerMenu } from './navbar.styles';
 import { Container, Flex } from '@lib/ui';
+import Link from 'next/link';
+import ThemeSwitcher from './theme-switcher';
+import navbarLinks from '@constants/navbar';
 
 const navTextTransition = {
   type: 'spring',
