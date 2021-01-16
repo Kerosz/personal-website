@@ -1,5 +1,5 @@
 import { FC, SVGProps } from 'react';
-import useThemeMode from '@hooks/use-theme-mode';
+import { useGlobalContext } from 'context/rootContext';
 
 interface BrandProps extends SVGProps<SVGSVGElement> {
   invert?: boolean;
@@ -7,9 +7,9 @@ interface BrandProps extends SVGProps<SVGSVGElement> {
 
 const Branding: FC<BrandProps> = (props) => {
   const { invert, ...restProps } = props;
-  const { mode } = useThemeMode();
+  const { themeOption } = useGlobalContext();
 
-  let fillColor = mode === 'light' ? 'black' : 'white';
+  let fillColor = themeOption === 'light' ? 'black' : 'white';
 
   if (invert) {
     if (fillColor === 'black') {
