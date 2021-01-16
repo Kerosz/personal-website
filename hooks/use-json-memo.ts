@@ -1,8 +1,6 @@
 import { useMemo } from 'react';
 
-export default function useStringifyMemo<T extends Record<string, any>>(
-  obj: T
-) {
+export default function useJsonMemo<T>(obj: T) {
   const toString = JSON.stringify(obj);
 
   return useMemo(() => obj, [toString]);

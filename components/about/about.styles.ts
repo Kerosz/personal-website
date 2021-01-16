@@ -2,13 +2,13 @@ import styled from 'styled-components';
 import { Flex } from '@lib/ui';
 
 export const AboutWrapper = styled(Flex)`
-  margin: 7% 0;
+  padding: 7% 0;
 
   ${(props) => props.theme.breakpoints.sm} {
-    margin: 13.5% 0;
+    padding: 11.5% 0;
   }
 
-  & > p {
+  & p {
     font-size: 6.4vw;
     line-height: 9.5vw;
     margin: 0;
@@ -33,7 +33,7 @@ export const AboutWrapper = styled(Flex)`
     }
 
     ${(props) => props.theme.breakpoints.lg} {
-      font-size: 4.7vw;
+      font-size: 4.65vw;
       line-height: 7vw;
       margin-bottom: 4.2%;
     }
@@ -43,7 +43,7 @@ export const AboutWrapper = styled(Flex)`
       margin-bottom: 3.7%;
     }
 
-    & > span {
+    & span {
       color: ${(props) =>
         props.theme.mode === 'dark'
           ? props.theme.colors.green[400]
@@ -59,8 +59,12 @@ export const AboutWrapper = styled(Flex)`
       font-weight: 700;
       color: ${(props) => props.theme.palette.text.main};
       -webkit-text-fill-color: ${(props) => props.theme.palette.background};
-      -webkit-text-stroke-width: 2px;
+      -webkit-text-stroke-width: 1px;
       -webkit-text-stroke-color: ${(props) => props.theme.palette.text.main};
+
+      ${(props) => props.theme.breakpoints.sm} {
+        -webkit-text-stroke-width: 2px;
+      }
     }
 
     &:last-of-type {

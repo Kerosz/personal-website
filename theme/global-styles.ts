@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 import { normalize } from 'styled-normalize';
 
 const GlobalStyles = createGlobalStyle`
-  ${normalize}
+  ${normalize};
 
   * {
     box-sizing: border-box;
@@ -16,6 +16,7 @@ const GlobalStyles = createGlobalStyle`
   html {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
     text-rendering: optimizeLegibility;
     text-size-adjust: 100%;
     font-size: 62.5%;
@@ -29,7 +30,12 @@ const GlobalStyles = createGlobalStyle`
     overflow-x: hidden;
     overflow-y: auto;
     background: ${(props) => props.theme.palette.background};
-    color: ${(props) => props.theme.palette.text.main}
+    color: ${(props) => props.theme.palette.text.main};
+
+    -moz-transition: all 350ms ease-in-out;
+    -o-transition: all 350ms ease-in-out;
+    -webkit-transition: all 350ms ease-in-out;
+    transition: all 350ms ease-in-out;
   }
 
   img {

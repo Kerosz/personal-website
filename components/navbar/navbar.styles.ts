@@ -20,7 +20,7 @@ export const AppBar = styled(Flex)`
     top: 0;
     left: 0;
     background: ${(props) => props.theme.palette.background};
-    opacity: 0.96;
+    opacity: 0.97;
     z-index: -1;
   }
 
@@ -56,7 +56,7 @@ export const Text = styled(UiText)`
   display: none;
   font-size: 4.8vw;
   font-weight: 600;
-  padding: 1rem;
+  padding: 0.75vw;
   margin-right: 0.3vw;
   cursor: pointer;
 

@@ -2,7 +2,7 @@ module.exports = [
   {
     id: 1,
     text:
-      "Some say that once you found your <span>obsession</span> passion, you never let it slip away. <span class='bold'>Hi, I'm Andrei</span> and my passion is to build stuff, programming being my <span>tool</span> weapon of choice.",
+      "Some say that once you found your <span>obsession</span> passion, you never let it slip away. <span class='bold'>Hi, I'm Andrei</span> and my passion is to build various things, programming being my <span>tool</span> weapon of choice.",
   },
   {
     id: 2,

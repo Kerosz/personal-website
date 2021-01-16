@@ -13,11 +13,32 @@ interface Options {
   viewOptions?: ViewOptions;
 }
 
+/**
+ * A hook that can be used to start/stop and sequence animations on a component if an `element` is in the viewport.
+ *
+ * It returns a `ref` which should be assigned to a DOM element that will be watched and an `animation` - `AnimationControls` that should be passed to the `animate` property of the component you want to animate.
+ *
+ * @example
+ * ```jsx
+ *    export default function MyComponent(props) {
+ *      const [ref, animation] = useAnimationView({
+ *        initial: 'visible',
+ *        animate: 'hidden',
+ *      });
+ *
+ *      return (<motion.div
+ *               ref={ref}
+ *               variants={exampleVariants}
+ *               initial='hidden'
+ *               animate={animation} />
+ *   )}
+ * ```
+ */
 export default function useAnimationView(args: Options) {
   const {
     initial = 'visible',
-    animate = 'animate',
-    threshold = 0.75,
+    animate = 'hidden',
+    threshold = 0.5,
     viewOptions,
   } = args;
 
@@ -32,5 +53,5 @@ export default function useAnimationView(args: Options) {
     }
   }, [animation, visible]);
 
-  return { ref, animation };
+  return [ref, animation] as const;
 }

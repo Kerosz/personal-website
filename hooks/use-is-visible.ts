@@ -1,19 +1,19 @@
 import { useEffect, useRef, useState } from 'react';
 
-import useStringifyMemo from './use-stringify-memo';
+import useJsonMemo from './use-json-memo';
 
 export interface Options extends IntersectionObserverInit {
-  /** Only trigger the inView callback once */
+  /** Only trigger the `isVisible` callback once */
   triggerOnce?: boolean;
 }
 
 export default function useIsVisible<T extends HTMLElement = HTMLElement>(
-  args: Options
+  args?: Options
 ) {
   const ref = useRef<T | null>(null);
   const [visible, setVisible] = useState<boolean>(false);
 
-  const options = useStringifyMemo(args);
+  const options = useJsonMemo(args);
 
   useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
@@ -22,7 +22,7 @@ export default function useIsVisible<T extends HTMLElement = HTMLElement>(
       if (isIntersecting && intersectionRatio > 0) {
         setVisible(true);
       } else {
-        if (options.triggerOnce) return;
+        if (options?.triggerOnce) return;
 
         setVisible(false);
       }

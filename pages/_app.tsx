@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import type { AppProps } from 'next/app';
+import { AppProps } from 'next/app';
 import { AnimatePresence } from 'framer-motion';
 import Head from '@components/head';
 import GlobalContextProvider from '../context/rootContext';

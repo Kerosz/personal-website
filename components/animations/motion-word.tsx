@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Flex } from '@lib/ui';
 import { motion } from 'framer-motion';
-import useAnimationView from 'hooks/use-animation-view';
+import useAnimationView from '@hooks/use-animation-view';
 
 interface MotionWordProps {
   initialState?: string;
@@ -27,7 +27,7 @@ const MotionWord: FC<MotionWordProps> = (props) => {
   } = props;
   const { transition, ...restAnimateProps } = animate;
 
-  const { ref, animation } = useAnimationView({
+  const [ref, animation] = useAnimationView({
     initial: 'visible',
     animate: 'hidden',
   });
@@ -39,6 +39,7 @@ const MotionWord: FC<MotionWordProps> = (props) => {
       opacity: 1,
       transition: {
         delay: initialDelay + index * 0.025,
+        ease: [0.6, 0.01, -0.05, 0.9],
         ...springConfig,
         ...transition,
       },

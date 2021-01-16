@@ -3,11 +3,13 @@ import { UiAction } from '../actions/ui.action';
 export interface UiState {
   themeOption: string;
   isTransition: boolean;
+  canScroll: boolean;
 }
 
 export const initialUiState: UiState = {
-  themeOption: 'light',
+  themeOption: 'dark',
   isTransition: true,
+  canScroll: false,
 };
 
 export default function uiReducer(state: UiState, action: UiAction) {
@@ -20,7 +22,12 @@ export default function uiReducer(state: UiState, action: UiAction) {
     case 'TOGGLE_TRANSITION':
       return {
         ...state,
-        isTransition: action.transition,
+        isTransition: !state.isTransition,
+      };
+    case 'TOGGLE_SCROLL':
+      return {
+        ...state,
+        canScroll: !state.canScroll,
       };
     default:
       return state;

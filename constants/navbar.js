@@ -7,12 +7,12 @@ module.exports = [
   {
     id: 2,
     label: 'showcase',
-    path: '/showcase',
+    path: '/#showcase',
   },
   {
     id: 3,
     label: 'introduction',
-    path: '/introduction',
+    path: '/#introduction',
   },
   {
     id: 4,

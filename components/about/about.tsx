@@ -1,20 +1,27 @@
 import Title from '@components/title';
-import { Text } from '@lib/ui';
+import { Flex, Text } from '@lib/ui';
 import { AboutWrapper } from './about.styles';
+import useIsVisible from '@hooks/use-is-visible';
+import useThemeMode from '@hooks/use-theme-mode';
 
 import bioData from '@constants/bio';
 
 const About = () => {
+  const [ref, visible] = useIsVisible<HTMLDivElement>();
+  const _ = useThemeMode({ triggerChange: visible });
+
   return (
-    <AboutWrapper component='section' direction='column'>
+    <AboutWrapper id='introduction' component='section' direction='column'>
       <Title subHeading='Introduction' heading='Who am I?' />
-      {bioData.map((bio) => (
-        <Text
-          key={bio.id}
-          component='p'
-          dangerouslySetInnerHTML={{ __html: bio.text }}
-        />
-      ))}
+      <Flex direction='column' ref={ref}>
+        {bioData.map((bio) => (
+          <Text
+            key={bio.id}
+            component='p'
+            dangerouslySetInnerHTML={{ __html: bio.text }}
+          />
+        ))}
+      </Flex>
     </AboutWrapper>
   );
 };

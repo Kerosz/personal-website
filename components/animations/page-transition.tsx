@@ -1,7 +1,11 @@
 import styled from 'styled-components';
 import Branding from '@components/navbar/branding';
-import { Flex } from '@lib/ui';
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { Flex } from '@lib/ui';
+import { useGlobalContext } from 'context/rootContext';
+import { toggleScroll } from '@actions/ui.action';
+import { isBrowser } from '@lib/utils/dom';
 
 const MainStack = styled(Flex)`
   display: block;
@@ -45,21 +49,38 @@ const SubStack = styled(MainStack)`
   }
 `;
 
-const MotionMain = motion.custom(MainStack);
-const MotionSub = motion.custom(SubStack);
-
 const PageTransition = () => {
+  const { canScroll, uiDispatch } = useGlobalContext();
+
+  useEffect(() => {
+    if (isBrowser && !canScroll) {
+      document.body.style.overflowY = 'hidden';
+    } else {
+      document.body.style.overflowY = 'auto';
+    }
+  }, [canScroll]);
+
   return (
     <>
-      <MotionMain variants={mainVariants} initial='visible' animate='hidden' />
-      <MotionSub variants={subVariants} initial='initial' animate='animate'>
+      <MainStack
+        as={motion.div}
+        variants={mainVariants}
+        initial='visible'
+        animate='hidden'
+      />
+      <SubStack
+        as={motion.div}
+        onAnimationComplete={() => uiDispatch(toggleScroll())}
+        variants={subVariants}
+        initial='initial'
+        animate='animate'>
         {Array.from(new Array(5)).map((_, idx) => (
           <motion.div variants={childVariants} key={idx} />
         ))}
         <motion.figure variants={childVariantBrand} key={5}>
           <Branding invert />
         </motion.figure>
-      </MotionSub>
+      </SubStack>
     </>
   );
 };

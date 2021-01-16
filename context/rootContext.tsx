@@ -12,7 +12,7 @@ const defaultContextState = ({
   uiDispatch: null,
 } as unknown) as ContextProps;
 
-const GlobalContext = createContext(defaultContextState);
+export const GlobalContext = createContext(defaultContextState);
 
 const GlobalContextProvider: FC = ({ children }) => {
   const [ui, uiDispatch] = useReducer(uiReducer, initialUiState);

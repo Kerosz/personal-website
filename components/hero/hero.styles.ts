@@ -1,5 +1,5 @@
-import { Text as UiText, Flex } from '@lib/ui';
 import styled from 'styled-components';
+import { Text as UiText, Flex } from '@lib/ui';
 
 export const HeroWrapper = styled(Flex)`
   font-family: ${(props) => props.theme.font.family.heading};

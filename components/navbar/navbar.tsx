@@ -18,7 +18,7 @@ const MotionText = motion.custom(Text);
 const Navbar: FC = () => {
   return (
     <AppBar component='header'>
-      <Container maxW='96%'>
+      <Container maxW='98%'>
         <Flex justify='space-between' align='center'>
           <ThemeSwitcher />
           <Flex component='nav' align='center' className='desktop'>

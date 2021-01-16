@@ -1,8 +1,17 @@
+import { AnimatePresence, motion } from 'framer-motion';
 import { Text, HeroWrapper } from './hero.styles';
+
+const MotionHeroWrapper = motion.custom(HeroWrapper);
 
 const Hero = () => {
   return (
-    <HeroWrapper component='section' direction='column'>
+    <MotionHeroWrapper
+      component='section'
+      direction='column'
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ delay: 1.45 }}>
       <Text align='right'>
         <span>“</span>C<span>oM</span>BININ<span>G</span>
       </Text>
@@ -13,7 +22,7 @@ const Hero = () => {
         <span>A</span>ND DESI<span>G</span>N <span>.</span>
         <span>”</span>
       </Text>
-    </HeroWrapper>
+    </MotionHeroWrapper>
   );
 };
 
