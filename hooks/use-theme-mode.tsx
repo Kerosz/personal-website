@@ -1,8 +1,9 @@
-import { useEffect, useLayoutEffect, useRef } from 'react';
+import { useEffect, useLayoutEffect } from 'react';
 import { applyTheme } from '@actions/ui.action';
 import { useGlobalContext } from 'context/rootContext';
 
 import useJsonMemo from './use-json-memo';
+import useUpdateEffect from './use-update-effect';
 
 interface Options {
   /** Triggers the `change` function based on a `dynamic` prop */
@@ -16,9 +17,10 @@ interface Options {
  */
 const useThemeMode = (args?: Options) => {
   const { themeOption, uiDispatch } = useGlobalContext();
-  const didMount = useRef(false);
 
   const memoTrigger = args ? useJsonMemo(args.triggerChange) : null;
+
+  console.log({ outsideHooks: themeOption });
 
   const handleThemeChange = () => {
     if (themeOption === 'light') {
@@ -28,7 +30,7 @@ const useThemeMode = (args?: Options) => {
     }
   };
 
-  useLayoutEffect(() => {
+  useUpdateEffect(() => {
     handleThemeChange();
   }, [memoTrigger]);
 
@@ -40,16 +42,13 @@ const useThemeMode = (args?: Options) => {
       | null;
 
     if (themeModeFromStorage) {
+      console.log({ themeModeFromStorage });
       uiDispatch(applyTheme(themeModeFromStorage));
     }
   }, []);
 
-  useEffect(() => {
-    if (didMount.current) {
-      localStorage.setItem('theme-mode', themeOption);
-    } else {
-      didMount.current = true;
-    }
+  useUpdateEffect(() => {
+    localStorage.setItem('theme-mode', themeOption);
   }, [themeOption]);
 
   return { mode: themeOption, change: handleThemeChange };

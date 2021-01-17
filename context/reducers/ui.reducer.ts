@@ -7,7 +7,7 @@ export interface UiState {
 }
 
 export const initialUiState: UiState = {
-  themeOption: 'light',
+  themeOption: 'dark',
   isTransition: true,
   canScroll: false,
 };

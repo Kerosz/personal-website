@@ -11,7 +11,7 @@ const Hero = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ delay: 1.45 }}>
+      transition={{ delay: 0.15 }}>
       <Text align='right'>
         <span>“</span>C<span>oM</span>BININ<span>G</span>
       </Text>

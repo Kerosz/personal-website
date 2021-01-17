@@ -2,8 +2,8 @@ import { FC } from 'react';
 import { Devider, Text, Flex } from '@lib/ui';
 import { TitleWrapper } from './title.styles';
 import { motion } from 'framer-motion';
-import useAnimationView from '@hooks/use-animation-view';
 
+import useAnimationView from '@hooks/use-animation-view';
 import MotionWord from '@animations/motion-word';
 
 interface TitleProps {
