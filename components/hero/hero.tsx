@@ -6,6 +6,7 @@ const MotionHeroWrapper = motion.custom(HeroWrapper);
 const Hero = () => {
   return (
     <MotionHeroWrapper
+      id='hero'
       component='section'
       direction='column'
       initial={{ opacity: 0 }}

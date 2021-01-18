@@ -32,6 +32,13 @@ export interface FlexOptions {
    * The CSS `flex-shrink` property
    */
   shrink?: string | number;
+}
+
+export interface FlexProps extends HTMLUiProps<'div'>, FlexOptions {
+  /**
+   * The wrapper `element` of the component
+   */
+  component?: string | JSXElementConstructor<any>;
   /**
    * Sets the flex `height` to 0
    */
@@ -44,13 +51,10 @@ export interface FlexOptions {
    * Shorthand for `padding` property
    */
   p?: string;
-}
-
-export interface FlexProps extends HTMLUiProps<'div'>, FlexOptions {
   /**
-   * The wrapper `element` of the component
+   * The CSS `width` property
    */
-  component?: string | JSXElementConstructor<any>;
+  width?: string;
 }
 
 /**

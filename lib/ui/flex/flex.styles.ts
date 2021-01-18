@@ -8,6 +8,12 @@ export const FlexWrapper = styled.div<FlexProps>`
   max-width: 100%;
 
   ${(props) =>
+    props.width &&
+    css`
+      width: ${props.width};
+    `};
+
+  ${(props) =>
     props.p &&
     css`
       padding: ${props.p};

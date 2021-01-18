@@ -20,8 +20,6 @@ const useThemeMode = (args?: Options) => {
 
   const memoTrigger = args ? useJsonMemo(args.triggerChange) : null;
 
-  console.log({ outsideHooks: themeOption });
-
   const handleThemeChange = () => {
     if (themeOption === 'light') {
       uiDispatch(applyTheme('dark'));
@@ -42,7 +40,6 @@ const useThemeMode = (args?: Options) => {
       | null;
 
     if (themeModeFromStorage) {
-      console.log({ themeModeFromStorage });
       uiDispatch(applyTheme(themeModeFromStorage));
     }
   }, []);

@@ -22,6 +22,11 @@ const GlobalStyles = createGlobalStyle`
     text-rendering: optimizeLegibility;
     text-size-adjust: 100%;
     font-size: 62.5%;
+    overflow-x: hidden;
+
+    ${(props) => props.theme.breakpoints.sm} {
+      overflow-x: auto;
+    }
   }
 
   ::-webkit-scrollbar {
@@ -33,11 +38,10 @@ const GlobalStyles = createGlobalStyle`
       props.theme.font.family
         .primary}, 'Segoe UI', 'Roboto', 'Oxygen','Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
     overscroll-behavior: none;
-    overflow-x: hidden;
-    overflow-y: auto;
     background: ${(props) => props.theme.palette.background};
     color: ${(props) => props.theme.palette.text.main};
-
+    overflow-x: hidden;
+    overflow-y: auto;
     -moz-transition: all 350ms ease-in-out;
     -o-transition: all 350ms ease-in-out;
     -webkit-transition: all 350ms ease-in-out;
@@ -48,6 +52,7 @@ const GlobalStyles = createGlobalStyle`
     max-width: 100%;
     display: block;
   }
+
 `;
 
 export default GlobalStyles;

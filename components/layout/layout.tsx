@@ -9,10 +9,10 @@ const Layout: FC = ({ children }) => {
   return (
     <>
       <Navbar />
-      <Container maxW='88%'>
-        <main>{children}</main>
-        <Footer />
-      </Container>
+      <main>
+        <Container maxW='88%'>{children} </Container>
+      </main>
+      <Footer />
       <PageTransition />
     </>
   );

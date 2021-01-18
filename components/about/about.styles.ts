@@ -2,11 +2,7 @@ import styled from 'styled-components';
 import { Flex } from '@lib/ui';
 
 export const AboutWrapper = styled(Flex)`
-  padding: 7% 0;
-
-  ${(props) => props.theme.breakpoints.sm} {
-    padding: 11.5% 0;
-  }
+  padding: 11.5% 0 3%;
 
   & p {
     font-size: 6.5vw;
