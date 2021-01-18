@@ -9,38 +9,38 @@ export const AboutWrapper = styled(Flex)`
   }
 
   & p {
-    font-size: 6.4vw;
-    line-height: 9.5vw;
+    font-size: 6.5vw;
+    line-height: 9.3vw;
     margin: 0;
-    margin-bottom: 6.8%;
+    margin-bottom: 7.4%;
 
     ${(props) => props.theme.breakpoints.xs} {
       font-size: 5.8vw;
-      line-height: 8.7vw;
-      margin-bottom: 6.1%;
+      line-height: 8.5vw;
+      margin-bottom: 6.6%;
     }
 
     ${(props) => props.theme.breakpoints.sm} {
-      font-size: 5.3vw;
-      line-height: 8.1vw;
-      margin-bottom: 5.7%;
+      font-size: 5.25vw;
+      line-height: 7.9vw;
+      margin-bottom: 6.3%;
     }
 
     ${(props) => props.theme.breakpoints.md} {
       font-size: 5vw;
-      line-height: 7.6vw;
-      margin-bottom: 5%;
+      line-height: 7.4vw;
+      margin-bottom: 5.6%;
     }
 
     ${(props) => props.theme.breakpoints.lg} {
-      font-size: 4.65vw;
-      line-height: 7vw;
-      margin-bottom: 4.2%;
+      font-size: 4.6vw;
+      line-height: 6.8vw;
+      margin-bottom: 4.9%;
     }
 
     ${(props) => props.theme.breakpoints.xl} {
-      line-height: 6.8vw;
-      margin-bottom: 3.7%;
+      line-height: 6.6vw;
+      margin-bottom: 4.4%;
     }
 
     & span {

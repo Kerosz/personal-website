@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { AppBar, Text, BurgerMenu } from './navbar.styles';
 import { Container, Flex } from '@lib/ui';
 import Link from 'next/link';
-import ThemeSwitcher from './theme-switcher';
+import Branding from './branding';
 import navbarLinks from '@constants/navbar';
 
 const navTextTransition = {
@@ -18,9 +18,11 @@ const MotionText = motion.custom(Text);
 const Navbar: FC = () => {
   return (
     <AppBar component='header'>
-      <Container maxW='98%'>
+      <Container maxW='99.2%'>
         <Flex justify='space-between' align='center'>
-          <ThemeSwitcher />
+          <Link href='/'>
+            <Branding cursor='pointer' />
+          </Link>
           <Flex component='nav' align='center' className='desktop'>
             {navbarLinks.map((link) => (
               <Link key={link.id} href={link.path}>
@@ -35,7 +37,7 @@ const Navbar: FC = () => {
                     rotate: -6,
                     transition: navTextTransition,
                   }}>
-                  #{link.label}
+                  {link.label}
                 </MotionText>
               </Link>
             ))}

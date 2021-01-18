@@ -32,12 +32,12 @@ export const Text = styled(UiText)`
   }
 
   ${(props) => props.theme.breakpoints.xs} {
-    font-size: 11.5vw;
+    font-size: 11.2vw;
     margin: 0 0 9%;
   }
 
   ${(props) => props.theme.breakpoints.sm} {
-    font-size: 11vw;
+    font-size: 10.7vw;
     margin: 0 0 6.5%;
   }
 
@@ -46,12 +46,12 @@ export const Text = styled(UiText)`
   }
 
   ${(props) => props.theme.breakpoints.lg} {
-    font-size: 10.5vw;
+    font-size: 10.2vw;
     margin: 0 0 3.3%;
   }
 
   ${(props) => props.theme.breakpoints.xl} {
-    font-size: 10vw;
+    font-size: 9.7vw;
     margin: 0 0 2.1%;
   }
 `;

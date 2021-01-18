@@ -30,15 +30,15 @@ export const TitleWrapper = styled(Flex)`
     font-size: calc(4.4rem + (80 - 38) * ((100vw - 320px) / (1600 - 320)));
     line-height: calc(4.4rem + (80 - 38) * ((100vw - 320px) / (1600 - 320)));
     font-weight: 700;
-    margin: 4.9% 0 13%;
+    margin: 4.9% 0 14%;
     text-transform: uppercase;
 
     ${(props) => props.theme.breakpoints.xs} {
-      margin: 4.6% 0 11%;
+      margin: 4.6% 0 13%;
     }
 
     ${(props) => props.theme.breakpoints.sm} {
-      margin: 4% 0 9%;
+      margin: 4% 0 11%;
     }
   }
 `;

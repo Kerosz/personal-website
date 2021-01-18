@@ -1,4 +1,4 @@
-import Title from '@components/title';
+import SectionTitle from '@components/title';
 import { Flex, Text } from '@lib/ui';
 import { AboutWrapper } from './about.styles';
 import useIsVisible from '@hooks/use-is-visible';
@@ -12,7 +12,7 @@ const About = () => {
 
   return (
     <AboutWrapper id='introduction' component='section' direction='column'>
-      <Title subHeading='Introduction' heading='Who am I?' />
+      <SectionTitle subHeading='Introduction' heading='Who am I?' />
       <Flex direction='column' ref={ref}>
         {bioData.map((bio) => (
           <Text

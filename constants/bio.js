@@ -12,6 +12,6 @@ module.exports = [
   {
     id: 3,
     text:
-      'My <span>aim</span> goal is to follow my own advice and <span>accomplish</span> do each day more then I did yesterday.',
+      'My <span>aim</span> goal is to follow my own advice and <span>accomplish</span> do each day more then I did the day before.',
   },
 ];

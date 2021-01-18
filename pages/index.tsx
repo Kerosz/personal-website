@@ -2,6 +2,7 @@ import Layout from '@components/layout';
 import Hero from '@components/hero';
 import About from '@components/about';
 import Studycase from '@components/studycase';
+import Contact from '@components/contact';
 
 export default function Home() {
   return (
@@ -9,6 +10,7 @@ export default function Home() {
       <Hero />
       <Studycase />
       <About />
+      <Contact />
     </>
   );
 }

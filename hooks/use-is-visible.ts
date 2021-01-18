@@ -7,6 +7,9 @@ export interface Options extends IntersectionObserverInit {
   triggerOnce?: boolean;
 }
 
+/**
+ * A hook that monitors to current status of the DOM element referenced. It will return an array containing a `ref`
+ */
 export default function useIsVisible<T extends HTMLElement = HTMLElement>(
   args?: Options
 ) {

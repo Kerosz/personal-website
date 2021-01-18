@@ -14,12 +14,18 @@ const GlobalStyles = createGlobalStyle`
   }
 
   html {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     scroll-behavior: smooth;
     text-rendering: optimizeLegibility;
     text-size-adjust: 100%;
     font-size: 62.5%;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
   }
 
   body {

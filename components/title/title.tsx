@@ -7,15 +7,15 @@ import useAnimationView from '@hooks/use-animation-view';
 import MotionWord from '@animations/motion-word';
 
 interface TitleProps {
-  subHeading: string;
   heading: string;
+  subHeading?: string;
 }
 
 const MotionWrapper = motion.custom(TitleWrapper);
 const MotionText = motion.custom(Text);
 const MotionDevider = motion.custom(Devider);
 
-const Title: FC<TitleProps> = (props) => {
+const SectionTitle: FC<TitleProps> = (props) => {
   const { subHeading, heading } = props;
 
   const [ref, animation] = useAnimationView({
@@ -31,10 +31,14 @@ const Title: FC<TitleProps> = (props) => {
       variants={titleVariants}
       initial='hidden'
       animate={animation}>
-      <MotionText component='h4' weight='300' m='0 0 2.4%'>
-        {subHeading}
-      </MotionText>
-      <MotionDevider />
+      {subHeading && (
+        <>
+          <MotionText component='h4' weight='300' m='0 0 2.4%'>
+            {subHeading}
+          </MotionText>
+          <MotionDevider />
+        </>
+      )}
       <Flex component='h2' direction='row'>
         {heading.split(' ').map((letter, idx) => (
           <MotionWord
@@ -67,4 +71,4 @@ const titleVariants = {
   },
 };
 
-export default Title;
+export default SectionTitle;

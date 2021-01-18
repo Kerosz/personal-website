@@ -54,7 +54,7 @@ export const AppBar = styled(Flex)`
 
 export const Text = styled(UiText)`
   display: none;
-  font-size: 4.8vw;
+  font-size: 4.7vw;
   font-weight: 600;
   padding: 0.75vw;
   margin-right: 0.3vw;
@@ -65,24 +65,24 @@ export const Text = styled(UiText)`
   }
 
   ${(props) => props.theme.breakpoints.xs} {
-    font-size: 4.3vw;
+    font-size: 4.1vw;
   }
 
   ${(props) => props.theme.breakpoints.sm} {
     display: flex;
-    font-size: calc(1.3rem + 0.9vw);
+    font-size: calc(1.2rem + 0.9vw);
   }
 
   ${(props) => props.theme.breakpoints.md} {
-    font-size: calc(1.15rem + 0.9vw);
+    font-size: calc(1.05rem + 0.9vw);
   }
 
   ${(props) => props.theme.breakpoints.lg} {
-    font-size: calc(0.95rem + 0.9vw);
+    font-size: calc(0.85rem + 0.9vw);
   }
 
   ${(props) => props.theme.breakpoints.xl} {
-    font-size: calc(0.6rem + 1vw);
+    font-size: calc(0.5rem + 1vw);
   }
 
   & > span {
