@@ -28,7 +28,7 @@ Basic.args = {
   noHeight: false,
   align: 'flex-start',
   justify: 'flex-start',
-  wrap: 'no-wrap',
+  wrap: 'nowrap',
   direction: 'row',
   basis: 'auto',
   grow: 0,
