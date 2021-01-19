@@ -18,9 +18,7 @@ const MotionDevider = motion.custom(Devider);
 const SectionTitle: FC<TitleProps> = (props) => {
   const { subHeading, heading } = props;
 
-  const [ref, animation] = useAnimationView({
-    initial: 'visible',
-    animate: 'hidden',
+  const { ref, animation } = useAnimationView({
     threshold: 0.8,
   });
 
@@ -33,7 +31,7 @@ const SectionTitle: FC<TitleProps> = (props) => {
       animate={animation}>
       {subHeading && (
         <>
-          <MotionText component='h4' weight='300' m='0 0 2.4%'>
+          <MotionText component='h4' weight={300} m='0 0 2.4%'>
             {subHeading}
           </MotionText>
           <MotionDevider />
@@ -59,7 +57,7 @@ const titleVariants = {
     opacity: 1,
     transition: {
       ease: [0.6, 0.01, -0.05, 0.9],
-      duration: 0.9,
+      duration: 0.7,
     },
   },
   hidden: {

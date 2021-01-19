@@ -27,9 +27,9 @@ const MotionWord: FC<MotionWordProps> = (props) => {
   } = props;
   const { transition, ...restAnimateProps } = animate;
 
-  const [ref, animation] = useAnimationView({
-    initial: 'visible',
-    animate: 'hidden',
+  const { ref, animation } = useAnimationView({
+    initial: 'hidden',
+    animate: 'visible',
   });
 
   const motionWordVariants = {
@@ -38,7 +38,7 @@ const MotionWord: FC<MotionWordProps> = (props) => {
       y: 0,
       opacity: 1,
       transition: {
-        delay: initialDelay + index * 0.025,
+        delay: initialDelay + index * delayIncrement,
         ease: [0.6, 0.01, -0.05, 0.9],
         ...springConfig,
         ...transition,
@@ -50,7 +50,6 @@ const MotionWord: FC<MotionWordProps> = (props) => {
   return (
     <MotionFlex
       ref={ref}
-      direction='row'
       component='span'
       style={{ fontSize: 'inherit' }}
       variants={motionWordVariants}

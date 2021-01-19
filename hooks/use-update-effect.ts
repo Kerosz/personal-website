@@ -7,13 +7,13 @@ import { DependencyList, EffectCallback, useEffect, useRef } from 'react';
  * @param deps If present, effect will only activate if the values in the list change.
  */
 const useUpdateEffect = (effect: EffectCallback, deps?: DependencyList) => {
-  const didMount = useRef<boolean>(false);
+  const mounted = useRef<boolean>(false);
 
   useEffect((...args) => {
-    if (didMount.current) {
+    if (mounted.current) {
       effect(...args);
     } else {
-      didMount.current = true;
+      mounted.current = true;
     }
   }, deps);
 };

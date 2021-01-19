@@ -1,7 +1,26 @@
-import { FC, forwardRef } from 'react';
-// import { __DEV__ } from '@lib/utils/assertion';
+import { FC, forwardRef, JSXElementConstructor } from 'react';
 import { TextWrapper } from './text.styles';
-import { TextProps } from './text.types';
+import { HTMLUiProps, SpaceTypes, TypographyTypes } from '../ui.types';
+
+export interface TextOptions extends SpaceTypes, TypographyTypes {
+  /** The CSS `color` property */
+  color?: string;
+  /**
+   * Sets the CSS `width` property to `fit-content`
+   */
+  fit?: boolean;
+}
+
+export interface TextProps extends HTMLUiProps<'p'>, TextOptions {
+  /**
+   * The wrapper element of the component
+   */
+  component?: string | JSXElementConstructor<any>;
+  /**
+   * The `URL` path
+   */
+  to?: string;
+}
 
 /**
  * Used to render a paragraph or any text element
@@ -16,9 +35,5 @@ const Text = forwardRef<HTMLElement, TextProps>((props, ref) => {
     </TextWrapper>
   );
 });
-
-// if (__DEV__) {
-//   Text.displayName = 'Text';
-// }
 
 export default Text;

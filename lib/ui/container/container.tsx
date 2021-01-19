@@ -1,9 +1,8 @@
 import { FC, forwardRef, JSXElementConstructor } from 'react';
-// import { __DEV__ } from '@lib/utils/assertion';
-import { HTMLUiProps } from '../ui.types';
+import { HTMLUiProps, SpaceTypes } from '../ui.types';
 import { ContainerWrapper } from './container.styles';
 
-export interface ContainerOptions {
+export interface ContainerOptions extends SpaceTypes {
   /**
    * The CSS `max-width` property
    */
@@ -12,14 +11,6 @@ export interface ContainerOptions {
    * The CSS `height` property
    */
   height?: string;
-  /**
-   * The CSS `margin` property
-   */
-  m?: string;
-  /**
-   * The CSS `pedding` property
-   */
-  p?: string;
   /**
    * Sets the container to `max-width` of `100%`
    */
@@ -46,9 +37,5 @@ const Container: FC<ContainerProps> = forwardRef((props, containerRef) => {
     </ContainerWrapper>
   );
 });
-
-// if (__DEV__) {
-//   Container.displayName = 'Container';
-// }
 
 export default Container;

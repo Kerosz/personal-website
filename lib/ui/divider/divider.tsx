@@ -1,8 +1,8 @@
 import { FC, forwardRef, JSXElementConstructor } from 'react';
-import { HTMLUiProps } from '../ui.types';
+import { HTMLUiProps, SpaceTypes } from '../ui.types';
 import { DividerWrapper } from './divider.styles';
 
-export interface DividerOptions {
+export interface DividerOptions extends SpaceTypes {
   /**
    * Sets divider orientation type
    */

@@ -120,6 +120,9 @@ export const SubTitle = styled(Text)`
 `;
 
 export const Description = styled(Text)`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   font-size: calc(1.4rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
   font-weight: 300;
   line-height: calc(1.9rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
@@ -127,11 +130,11 @@ export const Description = styled(Text)`
 
   ${(props) => props.theme.breakpoints.sm} {
     font-size: calc(1.1rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
-    line-height: calc(1.55rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+    line-height: calc(1.6rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
   }
 
   ${(props) => props.theme.breakpoints.md} {
     font-size: calc(0.4rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
-    line-height: calc(1rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+    line-height: calc(1.3rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
   }
 `;

@@ -22,8 +22,8 @@ interface Options {
  * ```jsx
  *    export default function MyComponent(props) {
  *      const [ref, animation] = useAnimationView({
- *        initial: 'visible',
- *        animate: 'hidden',
+ *        initial: 'hidden',
+ *        animate: 'visible',
  *      });
  *
  *      return (<motion.div
@@ -36,8 +36,8 @@ interface Options {
  */
 export default function useAnimationView(args: Options) {
   const {
-    initial = 'visible',
-    animate = 'hidden',
+    initial = 'hidden',
+    animate = 'visible',
     threshold = 0.5,
     viewOptions,
   } = args;
@@ -47,11 +47,11 @@ export default function useAnimationView(args: Options) {
 
   useEffect(() => {
     if (visible) {
-      animation.start(initial);
-    } else {
       animation.start(animate);
+    } else {
+      animation.start(initial);
     }
   }, [animation, visible]);
 
-  return [ref, animation] as const;
+  return { ref, animation } as const;
 }

@@ -1,9 +1,9 @@
 import { FC, forwardRef } from 'react';
-// import { __DEV__ } from '@lib/utils/assertion';
-import { HTMLUiProps } from '../ui.types';
+import { Property } from 'csstype';
+import { HTMLUiProps, SpaceTypes } from '../ui.types';
 import { ButtonWrapper } from './button.styles';
 
-export interface ButtonOptions {
+export interface ButtonOptions extends SpaceTypes {
   /**
    * What type variant to use
    */
@@ -11,11 +11,11 @@ export interface ButtonOptions {
   /**
    * What background color to use
    */
-  bgColor?: string;
+  bgColor?: Property.BackgroundColor;
   /**
    * What text color to use
    */
-  txtColor?: string;
+  txtColor?: Property.Color;
   /**
    * How large should the button should be ?
    */
@@ -82,9 +82,5 @@ const Button: FC<ButtonProps> = forwardRef((props, buttonRef) => {
     </ButtonWrapper>
   );
 });
-
-// if (__DEV__) {
-//   Button.displayName = 'Button';
-// }
 
 export default Button;
