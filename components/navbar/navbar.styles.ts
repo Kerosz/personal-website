@@ -12,18 +12,6 @@ export const AppBar = styled(Flex)`
   align-items: center;
   z-index: 99;
 
-  &:after {
-    position: absolute;
-    content: '';
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background: ${(props) => props.theme.palette.background};
-    opacity: 0.97;
-    z-index: -1;
-  }
-
   & svg {
     max-width: 14.5vmin;
 
@@ -56,9 +44,11 @@ export const Text = styled(UiText)`
   display: none;
   font-size: 4.7vw;
   font-weight: 600;
-  padding: 0.75vw;
-  margin-right: 0.3vw;
+  padding: 0.55vw 0.7vw 0.7vw;
+  margin-right: 0.4vw;
   cursor: pointer;
+  /* border: 1px solid ${(props) => props.theme.palette.text.main};
+  background: ${(props) => props.theme.palette.background}; */
 
   &:last-of-type {
     margin-right: 0;

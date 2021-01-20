@@ -2,7 +2,15 @@ import styled from 'styled-components';
 import { Flex } from '@lib/ui';
 
 export const AboutWrapper = styled(Flex)`
-  padding: 11.5% 0 3%;
+  padding: 31.5% 0 4%;
+
+  ${(props) => props.theme.breakpoints.sm} {
+    padding: 21.5% 0 4%;
+  }
+
+  ${(props) => props.theme.breakpoints.md} {
+    padding: 11.5% 0 4%;
+  }
 
   & p {
     font-size: 6.5vw;
@@ -17,25 +25,24 @@ export const AboutWrapper = styled(Flex)`
     }
 
     ${(props) => props.theme.breakpoints.sm} {
-      font-size: 5.25vw;
-      line-height: 7.9vw;
+      font-size: 5.15vw;
+      line-height: 7.6vw;
       margin-bottom: 6.3%;
     }
 
     ${(props) => props.theme.breakpoints.md} {
-      font-size: 5vw;
-      line-height: 7.4vw;
+      font-size: 4.7vw;
+      line-height: 7.2vw;
       margin-bottom: 5.6%;
     }
 
     ${(props) => props.theme.breakpoints.lg} {
-      font-size: 4.6vw;
-      line-height: 6.8vw;
+      font-size: 4.2vw;
+      line-height: 6.35vw;
       margin-bottom: 4.9%;
     }
 
     ${(props) => props.theme.breakpoints.xl} {
-      line-height: 6.6vw;
       margin-bottom: 4.4%;
     }
 

@@ -1,4 +1,4 @@
-import { FC, forwardRef } from 'react';
+import { forwardRef } from 'react';
 import { Property } from 'csstype';
 import { HTMLUiProps, SpaceTypes } from '../ui.types';
 import { ButtonWrapper } from './button.styles';
@@ -53,10 +53,10 @@ export interface ButtonProps extends HTMLUiProps<'button'>, ButtonOptions {
  * Used to render a `button` element.
  *
  */
-const Button: FC<ButtonProps> = forwardRef((props, buttonRef) => {
+const Button = forwardRef<HTMLElement, ButtonProps>((props, ref) => {
   const {
     children,
-    component = 'button',
+    component,
     to,
     variant = 'default',
     size = 'medium',
@@ -69,7 +69,7 @@ const Button: FC<ButtonProps> = forwardRef((props, buttonRef) => {
 
   return (
     <ButtonWrapper
-      ref={buttonRef}
+      ref={ref}
       as={component}
       href={to}
       size={size}

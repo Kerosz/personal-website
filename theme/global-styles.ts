@@ -7,7 +7,6 @@ const GlobalStyles = createGlobalStyle`
   * {
     box-sizing: border-box;
     list-style: none;
-    text-decoration: none;
     outline: none;
     font-size: 1.6rem;
     /* cursor: none; */
@@ -53,6 +52,10 @@ const GlobalStyles = createGlobalStyle`
     display: block;
   }
 
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 `;
 
 export default GlobalStyles;

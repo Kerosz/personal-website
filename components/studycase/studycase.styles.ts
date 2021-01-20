@@ -2,7 +2,11 @@ import styled, { css } from 'styled-components';
 import { Flex, Text } from '@lib/ui';
 
 export const StudycaseWrapper = styled(Flex)`
-  padding: 11.5% 0 3%;
+  padding: 21.5% 0 4%;
+
+  ${(props) => props.theme.breakpoints.md} {
+    padding: 11.5% 0 4%;
+  }
 `;
 
 export const Project = styled(Flex)`
@@ -10,6 +14,22 @@ export const Project = styled(Flex)`
 
   :last-of-type {
     margin-bottom: 0;
+  }
+`;
+
+export const BadgeWrapper = styled(Flex)`
+  font-size: calc(1.2rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+
+  ${(props) => props.theme.breakpoints.sm} {
+    font-size: calc(0.9rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+  }
+
+  ${(props) => props.theme.breakpoints.md} {
+    font-size: calc(0.45rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+  }
+
+  ${(props) => props.theme.breakpoints.lg} {
+    font-size: calc(0.45rem + (55 - 38) * ((100vw - 320px) / (1600 - 320)));
   }
 `;
 
@@ -70,7 +90,6 @@ export const MarqueeText = styled(Text)`
         ? props.theme.colors.green[400]
         : props.theme.colors.red[700]};
     -webkit-text-stroke-color: transparent;
-    font-style: italic;
     text-decoration: line-through;
   }
 `;
@@ -85,37 +104,54 @@ export const Content = styled(Flex)`
       width: 50%;
     }
   }
+
+  li {
+    font-size: calc(1.55rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+    font-weight: 300;
+    line-height: calc(2.35rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+    margin: 0;
+
+    ${(props) => props.theme.breakpoints.sm} {
+      font-size: calc(1.23rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+      line-height: calc(2rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+    }
+
+    ${(props) => props.theme.breakpoints.md} {
+      font-size: calc(0.7rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+      line-height: calc(1.5rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+    }
+
+    ${(props) => props.theme.breakpoints.lg} {
+      font-size: calc(0.5rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+      line-height: calc(1.4rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+    }
+  }
 `;
 
 export const Title = styled(Text)`
-  font-size: calc(3.2rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
-  line-height: calc(3.7rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+  font-size: calc(3.35rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+  line-height: calc(3.9rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
   margin: 0;
-  margin-bottom: 1%;
-
-  ${(props) => props.theme.breakpoints.md} {
-    font-size: calc(3.2rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
-    line-height: calc(3.7rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
-    margin-bottom: 4%;
-  }
+  margin-bottom: 6%;
 `;
 
 export const SubTitle = styled(Text)`
-  font-size: calc(2rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
-  font-weight: 600;
+  font-size: calc(2.2rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
   line-height: calc(2.4rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+  font-weight: 600;
   margin: 0;
-  margin: 4% 0 3%;
+  margin: 8% 0 4%;
 
   ${(props) => props.theme.breakpoints.sm} {
-    font-size: calc(1.8rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
-    line-height: calc(2.1rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+    font-size: calc(2rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+    line-height: calc(2.3rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+    margin: 5% 0 3%;
   }
 
   ${(props) => props.theme.breakpoints.md} {
-    font-size: calc(1.05rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
-    line-height: calc(1.2rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
-    margin: 4% 0 3%;
+    font-size: calc(1.4rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+    line-height: calc(1.6rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+    margin: 6% 0 4%;
   }
 `;
 
@@ -123,18 +159,23 @@ export const Description = styled(Text)`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  font-size: calc(1.4rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+  font-size: calc(1.55rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
   font-weight: 300;
-  line-height: calc(1.9rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+  line-height: calc(2.35rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
   margin: 0;
 
   ${(props) => props.theme.breakpoints.sm} {
-    font-size: calc(1.1rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
-    line-height: calc(1.6rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+    font-size: calc(1.23rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+    line-height: calc(2rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
   }
 
   ${(props) => props.theme.breakpoints.md} {
-    font-size: calc(0.4rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
-    line-height: calc(1.3rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+    font-size: calc(0.7rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+    line-height: calc(1.5rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+  }
+
+  ${(props) => props.theme.breakpoints.lg} {
+    font-size: calc(0.5rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+    line-height: calc(1.4rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
   }
 `;

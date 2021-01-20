@@ -29,7 +29,7 @@ Basic.args = {
   align: 'flex-start',
   justify: 'flex-start',
   wrap: 'nowrap',
-  direction: 'row',
+  direction: 'column',
   basis: 'auto',
   grow: 0,
   shrink: 1,

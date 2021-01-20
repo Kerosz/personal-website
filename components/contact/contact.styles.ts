@@ -2,7 +2,15 @@ import styled from 'styled-components';
 import { Flex } from '@lib/ui';
 
 export const ContactWrapper = styled(Flex)`
-  padding: 11.5% 0 3%;
+  padding: 31.5% 0 4%;
+
+  ${(props) => props.theme.breakpoints.sm} {
+    padding: 21.5% 0 4%;
+  }
+
+  ${(props) => props.theme.breakpoints.md} {
+    padding: 11.5% 0 4%;
+  }
 
   h2 {
     margin: 4.9% 0 8%;

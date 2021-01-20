@@ -5,9 +5,14 @@ import { useGlobalContext } from 'context/rootContext';
 import useJsonMemo from './use-json-memo';
 import useUpdateEffect from './use-update-effect';
 
-interface Options {
+export interface Options {
   /** Triggers the `change` function based on a `dynamic` prop */
   triggerChange?: string | boolean;
+}
+
+export interface ThemeModeReturn {
+  mode: 'dark' | 'light';
+  change: () => void;
 }
 
 /**
@@ -15,7 +20,7 @@ interface Options {
  *
  * It returns a `mode` - `string` and a function `change` to toggle the theme mode.
  */
-const useThemeMode = (args?: Options) => {
+const useThemeMode = (args?: Options): ThemeModeReturn => {
   const { themeOption, uiDispatch } = useGlobalContext();
 
   const memoTrigger = args ? useJsonMemo(args.triggerChange) : null;
@@ -48,7 +53,7 @@ const useThemeMode = (args?: Options) => {
     localStorage.setItem('theme-mode', themeOption);
   }, [themeOption]);
 
-  return { mode: themeOption, change: handleThemeChange };
+  return { mode: themeOption as 'light' | 'dark', change: handleThemeChange };
 };
 
 export default useThemeMode;

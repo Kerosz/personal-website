@@ -3,7 +3,15 @@ import { FC } from 'react';
 import { Flex, Container } from '@lib/ui';
 
 export const FooterWrapper = styled(Flex)`
-  padding: 4% 0;
+  padding: 21.5% 0 4%;
+
+  ${(props) => props.theme.breakpoints.sm} {
+    padding: 11.5% 0 4%;
+  }
+
+  ${(props) => props.theme.breakpoints.md} {
+    padding: 5.5% 0 4%;
+  }
 `;
 
 const Footer: FC = () => {

@@ -1,5 +1,5 @@
-import * as CSS from 'csstype';
 import { ElementType, ComponentPropsWithoutRef } from 'react';
+import * as CSS from 'csstype';
 
 export type As<Props = any> = ElementType<Props>;
 

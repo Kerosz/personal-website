@@ -21,7 +21,7 @@ const Contact = () => {
           </MotionWord>
         ))}
       </Flex>
-      <Text component='a' to='mailto:andrei@chirila.dev'>
+      <Text component='a' to='mailto:andrei@chirila.dev' fit>
         <MotionWord initialDelay={0.35 + sentence.split(' ').length * 0.025}>
           andrei@chirila.dev
         </MotionWord>
