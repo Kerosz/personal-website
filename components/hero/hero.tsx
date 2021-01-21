@@ -1,11 +1,16 @@
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Text, HeroWrapper } from './hero.styles';
+
+import useActiveLink from '@hooks/use-active-link';
 
 const MotionHeroWrapper = motion.custom(HeroWrapper);
 
 const Hero = () => {
+  const linkRef = useActiveLink('/');
+
   return (
     <MotionHeroWrapper
+      ref={linkRef}
       id='hero'
       component='section'
       direction='column'

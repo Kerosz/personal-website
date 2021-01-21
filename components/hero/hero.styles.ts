@@ -3,7 +3,7 @@ import { Text as UiText, Flex } from '@lib/ui';
 
 export const HeroWrapper = styled(Flex)`
   font-family: ${(props) => props.theme.font.family.heading};
-  margin-top: 13vh;
+  margin-top: 10.5vh;
 
   @media screen and (max-width: 40em) {
     padding: 2rem 0;
@@ -46,12 +46,12 @@ export const Text = styled(UiText)`
   }
 
   ${(props) => props.theme.breakpoints.lg} {
-    font-size: 10.2vw;
-    margin: 0 0 3.3%;
+    font-size: 10vw;
+    margin: 0 0 1.8%;
   }
 
   ${(props) => props.theme.breakpoints.xl} {
-    font-size: 9.7vw;
-    margin: 0 0 2.1%;
+    font-size: 9.5vw;
+    margin: 0 0 1.5%;
   }
 `;

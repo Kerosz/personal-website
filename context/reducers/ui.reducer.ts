@@ -4,12 +4,14 @@ export interface UiState {
   themeOption: string;
   isTransition: boolean;
   canScroll: boolean;
+  activePath: string;
 }
 
 export const initialUiState: UiState = {
   themeOption: 'dark',
   isTransition: true,
   canScroll: false,
+  activePath: '/',
 };
 
 export default function uiReducer(state: UiState, action: UiAction) {
@@ -28,6 +30,11 @@ export default function uiReducer(state: UiState, action: UiAction) {
       return {
         ...state,
         canScroll: !state.canScroll,
+      };
+    case 'ADD_ACTIVE_PATH':
+      return {
+        ...state,
+        activePath: action.path,
       };
     default:
       return state;

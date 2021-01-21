@@ -8,6 +8,10 @@ export type UiAction =
     }
   | {
       type: 'TOGGLE_SCROLL';
+    }
+  | {
+      type: 'ADD_ACTIVE_PATH';
+      path: string;
     };
 
 export type ThemeOption = 'light' | 'dark';
@@ -22,4 +26,8 @@ export const toggleTransition = (): UiAction => {
 
 export const toggleScroll = (): UiAction => {
   return { type: 'TOGGLE_SCROLL' };
+};
+
+export const addActivePath = (newActivePath: string): UiAction => {
+  return { type: 'ADD_ACTIVE_PATH', path: newActivePath };
 };

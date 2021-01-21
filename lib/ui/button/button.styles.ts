@@ -47,6 +47,11 @@ export const ButtonWrapper = styled.button<ButtonProps>`
   outline: none;
   cursor: pointer;
 
+  :focus, 
+  :active{
+    outline: none;
+  }
+
   ${(props) => {
     if (props.size === 'small') {
       return css`

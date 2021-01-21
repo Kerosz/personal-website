@@ -64,7 +64,7 @@ export const MarqueeText = styled(Text)`
   line-height: calc(10.5rem + (80 - 38) * ((100vw - 320px) / (1600 - 320)));
   border-top: 1px solid ${(props) => props.theme.palette.text.main};
   border-bottom: 1px solid ${(props) => props.theme.palette.text.main};
-  will-change: transform;
+  will-change: transform !important;
   margin-top: 7%;
   margin-bottom: 11%;
 

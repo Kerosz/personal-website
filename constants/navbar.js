@@ -1,22 +1,27 @@
 module.exports = [
   {
+    id: 0,
+    label: 'Home',
+    path: '/',
+  },
+  {
     id: 1,
-    label: 'showcase',
+    label: 'Showcase',
     path: '/#showcase',
   },
   {
     id: 2,
-    label: 'introduction',
+    label: 'Introduction',
     path: '/#introduction',
   },
   {
     id: 3,
-    label: 'blog',
+    label: 'Blog',
     path: '/blog',
   },
   {
     id: 4,
-    label: 'contact',
+    label: 'Contact',
     path: '/#contact',
   },
 ];

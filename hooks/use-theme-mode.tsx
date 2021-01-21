@@ -23,10 +23,10 @@ export interface ThemeModeReturn {
  * It returns a `mode` - `string` and a function `change` to toggle the theme mode.
  */
 const useThemeMode = (args: Options): ThemeModeReturn => {
-  const { save = true } = args;
+  const { save = true, triggerChange } = args;
   const { themeOption, uiDispatch } = useGlobalContext();
 
-  const memoTrigger = args ? useJsonMemo(args.triggerChange) : null;
+  const memoTrigger = useJsonMemo(args.triggerChange);
 
   const handleThemeChange = () => {
     if (themeOption === 'light') {
@@ -48,14 +48,14 @@ const useThemeMode = (args: Options): ThemeModeReturn => {
 
     if (themeModeFromStorage) {
       uiDispatch(applyTheme(themeModeFromStorage));
+    } else {
+      localStorage.setItem('theme-mode', themeOption);
     }
   }, []);
 
   useUpdateEffect(() => {
     save && localStorage.setItem('theme-mode', themeOption);
-
-    console.log({ save });
-  }, [themeOption]);
+  }, [themeOption, save]);
 
   return { mode: themeOption as ThemeOption, change: handleThemeChange };
 };

@@ -16,8 +16,8 @@ import {
 
 import MotionWord from '@animations/motion-word';
 import useAnimationView from '@hooks/use-animation-view';
-import useThemeMode from '@hooks/use-theme-mode';
 import studycase from '@constants/studycase';
+import useActiveLink from '@hooks/use-active-link';
 
 const MarqueeTextMotion = motion.custom(MarqueeText);
 const TitleMotion = motion.custom(Title);
@@ -26,8 +26,14 @@ const ListMotion = motion.custom(List);
 const ItemMotion = motion.custom(ListItem);
 
 const Studycase = () => {
+  const linkRef = useActiveLink('/#showcase');
+
   return (
-    <StudycaseWrapper id='showcase' component='section' direction='column'>
+    <StudycaseWrapper
+      ref={linkRef}
+      id='showcase'
+      component='section'
+      direction='column'>
       <SectionTitle heading='Study Case' subHeading='Showcase' />
       {studycase.map((project, idx) => {
         const { ref: titleRef, animation: titleAnimation } = useAnimationView({

@@ -38,5 +38,5 @@ export default function useIsVisible<T extends HTMLElement = HTMLElement>(
     return () => observer.disconnect();
   }, [options]);
 
-  return [ref, visible] as const;
+  return { ref, visible } as const;
 }

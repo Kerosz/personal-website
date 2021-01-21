@@ -3,12 +3,20 @@ import MotionWord from '@animations/motion-word';
 import { Flex, Text } from '@lib/ui';
 import { ContactWrapper } from './contact.styles';
 
+import useActiveLink from '@hooks/use-active-link';
+
 const sentence =
   "Have something in mind and want to collaborate? Reach out and let's do it.";
 
 const Contact = () => {
+  const linkRef = useActiveLink('/#contact');
+
   return (
-    <ContactWrapper id='contact' component='section' direction='column'>
+    <ContactWrapper
+      ref={linkRef}
+      id='contact'
+      component='section'
+      direction='column'>
       <SectionTitle heading='Let’s talk' subHeading='Contact' />
       <Flex component='h3' wrap='wrap'>
         {sentence.split(' ').map((word, idx) => (
