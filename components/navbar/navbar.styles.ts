@@ -6,7 +6,6 @@ export const AppBar = styled(Flex)`
   top: 0;
   left: 0;
   background: transparent;
-  backdrop-filter: blur(0.3rem);
   width: 100%;
   height: 13vh;
   align-items: center;
