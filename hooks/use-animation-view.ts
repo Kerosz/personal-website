@@ -43,7 +43,7 @@ export default function useAnimationView(args: Options) {
   } = args;
 
   const animation = useAnimation();
-  const [ref, visible] = useIsVisible(viewOptions || { threshold: threshold });
+  const [ref, visible] = useIsVisible(viewOptions || { threshold });
 
   useEffect(() => {
     if (visible) {

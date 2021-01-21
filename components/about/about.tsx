@@ -8,7 +8,7 @@ import bioData from '@constants/bio';
 
 const About = () => {
   const [ref, visible] = useIsVisible<HTMLDivElement>({ threshold: 0.03 });
-  const _ = useThemeMode({ triggerChange: visible });
+  const _ = useThemeMode({ triggerChange: visible, save: false });
 
   return (
     <AboutWrapper id='introduction' component='section' direction='column'>

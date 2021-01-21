@@ -42,7 +42,7 @@ const Studycase = () => {
           .map((name) => name);
 
         return (
-          <Project direction='column'>
+          <Project direction='column' key={`${project.name}-project_${idx}`}>
             <Marquee align={project.align}>
               <MarqueeTextMotion
                 animate={{
@@ -54,7 +54,7 @@ const Studycase = () => {
                 transition={{
                   ease: 'linear',
                   duration: 18,
-                  loop: Infinity,
+                  repeat: Infinity,
                 }}>
                 {marqueeText}
               </MarqueeTextMotion>
@@ -74,8 +74,11 @@ const Studycase = () => {
                   initial='hidden'
                   animate={titleAnimation}
                   wrap='wrap'>
-                  {project.tags.map((tag) => (
-                    <Badge style={{ fontSize: 'inherit' }} mb='12px'>
+                  {project.tags.map((tag, idx) => (
+                    <Badge
+                      key={`${tag}-badge_${idx}`}
+                      style={{ fontSize: 'inherit' }}
+                      mb='12px'>
                       {tag}
                     </Badge>
                   ))}
@@ -98,8 +101,12 @@ const Studycase = () => {
                   variants={listVariants}
                   initial='hidden'
                   animate={listAnimation}>
-                  {project.goals.map((goal) => (
-                    <ItemMotion variants={itemVariants}>{goal}</ItemMotion>
+                  {project.goals.map((goal, idx) => (
+                    <ItemMotion
+                      key={`${goal}-goal_${idx}`}
+                      variants={itemVariants}>
+                      {goal}
+                    </ItemMotion>
                   ))}
                 </ListMotion>
                 <Button variant='outlined' size='large' mt='2rem'>

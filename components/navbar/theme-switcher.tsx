@@ -4,7 +4,7 @@ import useThemeMode from '@hooks/use-theme-mode';
 import Branding from './branding';
 
 const ThemeSwitcher: FC = () => {
-  const { change } = useThemeMode();
+  const { change } = useThemeMode({});
 
   return <Branding onClick={change} />;
 };

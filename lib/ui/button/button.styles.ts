@@ -5,32 +5,32 @@ import { ButtonProps } from './button';
 const buttonVariants = theme.variants('mode', 'variant', {
   default: {
     light: css`
-      color: black;
+      color: #171923;
     `,
     dark: css`
-      color: white;
+      color: #f7fafc;
     `,
   },
   filled: {
     light: css`
-      border-color: black;
-      background-color: black;
-      color: white;
+      border-color: #171923;
+      background-color: #171923;
+      color: #f7fafc;
     `,
     dark: css`
-      border-color: white;
-      background-color: white;
-      color: black;
+      border-color: #f7fafc;
+      background-color: #f7fafc;
+      color: #171923;
     `,
   },
   outlined: {
     light: css`
-      border-color: black;
-      color: black;
+      border-color: #171923;
+      color: #171923;
     `,
     dark: css`
-      border-color: white;
-      color: white;
+      border-color: #f7fafc;
+      color: #f7fafc;
     `,
   },
 }) as any;

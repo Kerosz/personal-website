@@ -1,17 +1,19 @@
 import { useEffect, useLayoutEffect } from 'react';
-import { applyTheme } from '@actions/ui.action';
+import { applyTheme, ThemeOption } from '@actions/ui.action';
 import { useGlobalContext } from 'context/rootContext';
 
 import useJsonMemo from './use-json-memo';
 import useUpdateEffect from './use-update-effect';
 
 export interface Options {
-  /** Triggers the `change` function based on a `dynamic` prop */
+  /** Triggers the `change` function based on a `dynamic` property*/
   triggerChange?: string | boolean;
+  /** If set to `false`, theme mode will not be saved to `localStorage`. It defaults to `true` */
+  save?: boolean;
 }
 
 export interface ThemeModeReturn {
-  mode: 'dark' | 'light';
+  mode: ThemeOption;
   change: () => void;
 }
 
@@ -20,7 +22,8 @@ export interface ThemeModeReturn {
  *
  * It returns a `mode` - `string` and a function `change` to toggle the theme mode.
  */
-const useThemeMode = (args?: Options): ThemeModeReturn => {
+const useThemeMode = (args: Options): ThemeModeReturn => {
+  const { save = true } = args;
   const { themeOption, uiDispatch } = useGlobalContext();
 
   const memoTrigger = args ? useJsonMemo(args.triggerChange) : null;
@@ -39,10 +42,9 @@ const useThemeMode = (args?: Options): ThemeModeReturn => {
 
   // Needed to load the initial theme option state from the local storage if it exists
   useEffect(() => {
-    const themeModeFromStorage = localStorage.getItem('theme-mode') as
-      | 'dark'
-      | 'light'
-      | null;
+    const themeModeFromStorage = localStorage.getItem(
+      'theme-mode'
+    ) as ThemeOption | null;
 
     if (themeModeFromStorage) {
       uiDispatch(applyTheme(themeModeFromStorage));
@@ -50,10 +52,12 @@ const useThemeMode = (args?: Options): ThemeModeReturn => {
   }, []);
 
   useUpdateEffect(() => {
-    localStorage.setItem('theme-mode', themeOption);
+    save && localStorage.setItem('theme-mode', themeOption);
+
+    console.log({ save });
   }, [themeOption]);
 
-  return { mode: themeOption as 'light' | 'dark', change: handleThemeChange };
+  return { mode: themeOption as ThemeOption, change: handleThemeChange };
 };
 
 export default useThemeMode;

@@ -1,11 +1,11 @@
-import { FC, SVGProps } from 'react';
+import { FC, forwardRef, SVGProps } from 'react';
 import { useGlobalContext } from 'context/rootContext';
 
 interface BrandProps extends SVGProps<SVGSVGElement> {
   invert?: boolean;
 }
 
-const Branding: FC<BrandProps> = (props) => {
+const Branding = forwardRef<SVGSVGElement, BrandProps>((props, ref) => {
   const { invert, ...restProps } = props;
   const { themeOption } = useGlobalContext();
 
@@ -23,6 +23,7 @@ const Branding: FC<BrandProps> = (props) => {
     <svg
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 673.59 583.45'
+      ref={ref}
       {...restProps}>
       <defs></defs>
       <g id='branding_2' data-name='branding_2'>
@@ -35,6 +36,6 @@ const Branding: FC<BrandProps> = (props) => {
       </g>
     </svg>
   );
-};
+});
 
 export default Branding;
