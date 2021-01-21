@@ -1,9 +1,10 @@
 import Link from 'next/link';
+import ThemeSwitcher from './theme-switcher';
 import { AnimateSharedLayout, motion } from 'framer-motion';
 import { DesktopNavWrapper, List, ListItem } from './navigation.styles';
+import { useGlobalContext } from 'context/rootContext';
 
 import navbarLinks from '@constants/navbar';
-import { useGlobalContext } from 'context/rootContext';
 
 const navTextTransition = {
   type: 'spring',
@@ -40,6 +41,7 @@ const BottomNavigation = () => {
               </MotionListItem>
             </Link>
           ))}
+          <ThemeSwitcher />
         </List>
       </AnimateSharedLayout>
     </DesktopNavWrapper>

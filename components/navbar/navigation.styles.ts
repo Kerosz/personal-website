@@ -62,6 +62,7 @@ export const BurgerMenu = styled.div`
 `;
 
 export const DesktopNavWrapper = styled(Flex)`
+  display: none;
   position: fixed;
   background: ${(props) => props.theme.colors.gray[300]};
   right: 1.3vw;
@@ -69,6 +70,10 @@ export const DesktopNavWrapper = styled(Flex)`
   border-radius: 5px;
   padding: 1rem;
   z-index: 99;
+
+  ${(props) => props.theme.breakpoints.sm} {
+    display: flex;
+  }
 `;
 
 export const List = styled(UiL)`
@@ -79,7 +84,6 @@ export const List = styled(UiL)`
 `;
 
 export const ListItem = styled(UiLI)`
-  display: none;
   font-weight: 400;
   color: ${(props) => props.theme.colors.gray[900]};
   padding: 0.775vw 1.35vw;
