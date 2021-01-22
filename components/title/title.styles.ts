@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Flex } from '@lib/ui';
 
 export const TitleWrapper = styled(Flex)`
-  & > h4 {
+  & > h5 {
     font-size: 5vw;
 
     ${(props) => props.theme.breakpoints.xs} {
