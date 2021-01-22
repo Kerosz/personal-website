@@ -29,101 +29,101 @@ const Studycase = () => {
   const linkRef = useActiveLink('/#showcase');
 
   return (
-    <StudycaseWrapper
-      ref={linkRef}
-      id='showcase'
-      component='section'
-      direction='column'>
+    <StudycaseWrapper id='showcase' component='section' direction='column'>
       <SectionTitle heading='Study Case' subHeading='Showcase' />
-      {studycase.map((project, idx) => {
-        const { ref: titleRef, animation: titleAnimation } = useAnimationView({
-          threshold: 0.25,
-        });
-        const { ref: listRef, animation: listAnimation } = useAnimationView({
-          threshold: 0.55,
-        });
+      <Flex direction='column' ref={linkRef}>
+        {studycase.map((project, idx) => {
+          const { ref: titleRef, animation: titleAnimation } = useAnimationView(
+            {
+              threshold: 0.25,
+            }
+          );
+          const { ref: listRef, animation: listAnimation } = useAnimationView({
+            threshold: 0.55,
+          });
 
-        const marqueeText = Array(10)
-          .fill(` ${project.name} -`)
-          .map((name) => name);
+          const marqueeText = Array(10)
+            .fill(` ${project.name} -`)
+            .map((name) => name);
 
-        return (
-          <Project direction='column' key={`${project.name}-project_${idx}`}>
-            <Marquee align={project.align}>
-              <MarqueeTextMotion
-                animate={{
-                  x:
-                    project.align === 'right'
-                      ? ['-50.28%', '0%']
-                      : ['0%', '-50.28%'],
-                }}
-                transition={{
-                  ease: 'linear',
-                  duration: 18,
-                  repeat: Infinity,
-                }}>
-                {marqueeText}
-              </MarqueeTextMotion>
-            </Marquee>
-            <Content ref={titleRef}>
-              <Flex direction='column' p='0 2% 0 0'>
-                <TitleMotion
-                  component='h2'
-                  key={idx}
-                  variants={titleVariants}
-                  initial='hidden'
-                  animate={titleAnimation}>
-                  {project.name}
-                </TitleMotion>
-                <BadgeMotion
-                  variants={badgeVariants}
-                  initial='hidden'
-                  animate={titleAnimation}
-                  wrap='wrap'>
-                  {project.tags.map((tag, idx) => (
-                    <Badge
-                      key={`${tag}-badge_${idx}`}
-                      style={{ fontSize: 'inherit' }}
-                      mb='12px'>
-                      {tag}
-                    </Badge>
-                  ))}
-                </BadgeMotion>
-                <SubTitle component='h4'>Summary</SubTitle>
-                <Description>
-                  {project.summary.split(' ').map((word, idx) => (
-                    <MotionWord
-                      key={`${word}-motion-${idx}`}
-                      initialDelay={0.15}
-                      index={idx}>
-                      {word}&nbsp;
-                    </MotionWord>
-                  ))}
-                </Description>
-                <SubTitle ref={listRef} component='h4'>
-                  Goals
-                </SubTitle>
-                <ListMotion
-                  variants={listVariants}
-                  initial='hidden'
-                  animate={listAnimation}>
-                  {project.goals.map((goal, idx) => (
-                    <ItemMotion
-                      key={`${goal}-goal_${idx}`}
-                      variants={itemVariants}>
-                      {goal}
-                    </ItemMotion>
-                  ))}
-                </ListMotion>
-                <Button variant='outlined' size='large' mt='2rem'>
-                  <Link href={`/studycase/${project.slug}`}>Study Case</Link>
-                </Button>
-              </Flex>
-              <Flex p='0 0 0 2%' />
-            </Content>
-          </Project>
-        );
-      })}
+          return (
+            <Project direction='column' key={`${project.name}-project_${idx}`}>
+              <Marquee align={project.align}>
+                <MarqueeTextMotion
+                  animate={{
+                    x:
+                      project.align === 'right'
+                        ? ['-50.28%', '0%']
+                        : ['0%', '-50.28%'],
+                  }}
+                  transition={{
+                    ease: 'linear',
+                    duration: 18,
+                    repeat: Infinity,
+                  }}>
+                  {marqueeText}
+                </MarqueeTextMotion>
+              </Marquee>
+              <Content ref={titleRef}>
+                <Flex direction='column' p='0 2% 0 0'>
+                  <TitleMotion
+                    component='h2'
+                    key={idx}
+                    variants={titleVariants}
+                    initial='hidden'
+                    animate={titleAnimation}>
+                    {project.name}
+                  </TitleMotion>
+                  <BadgeMotion
+                    variants={badgeVariants}
+                    initial='hidden'
+                    animate={titleAnimation}
+                    wrap='wrap'>
+                    {project.tags.map((tag, idx) => (
+                      <Badge
+                        key={`${tag}-badge_${idx}`}
+                        style={{ fontSize: 'inherit' }}
+                        mb='12px'>
+                        {tag}
+                      </Badge>
+                    ))}
+                  </BadgeMotion>
+                  <SubTitle component='h4'>Summary</SubTitle>
+                  <Description>
+                    {project.summary.split(' ').map((word, idx) => (
+                      <MotionWord
+                        key={`${word}-motion-${idx}`}
+                        initialDelay={0.15}
+                        index={idx}>
+                        {word}&nbsp;
+                      </MotionWord>
+                    ))}
+                  </Description>
+                  <SubTitle ref={listRef} component='h4'>
+                    Goals
+                  </SubTitle>
+                  <ListMotion
+                    variants={listVariants}
+                    initial='hidden'
+                    animate={listAnimation}>
+                    {project.goals.map((goal, idx) => (
+                      <ItemMotion
+                        key={`${goal}-goal_${idx}`}
+                        variants={itemVariants}>
+                        {goal}
+                      </ItemMotion>
+                    ))}
+                  </ListMotion>
+                  <Button variant='outlined' size='large' mt='2rem'>
+                    <Link href={`/studycase/${project.slug}`}>Study Case</Link>
+                  </Button>
+                </Flex>
+                <Flex p='0 0 0 2%' />
+              </Content>
+            </Project>
+          );
+        })}
+      </Flex>
     </StudycaseWrapper>
   );
 };

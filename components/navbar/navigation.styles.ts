@@ -65,10 +65,10 @@ export const DesktopNavWrapper = styled(Flex)`
   display: none;
   position: fixed;
   background: ${(props) => props.theme.colors.gray[300]};
-  right: 1.3vw;
-  bottom: 1.3vw;
+  right: 1.6vw;
+  bottom: 1.6vw;
   border-radius: 5px;
-  padding: 1rem;
+  padding: 0.68vw;
   z-index: 99;
 
   ${(props) => props.theme.breakpoints.sm} {
@@ -86,7 +86,7 @@ export const List = styled(UiL)`
 export const ListItem = styled(UiLI)`
   font-weight: 400;
   color: ${(props) => props.theme.colors.gray[900]};
-  padding: 0.775vw 1.35vw;
+  padding: 0.785vw 1.35vw;
   margin: 0;
   border-radius: 5px;
   cursor: pointer;
@@ -116,4 +116,11 @@ export const ListItem = styled(UiLI)`
   ${(props) => props.theme.breakpoints.xl} {
     font-size: calc(0.3rem + 1vw);
   }
+`;
+
+export const Line = styled.div`
+  width: 2.7vw;
+  height: 0.1rem;
+  background: ${(props) => props.theme.colors.gray[900]};
+  margin-right: 1.05vw;
 `;

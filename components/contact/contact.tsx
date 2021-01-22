@@ -12,13 +12,9 @@ const Contact = () => {
   const linkRef = useActiveLink('/#contact');
 
   return (
-    <ContactWrapper
-      ref={linkRef}
-      id='contact'
-      component='section'
-      direction='column'>
+    <ContactWrapper id='contact' component='section' direction='column'>
       <SectionTitle heading='Let’s talk' subHeading='Contact' />
-      <Flex component='h3' wrap='wrap'>
+      <Flex ref={linkRef} component='h3' wrap='wrap'>
         {sentence.split(' ').map((word, idx) => (
           <MotionWord
             key={`${word}-motion-${idx}`}

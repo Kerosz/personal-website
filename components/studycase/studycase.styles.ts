@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 import { Flex, Text } from '@lib/ui';
 
 export const StudycaseWrapper = styled(Flex)`
+  scroll-snap-align: start;
   padding: 21.5% 0 4%;
 
   ${(props) => props.theme.breakpoints.md} {

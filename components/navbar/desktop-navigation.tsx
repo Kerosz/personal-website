@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import ThemeSwitcher from './theme-switcher';
 import { AnimateSharedLayout, motion } from 'framer-motion';
-import { DesktopNavWrapper, List, ListItem } from './navigation.styles';
+import { DesktopNavWrapper, List, ListItem, Line } from './navigation.styles';
 import { useGlobalContext } from 'context/rootContext';
 
 import navbarLinks from '@constants/navbar';
@@ -41,6 +41,7 @@ const BottomNavigation = () => {
               </MotionListItem>
             </Link>
           ))}
+          <Line />
           <ThemeSwitcher />
         </List>
       </AnimateSharedLayout>

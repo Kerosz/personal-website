@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { Flex } from '@lib/ui';
 
 export const ContactWrapper = styled(Flex)`
+  scroll-snap-align: start;
   padding: 31.5% 0 4%;
 
   ${(props) => props.theme.breakpoints.sm} {

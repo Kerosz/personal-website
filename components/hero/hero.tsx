@@ -1,9 +1,11 @@
 import { motion } from 'framer-motion';
-import { Text, HeroWrapper } from './hero.styles';
-
+import { Text, HeroWrapper, Scroll } from './hero.styles';
 import useActiveLink from '@hooks/use-active-link';
 
+import hero from '@constants/hero';
+
 const MotionHeroWrapper = motion.custom(HeroWrapper);
+const MotionScroll = motion.custom(Scroll);
 
 const Hero = () => {
   const linkRef = useActiveLink('/');
@@ -16,18 +18,25 @@ const Hero = () => {
       direction='column'
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
       transition={{ delay: 0.15 }}>
-      <Text align='right'>
-        <span>“</span>C<span>oM</span>BININ<span>G</span>
-      </Text>
-      <Text>
-        FU<span>N</span>CTION<span>A</span>LITY
-      </Text>
-      <Text align='right'>
-        <span>A</span>ND DESI<span>G</span>N <span>.</span>
-        <span>”</span>
-      </Text>
+      {hero.map((text, idx) => (
+        <Text
+          key={`${text.id}-text_${idx}`}
+          align={text.align as 'left' | 'right'}
+          dangerouslySetInnerHTML={{ __html: text.html }}
+        />
+      ))}
+
+      <MotionScroll
+        initial={{ rotate: 90 }}
+        animate={{ y: ['-1.5rem', '-1.0rem', '-0.5rem', '-1.0rem', '-1.5rem'] }}
+        transition={{
+          ease: 'linear',
+          duration: 1,
+          repeat: Infinity,
+        }}>
+        Scroll
+      </MotionScroll>
     </MotionHeroWrapper>
   );
 };

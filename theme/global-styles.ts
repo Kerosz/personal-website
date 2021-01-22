@@ -56,6 +56,10 @@ const GlobalStyles = createGlobalStyle`
     text-decoration: none;
     color: inherit;
   }
+
+  .container {
+    scroll-snap-type: y mandatory;
+  }
 `;
 
 export default GlobalStyles;

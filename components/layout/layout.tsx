@@ -9,7 +9,9 @@ const Layout: FC = ({ children }) => {
     <>
       <DesktopNavigation />
       <main>
-        <Container maxW='88%'>{children} </Container>
+        <Container className='container' maxW='88%'>
+          {children}
+        </Container>
       </main>
       <Footer />
       <MobileNavigation />

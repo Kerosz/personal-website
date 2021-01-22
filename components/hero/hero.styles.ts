@@ -2,8 +2,10 @@ import styled from 'styled-components';
 import { Text as UiText, Flex } from '@lib/ui';
 
 export const HeroWrapper = styled(Flex)`
+  scroll-snap-align: start;
+  position: relative;
   font-family: ${(props) => props.theme.font.family.heading};
-  margin-top: 10.5vh;
+  margin-top: 5vh;
 
   @media screen and (max-width: 40em) {
     padding: 2rem 0;
@@ -53,5 +55,21 @@ export const Text = styled(UiText)`
   ${(props) => props.theme.breakpoints.xl} {
     font-size: 9.5vw;
     margin: 0 0 1.5%;
+  }
+`;
+
+export const Scroll = styled(Flex)`
+  font-size: calc(0.5rem + (52 - 38) * ((100vw - 320px) / (1600 - 320)));
+  width: fit-content;
+  transform-origin: left top 0;
+
+  ::after {
+    position: absolute;
+    content: '';
+    left: 7vh;
+    top: 50%;
+    height: 0.2rem;
+    width: 6vh;
+    background: ${(props) => props.theme.palette.text.main};
   }
 `;

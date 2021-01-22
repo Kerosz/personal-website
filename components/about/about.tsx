@@ -6,11 +6,14 @@ import useThemeMode from '@hooks/use-theme-mode';
 import useActiveLink from '@hooks/use-active-link';
 
 import bioData from '@constants/bio';
+import { mergeRefs } from '@lib/utils/react-helpers';
 
 const About = () => {
   const linkRef = useActiveLink('/#introduction');
-  const { ref, visible } = useIsVisible<HTMLDivElement>({ threshold: 0.03 });
+  const { ref, visible } = useIsVisible({ threshold: 0.03 });
   const _ = useThemeMode({ triggerChange: visible, save: false });
+
+  const mergedRefs = mergeRefs<HTMLElement>(ref, linkRef);
 
   return (
     <AboutWrapper
@@ -19,7 +22,7 @@ const About = () => {
       component='section'
       direction='column'>
       <SectionTitle subHeading='Introduction' heading='Who am I?' />
-      <Flex direction='column' ref={ref}>
+      <Flex direction='column' ref={mergedRefs}>
         {bioData.map((bio) => (
           <Text
             key={bio.id}
