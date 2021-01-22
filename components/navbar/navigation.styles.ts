@@ -68,11 +68,19 @@ export const DesktopNavWrapper = styled(Flex)`
   right: 1.6vw;
   bottom: 1.6vw;
   border-radius: 5px;
-  padding: 0.68vw;
+  padding: 1vw;
   z-index: 99;
 
   ${(props) => props.theme.breakpoints.sm} {
     display: flex;
+  }
+
+  ${(props) => props.theme.breakpoints.md} {
+    padding: 0.8vw;
+  }
+
+  ${(props) => props.theme.breakpoints.lg} {
+    padding: 0.68vw;
   }
 `;
 

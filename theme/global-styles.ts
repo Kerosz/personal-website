@@ -47,11 +47,6 @@ const GlobalStyles = createGlobalStyle`
     transition: all 350ms ease-in-out;
   }
 
-  img {
-    max-width: 100%;
-    display: block;
-  }
-
   a {
     text-decoration: none;
     color: inherit;

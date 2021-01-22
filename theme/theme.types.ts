@@ -56,6 +56,10 @@ export interface BaseThemeProps extends ThemeModeProps {
    */
   breakpoints: {
     /**
+     * Breakpoint for `1600px` and above
+     */
+    xxl: string;
+    /**
      * Breakpoint for `1280px` and above
      */
     xl: string;

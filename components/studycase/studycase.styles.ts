@@ -1,6 +1,65 @@
 import styled, { css } from 'styled-components';
 import { Flex, Text } from '@lib/ui';
 
+const normalFontSize = css`
+  font-size: calc(1.55rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+  font-weight: 300;
+  line-height: calc(2.35rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+  margin: 0;
+
+  ${(props) => props.theme.breakpoints.sm} {
+    font-size: calc(1.23rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+    line-height: calc(2rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+  }
+
+  ${(props) => props.theme.breakpoints.md} {
+    font-size: calc(0.7rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+    line-height: calc(1.5rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+  }
+
+  ${(props) => props.theme.breakpoints.lg} {
+    font-size: calc(0.5rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+    line-height: calc(1.4rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+  }
+
+  ${(props) => props.theme.breakpoints.xl} {
+    font-size: calc(0.4rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+    line-height: calc(1.3rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+  }
+
+  ${(props) => props.theme.breakpoints.xxl} {
+    font-size: calc(0.25rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+    line-height: calc(1.1rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+  }
+`;
+
+const largerFontSize = css`
+  font-size: calc(2.2rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+  line-height: calc(2.4rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+
+  ${(props) => props.theme.breakpoints.sm} {
+    font-size: calc(2rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+    line-height: calc(2.3rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+    margin: 5% 0 3%;
+  }
+
+  ${(props) => props.theme.breakpoints.md} {
+    font-size: calc(1.4rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+    line-height: calc(1.6rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+    margin: 6% 0 4%;
+  }
+
+  ${(props) => props.theme.breakpoints.xl} {
+    font-size: calc(1.3rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+    line-height: calc(1.5rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+  }
+
+  ${(props) => props.theme.breakpoints.xxl} {
+    font-size: calc(1.2rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+    line-height: calc(1.4rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+  }
+`;
+
 export const StudycaseWrapper = styled(Flex)`
   scroll-snap-align: start;
   padding: 21.5% 0 4%;
@@ -31,6 +90,14 @@ export const BadgeWrapper = styled(Flex)`
 
   ${(props) => props.theme.breakpoints.lg} {
     font-size: calc(0.45rem + (55 - 38) * ((100vw - 320px) / (1600 - 320)));
+  }
+
+  ${(props) => props.theme.breakpoints.xl} {
+    font-size: calc(0.32rem + (55 - 38) * ((100vw - 320px) / (1600 - 320)));
+  }
+
+  ${(props) => props.theme.breakpoints.xxl} {
+    font-size: calc(0.14rem + (55 - 38) * ((100vw - 320px) / (1600 - 320)));
   }
 `;
 
@@ -86,10 +153,7 @@ export const MarqueeText = styled(Text)`
       props.theme.mode === 'dark'
         ? props.theme.colors.green[400]
         : props.theme.colors.red[700]};
-    -webkit-text-fill-color: ${(props) =>
-      props.theme.mode === 'dark'
-        ? props.theme.colors.green[400]
-        : props.theme.colors.red[700]};
+    -webkit-text-fill-color: initial;
     -webkit-text-stroke-color: transparent;
     text-decoration: line-through;
   }
@@ -107,25 +171,7 @@ export const Content = styled(Flex)`
   }
 
   li {
-    font-size: calc(1.55rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
-    font-weight: 300;
-    line-height: calc(2.35rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
-    margin: 0;
-
-    ${(props) => props.theme.breakpoints.sm} {
-      font-size: calc(1.23rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
-      line-height: calc(2rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
-    }
-
-    ${(props) => props.theme.breakpoints.md} {
-      font-size: calc(0.7rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
-      line-height: calc(1.5rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
-    }
-
-    ${(props) => props.theme.breakpoints.lg} {
-      font-size: calc(0.5rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
-      line-height: calc(1.4rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
-    }
+    ${normalFontSize}
   }
 `;
 
@@ -137,46 +183,79 @@ export const Title = styled(Text)`
 `;
 
 export const SubTitle = styled(Text)`
-  font-size: calc(2.2rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
-  line-height: calc(2.4rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+  ${largerFontSize};
   font-weight: 600;
   margin: 0;
   margin: 8% 0 4%;
-
-  ${(props) => props.theme.breakpoints.sm} {
-    font-size: calc(2rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
-    line-height: calc(2.3rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
-    margin: 5% 0 3%;
-  }
-
-  ${(props) => props.theme.breakpoints.md} {
-    font-size: calc(1.4rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
-    line-height: calc(1.6rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
-    margin: 6% 0 4%;
-  }
 `;
 
 export const Description = styled(Text)`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  font-size: calc(1.55rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
-  font-weight: 300;
-  line-height: calc(2.35rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
-  margin: 0;
 
-  ${(props) => props.theme.breakpoints.sm} {
-    font-size: calc(1.23rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
-    line-height: calc(2rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+  ${normalFontSize}
+`;
+
+export const MoreInfo = styled(Text)`
+  display: inline;
+  ${largerFontSize};
+  font-weight: 400;
+  margin-top: 5%;
+  align-self: center;
+  cursor: pointer;
+
+  :hover {
+    text-decoration: underline;
+  }
+
+  svg {
+    width: 1.75vw;
+    height: 1.75vw;
+    vertical-align: middle;
+    flex-shrink: 0;
+    backface-visibility: hidden;
+
+    ${(props) => props.theme.breakpoints.sm} {
+      width: 2.8vw;
+      height: 2.8vw;
+    }
+
+    ${(props) => props.theme.breakpoints.md} {
+      width: 2.2vw;
+      height: 2.2vw;
+    }
+
+    ${(props) => props.theme.breakpoints.lg} {
+      width: 1.75vw;
+      height: 1.75vw;
+    }
+  }
+`;
+
+export const Preview = styled(Flex)`
+  padding-top: 15%;
+  align-items: center;
+
+  ${(props) => props.theme.breakpoints.xs} {
+    padding-top: 12%;
   }
 
   ${(props) => props.theme.breakpoints.md} {
-    font-size: calc(0.7rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
-    line-height: calc(1.5rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+    padding: 6.4% 0 0 4%;
   }
 
-  ${(props) => props.theme.breakpoints.lg} {
-    font-size: calc(0.5rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
-    line-height: calc(1.4rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+  > * {
+    flex-grow: 1;
+  }
+
+  img {
+    border-radius: 0.5rem;
+    transition: transform 250ms ease-in-out;
+    cursor: pointer;
+  }
+
+  img:hover {
+    transform: scale(1.03);
   }
 `;

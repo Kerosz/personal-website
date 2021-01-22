@@ -14,11 +14,11 @@ module.exports = [
     label: 'Introduction',
     path: '/#introduction',
   },
-  {
-    id: 3,
-    label: 'Blog',
-    path: '/blog',
-  },
+  // {
+  //   id: 3,
+  //   label: 'Blog',
+  //   path: '/blog',
+  // },
   {
     id: 4,
     label: 'Contact',

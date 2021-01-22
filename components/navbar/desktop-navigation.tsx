@@ -41,8 +41,12 @@ const BottomNavigation = () => {
               </MotionListItem>
             </Link>
           ))}
-          <Line />
-          <ThemeSwitcher />
+          <ListItem style={{ cursor: 'default' }}>
+            <Line />
+          </ListItem>
+          <ListItem style={{ padding: 0 }}>
+            <ThemeSwitcher />
+          </ListItem>
         </List>
       </AnimateSharedLayout>
     </DesktopNavWrapper>

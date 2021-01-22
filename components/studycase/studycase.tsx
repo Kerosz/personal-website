@@ -1,7 +1,19 @@
+// components
 import SectionTitle from '@components/title';
 import Link from 'next/link';
-import { Badge, Button, Flex, List, ListItem } from '@lib/ui';
+import Image from 'next/image';
+import MotionWord from '@animations/motion-word';
+
+// hooks
+import useAnimationView from '@hooks/use-animation-view';
+import useActiveLink from '@hooks/use-active-link';
+
+// libraries
+import { Badge, Flex, List, ListItem } from '@lib/ui';
+import { ArrowRight } from '@lib/icons';
 import { motion } from 'framer-motion';
+
+// styles
 import {
   StudycaseWrapper,
   Project,
@@ -12,18 +24,21 @@ import {
   Title,
   SubTitle,
   Description,
+  MoreInfo,
+  Preview,
 } from './studycase.styles';
 
-import MotionWord from '@animations/motion-word';
-import useAnimationView from '@hooks/use-animation-view';
 import studycase from '@constants/studycase';
-import useActiveLink from '@hooks/use-active-link';
 
 const MarqueeTextMotion = motion.custom(MarqueeText);
 const TitleMotion = motion.custom(Title);
 const BadgeMotion = motion.custom(BadgeWrapper);
 const ListMotion = motion.custom(List);
 const ItemMotion = motion.custom(ListItem);
+const MoreInfoMotion = motion.custom(MoreInfo);
+const PreviewMotion = motion.custom(Preview);
+
+export type Project = typeof studycase[0];
 
 const Studycase = () => {
   const linkRef = useActiveLink('/#showcase');
@@ -32,7 +47,7 @@ const Studycase = () => {
     <StudycaseWrapper id='showcase' component='section' direction='column'>
       <SectionTitle heading='Study Case' subHeading='Showcase' />
       <Flex direction='column' ref={linkRef}>
-        {studycase.map((project, idx) => {
+        {studycase.map((project: Project, idx) => {
           const { ref: titleRef, animation: titleAnimation } = useAnimationView(
             {
               threshold: 0.25,
@@ -60,15 +75,15 @@ const Studycase = () => {
                     ease: 'linear',
                     duration: 18,
                     repeat: Infinity,
-                  }}>
+                  }}
+                  style={{ color: project.scheme }}>
                   {marqueeText}
                 </MarqueeTextMotion>
               </Marquee>
               <Content ref={titleRef}>
                 <Flex direction='column' p='0 2% 0 0'>
                   <TitleMotion
-                    component='h2'
-                    key={idx}
+                    component='h3'
                     variants={titleVariants}
                     initial='hidden'
                     animate={titleAnimation}>
@@ -114,11 +129,41 @@ const Studycase = () => {
                       </ItemMotion>
                     ))}
                   </ListMotion>
-                  <Button variant='outlined' size='large' mt='2rem'>
-                    <Link href={`/studycase/${project.slug}`}>Study Case</Link>
-                  </Button>
+                  <Link href={`/studycase/${project.slug}`}>
+                    <MoreInfoMotion
+                      style={{ color: project.scheme }}
+                      animate={{
+                        x: [
+                          '-2.5rem',
+                          '-1.5rem',
+                          '-0.1rem',
+                          '-1.5rem',
+                          '-2.5rem',
+                        ],
+                      }}
+                      transition={{
+                        ease: 'linear',
+                        duration: 1.55,
+                        repeat: Infinity,
+                      }}>
+                      Study Case <ArrowRight />
+                    </MoreInfoMotion>
+                  </Link>
                 </Flex>
-                <Flex p='0 0 0 2%' />
+                <PreviewMotion
+                  variants={previewVariants}
+                  initial='hidden'
+                  animate={titleAnimation}>
+                  <Link href={`/studycase/${project.slug}`}>
+                    <Image
+                      src={project.src}
+                      alt={`Display of mockups for ${project.name} project`}
+                      width={600}
+                      height={600}
+                      layout='responsive'
+                    />
+                  </Link>
+                </PreviewMotion>
               </Content>
             </Project>
           );
@@ -131,6 +176,11 @@ const Studycase = () => {
 const titleVariants = {
   hidden: { x: '-4.5vw', opacity: 0 },
   visible: { x: 0, opacity: 1, transition: { duration: 0.4 } },
+};
+
+const previewVariants = {
+  hidden: { x: '5vw', opacity: 0 },
+  visible: { x: 0, opacity: 1, transition: { duration: 0.6 } },
 };
 
 const badgeVariants = {

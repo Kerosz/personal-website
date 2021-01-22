@@ -64,6 +64,7 @@ function themeConstructor(themeBasedOnMode: ThemeModeProps): BaseThemeProps {
       },
     },
     breakpoints: {
+      xxl: '@media screen and (min-width: 100em)',
       xl: '@media screen and (min-width: 80em)',
       lg: '@media screen and (min-width: 62em)',
       md: '@media screen and (min-width: 48em)',
