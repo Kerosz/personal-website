@@ -10,7 +10,6 @@ import { Flex } from '@lib/ui';
 
 // hooks
 import { useGlobalContext } from 'context/rootContext';
-import { toggleScroll } from '@actions/ui.action';
 
 const MainStack = styled(Flex)`
   display: block;
@@ -55,7 +54,7 @@ const SubStack = styled(MainStack)`
 `;
 
 const PageTransition = () => {
-  const { canScroll, uiDispatch } = useGlobalContext();
+  const { canScroll, toggleScrollState } = useGlobalContext();
 
   useEffect(() => {
     if (isBrowser && !canScroll) {
@@ -75,7 +74,7 @@ const PageTransition = () => {
       />
       <SubStack
         as={motion.div}
-        onAnimationComplete={() => uiDispatch(toggleScroll())}
+        onAnimationComplete={toggleScrollState}
         variants={subVariants}
         initial='initial'
         animate='animate'>

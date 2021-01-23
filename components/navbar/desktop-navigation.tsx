@@ -4,23 +4,18 @@ import ThemeSwitcher from './theme-switcher';
 // libraries
 import { AnimateSharedLayout, motion } from 'framer-motion';
 // hooks
+import useCursor from '@hooks/use-cursor';
 import { useGlobalContext } from 'context/rootContext';
 // styles
 import { DesktopNavWrapper, List, ListItem, Line } from './navigation.styles';
 
 import navbarLinks from '@constants/navbar';
 
-const navTextTransition = {
-  type: 'spring',
-  damping: 16,
-  stiffness: 200,
-  staggerChildren: 0.06,
-};
-
 const MotionListItem = motion.custom(ListItem);
 
 const BottomNavigation = () => {
   const { activePath } = useGlobalContext();
+  const onCursor = useCursor();
 
   return (
     <DesktopNavWrapper component='nav' className='desktop'>
@@ -40,7 +35,9 @@ const BottomNavigation = () => {
                   scale: 0.875,
                   rotate: -6,
                   transition: navTextTransition,
-                }}>
+                }}
+                onMouseEnter={() => onCursor('hovered')}
+                onMouseLeave={() => onCursor('default')}>
                 {link.label}
               </MotionListItem>
             </Link>
@@ -55,6 +52,13 @@ const BottomNavigation = () => {
       </AnimateSharedLayout>
     </DesktopNavWrapper>
   );
+};
+
+const navTextTransition = {
+  type: 'spring',
+  damping: 16,
+  stiffness: 200,
+  staggerChildren: 0.06,
 };
 
 export default BottomNavigation;

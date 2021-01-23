@@ -23,6 +23,7 @@ export const Powered = styled(Flex)`
   display: flex;
   align-items: center;
   font-size: calc(1.45rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+  padding-top: 2.5%;
 
   ${(props) => props.theme.breakpoints.xs} {
     font-size: calc(1.3rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));

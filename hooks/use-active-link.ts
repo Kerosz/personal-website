@@ -1,15 +1,21 @@
 import useIsVisible from '@hooks/use-is-visible';
-import useUpdateEffect from '@hooks/use-update-effect';
+import { useUpdateEffect } from '@lib/utils/react-helpers';
 import { useGlobalContext } from 'context/rootContext';
-import { addActivePath } from '@actions/ui.action';
 
+/**
+ * A hook that can be used to set the current active link path of the page.
+ *
+ * It returns a `ref` which should be assigned to a DOM element that will be watched and change the path when in view
+ *
+ * @param {string} path The path to be set
+ */
 const useActiveLink = (path: string) => {
-  const { uiDispatch } = useGlobalContext();
+  const { setActivePath } = useGlobalContext();
   const { ref, visible } = useIsVisible<HTMLElement>({ threshold: 0.02 });
 
   useUpdateEffect(() => {
     if (visible) {
-      uiDispatch(addActivePath(path));
+      setActivePath(path);
     } else {
       return;
     }

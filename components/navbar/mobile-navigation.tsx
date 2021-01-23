@@ -61,7 +61,7 @@ const TopNavigation: FC = () => {
               {navbarLinks.map((link) => (
                 <Link key={link.id} href={link.path}>
                   <MotionMenuItem
-                    onClick={() => setTimeout(() => toggleOpen(), 1500)}
+                    onClick={() => setTimeout(() => toggleOpen(), 450)}
                     animate
                     whileHover={{
                       scale: 1.113,

@@ -155,13 +155,16 @@ const Studycase = () => {
                   initial='hidden'
                   animate={titleAnimation}>
                   <Link href={`/studycase/${project.slug}`}>
-                    <Image
-                      src={project.src}
-                      alt={`Display of mockups for ${project.name} project`}
-                      width={600}
-                      height={600}
-                      layout='responsive'
-                    />
+                    {/* Extra fragment needed to workarond next/image not being able to recieve refs */}
+                    <>
+                      <Image
+                        src={project.src}
+                        alt={`Display of mockups for ${project.name} project`}
+                        width={600}
+                        height={600}
+                        layout='responsive'
+                      />
+                    </>
                   </Link>
                 </PreviewMotion>
               </Content>

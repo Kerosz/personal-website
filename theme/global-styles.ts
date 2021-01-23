@@ -9,7 +9,7 @@ const GlobalStyles = createGlobalStyle`
     list-style: none;
     outline: none;
     font-size: 1.6rem;
-    /* cursor: none; */
+    cursor: none !important;
   }
 
   html {

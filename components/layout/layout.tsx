@@ -1,10 +1,11 @@
 // components
 import Footer from '@components/footer';
+import Cursor from '@components/cursor';
 import PageTransition from '@components/animations/page-transition';
+import { DesktopNavigation, MobileNavigation } from '@components/navbar';
 
 // libraries
 import { FC } from 'react';
-import { DesktopNavigation, MobileNavigation } from '@components/navbar';
 import { Container } from '@lib/ui';
 
 const Layout: FC = ({ children }) => {
@@ -19,6 +20,7 @@ const Layout: FC = ({ children }) => {
       <Footer />
       <MobileNavigation />
       <PageTransition />
+      <Cursor />
     </>
   );
 };

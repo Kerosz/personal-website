@@ -12,6 +12,10 @@ export type UiAction =
   | {
       type: 'ADD_ACTIVE_PATH';
       path: string;
+    }
+  | {
+      type: 'UPDATE_CURSOR_TYPE';
+      cursor: string;
     };
 
 export type ThemeOption = 'light' | 'dark';
@@ -30,4 +34,8 @@ export const toggleScroll = (): UiAction => {
 
 export const addActivePath = (newActivePath: string): UiAction => {
   return { type: 'ADD_ACTIVE_PATH', path: newActivePath };
+};
+
+export const updateCursorType = (newCursorType: string): UiAction => {
+  return { type: 'UPDATE_CURSOR_TYPE', cursor: newCursorType };
 };

@@ -23,11 +23,7 @@ const About = () => {
   const mergedRefs = mergeRefs<HTMLElement>(ref, linkRef);
 
   return (
-    <AboutWrapper
-      ref={linkRef}
-      id='introduction'
-      component='section'
-      direction='column'>
+    <AboutWrapper id='introduction' component='section' direction='column'>
       <SectionTitle subHeading='Introduction' heading='Who am I?' />
       <Flex direction='column' ref={mergedRefs}>
         {bioData.map((bio) => (

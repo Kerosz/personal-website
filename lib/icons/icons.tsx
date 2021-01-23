@@ -17,10 +17,10 @@ export const ArrowRight = forwardRef<SVGSVGElement, IconProps>((props, ref) => {
       {...restProps}>
       <path
         fill='none'
-        stroke-linejoin='bevel'
+        strokeLinejoin='bevel'
         stroke='currentcolor'
-        stroke-width='3'
-        stroke-linecap='square'
+        strokeWidth='3'
+        strokeLinecap='square'
         d='M12 3l9 9-9 9m-9-9h16.714H3z'></path>
     </svg>
   );

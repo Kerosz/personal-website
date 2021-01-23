@@ -5,6 +5,8 @@ export interface UiState {
   isTransition: boolean;
   canScroll: boolean;
   activePath: string;
+  cursorType: string;
+  cursorStyle: string[];
 }
 
 export const initialUiState: UiState = {
@@ -12,6 +14,8 @@ export const initialUiState: UiState = {
   isTransition: true,
   canScroll: false,
   activePath: '/',
+  cursorType: 'default',
+  cursorStyle: ['default', 'hovered'],
 };
 
 export default function uiReducer(state: UiState, action: UiAction) {
@@ -35,6 +39,11 @@ export default function uiReducer(state: UiState, action: UiAction) {
       return {
         ...state,
         activePath: action.path,
+      };
+    case 'UPDATE_CURSOR_TYPE':
+      return {
+        ...state,
+        cursorType: action.cursor,
       };
     default:
       return state;

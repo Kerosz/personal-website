@@ -1,9 +1,8 @@
-import { useEffect, useLayoutEffect } from 'react';
-import { applyTheme, ThemeOption } from '@actions/ui.action';
+import { useEffect } from 'react';
+import { useUpdateEffect } from '@lib/utils/react-helpers';
+import { ThemeOption } from '@actions/ui.action';
 import { useGlobalContext } from 'context/rootContext';
-
 import useJsonMemo from './use-json-memo';
-import useUpdateEffect from './use-update-effect';
 
 export interface Options {
   /** Triggers the `change` function based on a `dynamic` property*/
@@ -24,15 +23,15 @@ export interface ThemeModeReturn {
  */
 const useThemeMode = (args: Options): ThemeModeReturn => {
   const { save = true, triggerChange } = args;
-  const { themeOption, uiDispatch } = useGlobalContext();
+  const { themeOption, setThemeMode } = useGlobalContext();
 
-  const memoTrigger = useJsonMemo(args.triggerChange);
+  const memoTrigger = useJsonMemo(triggerChange);
 
   const handleThemeChange = () => {
     if (themeOption === 'light') {
-      uiDispatch(applyTheme('dark'));
+      setThemeMode('dark');
     } else {
-      uiDispatch(applyTheme('light'));
+      setThemeMode('light');
     }
   };
 
@@ -47,7 +46,7 @@ const useThemeMode = (args: Options): ThemeModeReturn => {
     ) as ThemeOption | null;
 
     if (themeModeFromStorage) {
-      uiDispatch(applyTheme(themeModeFromStorage));
+      setThemeMode(themeModeFromStorage);
     } else {
       localStorage.setItem('theme-mode', themeOption);
     }
