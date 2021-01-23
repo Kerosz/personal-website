@@ -1,7 +1,10 @@
-import { Ref, RefObject, MutableRefObject } from 'react';
+import * as React from 'react';
 import { isFunction } from './assertion';
 
-type ReactRef<T> = Ref<T> | RefObject<T> | MutableRefObject<T>;
+type ReactRef<T> =
+  | React.Ref<T>
+  | React.RefObject<T>
+  | React.MutableRefObject<T>;
 
 /**
  * It accepts any number of refs to merge and returns a single callback ref that will properly set each ref passed, whether that ref is a function or a ref object.
@@ -30,4 +33,15 @@ export function mergeRefs<T>(...refs: ReactRef<T>[]) {
       }
     }
   };
+}
+
+export function useDimensions(ref: any) {
+  const dimensions = React.useRef({ width: 0, height: 0 });
+
+  React.useEffect(() => {
+    dimensions.current.width = ref.current.offsetWidth;
+    dimensions.current.height = ref.current.offsetHeight;
+  }, []);
+
+  return dimensions.current;
 }

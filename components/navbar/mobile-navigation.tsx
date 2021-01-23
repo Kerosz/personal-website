@@ -1,37 +1,27 @@
 // components
 import Link from 'next/link';
 import Branding from './branding';
-
 // libraries
-import { FC, useEffect, useState } from 'react';
+import { FC } from 'react';
+import { motion, useCycle, AnimateSharedLayout } from 'framer-motion';
 import { Container, Flex } from '@lib/ui';
-import { isBrowser } from '@lib/utils/dom';
-
 // styles
-import { MobileNavWrapper, BurgerMenu } from './navigation.styles';
+import {
+  MobileNavWrapper,
+  Burger,
+  Menu,
+  MenuList,
+  MenuItem,
+} from './navigation.styles';
+
+import navbarLinks from '@constants/navbar';
+
+const MenuMotion = motion.custom(Menu);
+const BurgerMotion = motion.custom(Burger);
+const MotionMenuItem = motion.custom(MenuItem);
 
 const TopNavigation: FC = () => {
-  const [displayValue, setdisplayValue] = useState<boolean>(true);
-
-  let prevScrollPosition = isBrowser ? window.pageYOffset : 0;
-  const getNavigationCurrentDisplayValue = () => {
-    const currentScrollPosition = isBrowser ? window.pageYOffset : 0;
-
-    if (prevScrollPosition > currentScrollPosition) {
-      setdisplayValue(true);
-    } else {
-      setdisplayValue(false);
-    }
-
-    prevScrollPosition = currentScrollPosition;
-  };
-
-  useEffect(() => {
-    document.addEventListener('scroll', getNavigationCurrentDisplayValue);
-
-    return () =>
-      document.removeEventListener('scroll', getNavigationCurrentDisplayValue);
-  }, []);
+  const [isOpen, toggleOpen] = useCycle(false, true);
 
   return (
     <MobileNavWrapper component='header'>
@@ -41,10 +31,41 @@ const TopNavigation: FC = () => {
             <Branding cursor='pointer' />
           </Link>
 
-          <BurgerMenu className='mobile'>
+          <BurgerMotion open={isOpen} onClick={() => toggleOpen()}>
             <span />
             <span />
-          </BurgerMenu>
+          </BurgerMotion>
+          <MenuMotion
+            initial={{ x: '105vw' }}
+            animate={{ x: isOpen ? 0 : '105vw' }}
+            transition={{
+              type: 'spring',
+              stiffness: 100,
+              damping: 19,
+              delay: 0.5,
+            }}>
+            <AnimateSharedLayout>
+              <MenuList>
+                {navbarLinks.map((link) => (
+                  <Link key={link.id} href={link.path}>
+                    <MotionMenuItem
+                      onClick={() => toggleOpen()}
+                      animate
+                      whileHover={{
+                        scale: 1.113,
+                        rotate: -3,
+                      }}
+                      whileTap={{
+                        scale: 0.875,
+                        rotate: -6,
+                      }}>
+                      {link.label}
+                    </MotionMenuItem>
+                  </Link>
+                ))}
+              </MenuList>
+            </AnimateSharedLayout>
+          </MenuMotion>
         </Flex>
       </Container>
     </MobileNavWrapper>

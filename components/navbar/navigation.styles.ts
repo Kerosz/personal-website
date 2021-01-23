@@ -4,7 +4,7 @@ import { Flex, List as UiL, ListItem as UiLI } from '@lib/ui';
 export const MobileNavWrapper = styled(Flex)`
   position: fixed;
   top: 0;
-  left: 0;
+  right: 0;
   background: transparent;
   width: 100%;
   height: 13vh;
@@ -39,10 +39,11 @@ export const MobileNavWrapper = styled(Flex)`
   }
 `;
 
-export const BurgerMenu = styled.div`
+export const Burger = styled.div<{ open: boolean }>`
   display: block;
   position: relative;
   cursor: pointer;
+  z-index: 101;
 
   ${(props) => props.theme.breakpoints.sm} {
     display: none;
@@ -50,7 +51,10 @@ export const BurgerMenu = styled.div`
 
   & > span {
     display: block;
-    background: ${(props) => props.theme.palette.text.main};
+    background: ${(props) =>
+      props.open
+        ? props.theme.palette.background
+        : props.theme.palette.text.main};
     width: 3.6rem;
     height: 0.5rem;
     border-radius: 0.2rem;
@@ -59,6 +63,42 @@ export const BurgerMenu = styled.div`
   & > span:first-of-type {
     margin-bottom: 0.8rem;
   }
+`;
+
+export const Menu = styled.div`
+  display: block;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 105vw;
+  background: ${(props) => props.theme.palette.text.main};
+  padding: 12vh 0;
+
+  ${(props) => props.theme.breakpoints.sm} {
+    display: none;
+  }
+`;
+
+export const MenuList = styled(UiL)`
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+`;
+
+export const MenuItem = styled(UiLI)`
+  color: ${(props) => props.theme.palette.background};
+  font-size: calc(3.45rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+  line-height: calc(3.9rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+  font-weight: 800;
+
+  -webkit-text-fill-color: ${(props) => props.theme.palette.text.main};
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: ${(props) => props.theme.palette.background};
 `;
 
 export const DesktopNavWrapper = styled(Flex)`
