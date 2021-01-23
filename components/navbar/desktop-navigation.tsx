@@ -45,7 +45,10 @@ const BottomNavigation = () => {
           <ListItem style={{ cursor: 'default' }}>
             <Line />
           </ListItem>
-          <ListItem style={{ padding: 0 }}>
+          <ListItem
+            style={{ padding: 0 }}
+            onMouseEnter={() => onCursor('hovered')}
+            onMouseLeave={() => onCursor('default')}>
             <ThemeSwitcher />
           </ListItem>
         </List>

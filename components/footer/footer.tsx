@@ -1,7 +1,10 @@
 // libraries
 import styled from 'styled-components';
 import { FC } from 'react';
-import { Flex, Container, Devider, Text } from '@lib/ui';
+import { Flex, Container, Devider } from '@lib/ui';
+
+// hooks
+import useCursor from '@hooks/use-cursor';
 
 export const FooterWrapper = styled(Flex)`
   padding: 9.5% 0 4.5%;
@@ -65,6 +68,8 @@ export const Line = styled.div`
 `;
 
 const Footer: FC = () => {
+  const onCursor = useCursor();
+
   return (
     <FooterWrapper component='footer'>
       <Container maxW='88%'>
@@ -75,14 +80,18 @@ const Footer: FC = () => {
             <a
               rel='noopener noreferrer'
               target='_blank'
-              href='https://nextjs.org'>
+              href='https://nextjs.org'
+              onMouseEnter={() => onCursor('hovered')}
+              onMouseLeave={() => onCursor('default')}>
               &nbsp;Next.js
             </a>
             <Line />
             <a
               rel='noopener noreferrer'
               target='_blank'
-              href='https://github.com/Kerosz/personal-website'>
+              href='https://github.com/Kerosz/personal-website'
+              onMouseEnter={() => onCursor('hovered')}
+              onMouseLeave={() => onCursor('default')}>
               Source code
             </a>
           </Powered>

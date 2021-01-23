@@ -1,13 +1,11 @@
 // components
 import SectionTitle from '@components/title';
 import MotionWord from '@animations/motion-word';
-
 // libraries
 import { Flex, Text } from '@lib/ui';
-
 // hooks
 import useActiveLink from '@hooks/use-active-link';
-
+import useCursor from '@hooks/use-cursor';
 // styles
 import { ContactWrapper } from './contact.styles';
 
@@ -15,6 +13,7 @@ const sentence =
   "Have something in mind and want to collaborate? Reach out and let's do it.";
 
 const Contact = () => {
+  const onCursor = useCursor();
   const linkRef = useActiveLink('/#contact');
 
   return (
@@ -31,7 +30,12 @@ const Contact = () => {
           </MotionWord>
         ))}
       </Flex>
-      <Text component='a' to='mailto:andrei@chirila.dev' fit>
+      <Text
+        component='a'
+        to='mailto:andrei@chirila.dev'
+        fit
+        onMouseEnter={() => onCursor('hovered')}
+        onMouseLeave={() => onCursor('default')}>
         <MotionWord initialDelay={0.35 + sentence.split(' ').length * 0.025}>
           andrei@chirila.dev
         </MotionWord>

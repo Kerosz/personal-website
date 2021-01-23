@@ -6,6 +6,8 @@ import Branding from './branding';
 import { FC } from 'react';
 import { motion, useCycle } from 'framer-motion';
 import { Container, Flex } from '@lib/ui';
+// hooks
+import useCursor from '@hooks/use-cursor';
 // styles
 import {
   MobileNavWrapper,
@@ -21,6 +23,7 @@ const MenuMotion = motion.custom(Menu);
 const MotionMenuItem = motion.custom(MenuItem);
 
 const TopNavigation: FC = () => {
+  const onCursor = useCursor();
   const [isOpen, toggleOpen] = useCycle(false, true);
 
   return (
@@ -28,7 +31,10 @@ const TopNavigation: FC = () => {
       <Container maxW='99.2%'>
         <Flex justify='space-between' align='center'>
           <Link href='/'>
-            <Branding cursor='pointer' />
+            <Branding
+              onMouseEnter={() => onCursor('hovered')}
+              onMouseLeave={() => onCursor('default')}
+            />
           </Link>
 
           <Burger onClick={() => toggleOpen()}>

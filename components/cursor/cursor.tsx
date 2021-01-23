@@ -9,10 +9,11 @@ const CustomCursor = styled.div`
   width: 3rem;
   height: 3rem;
   background: ${(props) => props.theme.palette.text.accent};
+  background-blend-mode: difference;
   border-radius: 100%;
   opacity: 0.8;
   transform: translate(-50%, -50%);
-  transition: all 600ms ease-in-out;
+  transition: all 350ms ease-in-out;
   transition-property: width, height, border;
   will-change: width, height, border;
   pointer-events: none;
@@ -21,7 +22,7 @@ const CustomCursor = styled.div`
   &.hovered {
     width: 12rem;
     height: 12rem;
-    opacity: 0.8;
+    opacity: 0.7;
 
     ::after {
       content: 'Click';
@@ -29,7 +30,7 @@ const CustomCursor = styled.div`
       top: 50%;
       left: 50%;
       font-weight: 700;
-      color: ${(props) => props.theme.colors.gray[900]};
+      color: ${(props) => props.theme.palette.background};
       transform: translate(-50%, -50%);
     }
   }
@@ -60,7 +61,7 @@ const Cursor = () => {
 
   return (
     <CustomCursor
-      className={`${cursorType}`}
+      className={`${!!cursorType ? cursorType : ''}`}
       style={{ left: `${mouseCoord.x}px`, top: `${mouseCoord.y}px` }}
     />
   );

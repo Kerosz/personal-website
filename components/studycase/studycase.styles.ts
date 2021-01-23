@@ -205,10 +205,6 @@ export const MoreInfo = styled(Text)`
   align-self: center;
   cursor: pointer;
 
-  :hover {
-    text-decoration: underline;
-  }
-
   svg {
     width: 1.75vw;
     height: 1.75vw;

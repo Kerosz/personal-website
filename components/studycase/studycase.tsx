@@ -7,6 +7,7 @@ import MotionWord from '@animations/motion-word';
 // hooks
 import useAnimationView from '@hooks/use-animation-view';
 import useActiveLink from '@hooks/use-active-link';
+import useCursor from '@hooks/use-cursor';
 
 // libraries
 import { Badge, Flex, List, ListItem } from '@lib/ui';
@@ -41,6 +42,7 @@ const PreviewMotion = motion.custom(Preview);
 export type Project = typeof studycase[0];
 
 const Studycase = () => {
+  const onCursor = useCursor();
   const linkRef = useActiveLink('/#showcase');
 
   return (
@@ -145,7 +147,9 @@ const Studycase = () => {
                         ease: 'linear',
                         duration: 1.55,
                         repeat: Infinity,
-                      }}>
+                      }}
+                      onMouseEnter={() => onCursor('hovered')}
+                      onMouseLeave={() => onCursor('default')}>
                       Study Case <ArrowRight />
                     </MoreInfoMotion>
                   </Link>
@@ -153,7 +157,9 @@ const Studycase = () => {
                 <PreviewMotion
                   variants={previewVariants}
                   initial='hidden'
-                  animate={titleAnimation}>
+                  animate={titleAnimation}
+                  onMouseEnter={() => onCursor('hovered')}
+                  onMouseLeave={() => onCursor('default')}>
                   <Link href={`/studycase/${project.slug}`}>
                     {/* Extra fragment needed to workarond next/image not being able to recieve refs */}
                     <>
