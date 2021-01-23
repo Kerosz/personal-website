@@ -1,6 +1,6 @@
+// libraries
 import styled from 'styled-components';
 import { FC } from 'react';
-import { motion } from 'framer-motion';
 import { Flex, Container, Devider, Text } from '@lib/ui';
 
 export const FooterWrapper = styled(Flex)`

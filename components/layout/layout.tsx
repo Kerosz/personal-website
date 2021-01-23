@@ -1,5 +1,8 @@
+// components
 import Footer from '@components/footer';
 import PageTransition from '@components/animations/page-transition';
+
+// libraries
 import { FC } from 'react';
 import { DesktopNavigation, MobileNavigation } from '@components/navbar';
 import { Container } from '@lib/ui';

@@ -1,9 +1,14 @@
+// components
 import Link from 'next/link';
 import Branding from './branding';
+
+// libraries
 import { FC, useEffect, useState } from 'react';
-import { isBrowser } from '@lib/utils/dom';
-import { MobileNavWrapper, BurgerMenu } from './navigation.styles';
 import { Container, Flex } from '@lib/ui';
+import { isBrowser } from '@lib/utils/dom';
+
+// styles
+import { MobileNavWrapper, BurgerMenu } from './navigation.styles';
 
 const TopNavigation: FC = () => {
   const [displayValue, setdisplayValue] = useState<boolean>(true);

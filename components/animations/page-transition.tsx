@@ -1,11 +1,16 @@
-import styled from 'styled-components';
+// components
 import Branding from '@components/navbar/branding';
+
+// libraries
+import styled from 'styled-components';
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { isBrowser } from '@lib/utils/dom';
 import { Flex } from '@lib/ui';
+
+// hooks
 import { useGlobalContext } from 'context/rootContext';
 import { toggleScroll } from '@actions/ui.action';
-import { isBrowser } from '@lib/utils/dom';
 
 const MainStack = styled(Flex)`
   display: block;

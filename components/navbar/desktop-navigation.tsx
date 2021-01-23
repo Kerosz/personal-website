@@ -1,7 +1,12 @@
+// components
 import Link from 'next/link';
 import ThemeSwitcher from './theme-switcher';
+
+// libraries
 import { AnimateSharedLayout, motion } from 'framer-motion';
 import { DesktopNavWrapper, List, ListItem, Line } from './navigation.styles';
+
+// hooks
 import { useGlobalContext } from 'context/rootContext';
 
 import navbarLinks from '@constants/navbar';

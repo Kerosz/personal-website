@@ -1,9 +1,15 @@
+// components
 import SectionTitle from '@components/title';
 import MotionWord from '@animations/motion-word';
-import { Flex, Text } from '@lib/ui';
-import { ContactWrapper } from './contact.styles';
 
+// libraries
+import { Flex, Text } from '@lib/ui';
+
+// hooks
 import useActiveLink from '@hooks/use-active-link';
+
+// styles
+import { ContactWrapper } from './contact.styles';
 
 const sentence =
   "Have something in mind and want to collaborate? Reach out and let's do it.";

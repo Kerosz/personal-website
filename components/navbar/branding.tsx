@@ -1,4 +1,4 @@
-import { FC, forwardRef, SVGProps } from 'react';
+import { forwardRef, SVGProps } from 'react';
 import { useGlobalContext } from 'context/rootContext';
 
 interface BrandProps extends SVGProps<SVGSVGElement> {

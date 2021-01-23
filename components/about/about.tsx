@@ -1,12 +1,19 @@
+// components
 import SectionTitle from '@components/title';
+
+// libraries
 import { Flex, Text } from '@lib/ui';
-import { AboutWrapper } from './about.styles';
+import { mergeRefs } from '@lib/utils/react-helpers';
+
+// hooks
 import useIsVisible from '@hooks/use-is-visible';
 import useThemeMode from '@hooks/use-theme-mode';
 import useActiveLink from '@hooks/use-active-link';
 
+// styles
+import { AboutWrapper } from './about.styles';
+
 import bioData from '@constants/bio';
-import { mergeRefs } from '@lib/utils/react-helpers';
 
 const About = () => {
   const linkRef = useActiveLink('/#introduction');

@@ -1,6 +1,9 @@
+// libraries
 import { FC } from 'react';
-import { Flex } from '@lib/ui';
 import { motion } from 'framer-motion';
+import { Flex } from '@lib/ui';
+
+// hooks
 import useAnimationView from '@hooks/use-animation-view';
 
 interface MotionWordProps {
