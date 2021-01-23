@@ -6,8 +6,8 @@ import { FC } from 'react';
 import useThemeMode from '@hooks/use-theme-mode';
 
 const Switcher = styled.div`
-  width: 2.3vw;
-  height: 2.3vw;
+  width: 8vw;
+  height: 8vw;
   border-radius: 50%;
   background: ${(props) =>
     props.theme.mode === 'light'
@@ -15,6 +15,16 @@ const Switcher = styled.div`
       : props.theme.colors.gray[900]};
   margin-left: 0.5rem;
   cursor: pointer;
+
+  ${(props) => props.theme.breakpoints.xs} {
+    width: 6.3vw;
+    height: 6.3vw;
+  }
+
+  ${(props) => props.theme.breakpoints.sm} {
+    width: 2.3vw;
+    height: 2.3vw;
+  }
 `;
 
 const ThemeSwitcher: FC = () => {

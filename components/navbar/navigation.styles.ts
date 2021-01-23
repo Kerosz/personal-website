@@ -39,11 +39,10 @@ export const MobileNavWrapper = styled(Flex)`
   }
 `;
 
-export const Burger = styled.div<{ open: boolean }>`
+export const Burger = styled.div`
   display: block;
   position: relative;
   cursor: pointer;
-  z-index: 101;
 
   ${(props) => props.theme.breakpoints.sm} {
     display: none;
@@ -51,10 +50,7 @@ export const Burger = styled.div<{ open: boolean }>`
 
   & > span {
     display: block;
-    background: ${(props) =>
-      props.open
-        ? props.theme.palette.background
-        : props.theme.palette.text.main};
+    background: ${(props) => props.theme.palette.text.main};
     width: 3.6rem;
     height: 0.5rem;
     border-radius: 0.2rem;
@@ -73,7 +69,7 @@ export const Menu = styled.div`
   bottom: 0;
   width: 105vw;
   background: ${(props) => props.theme.palette.text.main};
-  padding: 12vh 0;
+  padding: 4vh 0;
 
   ${(props) => props.theme.breakpoints.sm} {
     display: none;
@@ -92,13 +88,23 @@ export const MenuList = styled(UiL)`
 
 export const MenuItem = styled(UiLI)`
   color: ${(props) => props.theme.palette.background};
-  font-size: calc(3.45rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+  font-size: calc(3.75rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
   line-height: calc(3.9rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
   font-weight: 800;
 
   -webkit-text-fill-color: ${(props) => props.theme.palette.text.main};
   -webkit-text-stroke-width: 2px;
   -webkit-text-stroke-color: ${(props) => props.theme.palette.background};
+
+  :hover {
+    -webkit-text-fill-color: ${(props) => props.theme.palette.background};
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: transparent;
+  }
+
+  ${(props) => props.theme.breakpoints.xs} {
+    font-size: calc(4.3rem + (60 - 38) * ((100vw - 320px) / (1600 - 320)));
+  }
 `;
 
 export const DesktopNavWrapper = styled(Flex)`
