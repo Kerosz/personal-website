@@ -1,7 +1,6 @@
 // libraries
 import styled from 'styled-components';
 import { FC } from 'react';
-
 // hooks
 import useThemeMode from '@hooks/use-theme-mode';
 

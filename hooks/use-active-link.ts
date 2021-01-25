@@ -1,6 +1,6 @@
 import useIsVisible from '@hooks/use-is-visible';
 import { useUpdateEffect } from '@lib/utils/react-helpers';
-import { useGlobalContext } from 'context/rootContext';
+import { useGlobalContext } from 'context/root-context';
 
 /**
  * A hook that can be used to set the current active link path of the page.

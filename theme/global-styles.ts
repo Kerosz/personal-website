@@ -32,6 +32,11 @@ const GlobalStyles = createGlobalStyle`
     display: none;
   }
 
+  ::selection {
+    background:  ${(props) => props.theme.palette.text.main};
+    color: ${(props) => props.theme.palette.background};
+  }
+
   body {
     font-family: ${(props) =>
       props.theme.font.family

@@ -60,7 +60,7 @@ const largerFontSize = css`
   }
 `;
 
-export const StudycaseWrapper = styled(Flex)`
+export const ShowcaseWrapper = styled(Flex)`
   scroll-snap-align: start;
   padding: 21.5% 0 4%;
 
@@ -252,6 +252,6 @@ export const Preview = styled(Flex)`
   }
 
   img:hover {
-    transform: scale(1.03);
+    transform: scale(1.04);
   }
 `;

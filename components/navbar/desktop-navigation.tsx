@@ -5,7 +5,8 @@ import ThemeSwitcher from './theme-switcher';
 import { AnimateSharedLayout, motion } from 'framer-motion';
 // hooks
 import useCursor from '@hooks/use-cursor';
-import { useGlobalContext } from 'context/rootContext';
+// context
+import { useGlobalContext } from 'context/root-context';
 // styles
 import { DesktopNavWrapper, List, ListItem, Line } from './navigation.styles';
 

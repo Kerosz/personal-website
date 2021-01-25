@@ -1,14 +1,14 @@
-import Layout from '@components/layout';
 import Hero from '@components/hero';
 import About from '@components/about';
-import Studycase from '@components/studycase';
+import Showcase from '@components/showcase';
 import Contact from '@components/contact';
+import { Layout } from '@components/layout';
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <Studycase />
+      <Showcase />
       <About />
       <Contact />
     </>

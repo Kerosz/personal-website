@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { BaseThemeProps, ThemeModeProps } from './theme.types';
-import { useGlobalContext } from '../context/rootContext';
+import { useGlobalContext } from '../context/root-context';
 import GlobalStyles from './global-styles';
 import darkMode from './modes/dark';
 import lightMode from './modes/light';

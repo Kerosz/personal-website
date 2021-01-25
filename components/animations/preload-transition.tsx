@@ -9,7 +9,7 @@ import { isBrowser } from '@lib/utils/dom';
 import { Flex } from '@lib/ui';
 
 // hooks
-import { useGlobalContext } from 'context/rootContext';
+import { useGlobalContext } from 'context/root-context';
 
 const MainStack = styled(Flex)`
   display: block;

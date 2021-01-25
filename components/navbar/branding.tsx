@@ -1,5 +1,7 @@
+// libraries
 import { forwardRef, SVGProps } from 'react';
-import { useGlobalContext } from 'context/rootContext';
+// context
+import { useGlobalContext } from 'context/root-context';
 
 interface BrandProps extends SVGProps<SVGSVGElement> {
   invert?: boolean;

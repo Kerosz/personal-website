@@ -1,9 +1,9 @@
-import Layout from '@components/layout';
+import { StudycaseLayout } from '@components/layout';
 
 const Studycase = () => {
   return <div></div>;
 };
 
-Studycase.Layout = Layout;
+Studycase.Layout = StudycaseLayout;
 
 export default Studycase;

@@ -1,9 +1,7 @@
 // libraries
 import { motion } from 'framer-motion';
-
 // hooks
 import useActiveLink from '@hooks/use-active-link';
-
 // styles
 import { Text, HeroWrapper, Scroll } from './hero.styles';
 

@@ -3,20 +3,25 @@ import SectionTitle from '@components/title';
 import Link from 'next/link';
 import Image from 'next/image';
 import MotionWord from '@animations/motion-word';
-
 // hooks
 import useAnimationView from '@hooks/use-animation-view';
 import useActiveLink from '@hooks/use-active-link';
 import useCursor from '@hooks/use-cursor';
-
 // libraries
-import { Badge, Flex, List, ListItem } from '@lib/ui';
-import { ArrowRight } from '@lib/icons';
 import { motion } from 'framer-motion';
-
+import {
+  Badge,
+  Flex,
+  List,
+  ListItem,
+  Accordion,
+  AccordionHeader,
+  AccordionBody,
+} from '@lib/ui';
+import { ArrowRight } from '@lib/icons';
 // styles
 import {
-  StudycaseWrapper,
+  ShowcaseWrapper,
   Project,
   BadgeWrapper,
   Marquee,
@@ -27,10 +32,14 @@ import {
   Description,
   MoreInfo,
   Preview,
-} from './studycase.styles';
+} from './showcase.styles';
 
 import studycase from '@constants/studycase';
+import moreProjects from '@constants/more-projects';
 
+export type ProjectProps = typeof studycase[0];
+
+// Framer Motion Components
 const MarqueeTextMotion = motion.custom(MarqueeText);
 const TitleMotion = motion.custom(Title);
 const BadgeMotion = motion.custom(BadgeWrapper);
@@ -39,17 +48,15 @@ const ItemMotion = motion.custom(ListItem);
 const MoreInfoMotion = motion.custom(MoreInfo);
 const PreviewMotion = motion.custom(Preview);
 
-export type Project = typeof studycase[0];
-
-const Studycase = () => {
+const Showcase = () => {
   const onCursor = useCursor();
   const linkRef = useActiveLink('/#showcase');
 
   return (
-    <StudycaseWrapper id='showcase' component='section' direction='column'>
+    <ShowcaseWrapper id='showcase' component='section' direction='column'>
       <SectionTitle heading='Study Case' subHeading='Showcase' />
       <Flex direction='column' ref={linkRef}>
-        {studycase.map((project: Project, idx) => {
+        {studycase.map((project: ProjectProps, idx) => {
           const { ref: titleRef, animation: titleAnimation } = useAnimationView(
             {
               threshold: 0.25,
@@ -157,12 +164,12 @@ const Studycase = () => {
                 <PreviewMotion
                   variants={previewVariants}
                   initial='hidden'
-                  animate={titleAnimation}
-                  onMouseEnter={() => onCursor('hovered')}
-                  onMouseLeave={() => onCursor('default')}>
+                  animate={titleAnimation}>
                   <Link href={`/studycase/${project.slug}`}>
                     {/* Extra fragment needed to workarond next/image not being able to recieve refs */}
-                    <>
+                    <a
+                      onMouseEnter={() => onCursor('hovered')}
+                      onMouseLeave={() => onCursor('default')}>
                       <Image
                         src={project.src}
                         alt={`Display of mockups for ${project.name} project`}
@@ -170,7 +177,7 @@ const Studycase = () => {
                         height={600}
                         layout='responsive'
                       />
-                    </>
+                    </a>
                   </Link>
                 </PreviewMotion>
               </Content>
@@ -178,7 +185,16 @@ const Studycase = () => {
           );
         })}
       </Flex>
-    </StudycaseWrapper>
+      <Flex direction='column' mt='10%'>
+        <SectionTitle heading='More Projects' />
+        {moreProjects.map((project: ProjectProps) => (
+          <Accordion key={project.id}>
+            <AccordionHeader>{project.name}</AccordionHeader>
+            <AccordionBody>{project.summary}</AccordionBody>
+          </Accordion>
+        ))}
+      </Flex>
+    </ShowcaseWrapper>
   );
 };
 
@@ -218,4 +234,4 @@ const itemVariants = {
   hidden: { opacity: 0, x: -100 },
 };
 
-export default Studycase;
+export default Showcase;

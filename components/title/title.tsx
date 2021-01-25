@@ -1,12 +1,10 @@
 // libraries
+import { motion } from 'framer-motion';
 import { FC } from 'react';
 import { Devider, Text, Flex } from '@lib/ui';
-import { motion } from 'framer-motion';
-
 // hooks
 import useAnimationView from '@hooks/use-animation-view';
 import MotionWord from '@animations/motion-word';
-
 // styles
 import { TitleWrapper } from './title.styles';
 

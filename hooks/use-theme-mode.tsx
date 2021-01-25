@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useUpdateEffect } from '@lib/utils/react-helpers';
 import { ThemeOption } from '@actions/ui.action';
-import { useGlobalContext } from 'context/rootContext';
+import { useGlobalContext } from 'context/root-context';
 import useJsonMemo from './use-json-memo';
 
 export interface Options {

@@ -1,4 +1,4 @@
-import { useGlobalContext } from 'context/rootContext';
+import { useGlobalContext } from 'context/root-context';
 import { isNull } from '@lib/utils/assertion';
 
 /**

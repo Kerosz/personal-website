@@ -1,15 +1,12 @@
 // components
 import SectionTitle from '@components/title';
-
 // libraries
 import { Flex, Text } from '@lib/ui';
 import { mergeRefs } from '@lib/utils/react-helpers';
-
 // hooks
 import useIsVisible from '@hooks/use-is-visible';
 import useThemeMode from '@hooks/use-theme-mode';
 import useActiveLink from '@hooks/use-active-link';
-
 // styles
 import { AboutWrapper } from './about.styles';
 

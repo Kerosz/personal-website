@@ -1,9 +1,11 @@
+// components
+import Head from '@components/head';
+import GlobalContextProvider from '../context/root-context';
+import Theme from '../theme';
+// libraries
 import { FC } from 'react';
 import { AppProps } from 'next/app';
 import { AnimatePresence } from 'framer-motion';
-import Head from '@components/head';
-import GlobalContextProvider from '../context/rootContext';
-import Theme from '../theme';
 
 const Fragment: FC = ({ children }) => <>{children}</>;
 

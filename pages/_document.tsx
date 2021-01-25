@@ -1,7 +1,7 @@
+// libraries
+import flush from 'styled-jsx/server';
 import Document, { DocumentContext } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
-import flush from 'styled-jsx/server';
-
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
     const styledComponentSheet = new ServerStyleSheet();

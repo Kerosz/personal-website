@@ -1,7 +1,6 @@
 // libraries
 import { createContext, useContext, useReducer, FC, useMemo } from 'react';
 import { isUndefined, __DEV__ } from '@lib/utils/assertion';
-
 // actions
 import {
   ThemeOption,
@@ -11,11 +10,10 @@ import {
   addActivePath,
   updateCursorType,
 } from '@actions/ui.action';
-
 // reducers
 import uiReducer, { initialUiState, UiState } from './reducers/ui.reducer';
 
-interface ContextProps extends UiState {
+export interface ContextProps extends UiState {
   setThemeMode: (theme: ThemeOption) => void;
   setActivePath: (path: string) => void;
   setCursorType: (type: string) => void;
@@ -58,14 +56,14 @@ export const useGlobalContext = () => {
   const context = useContext(GlobalContext);
 
   if (isUndefined(context)) {
-    throw new Error(`Context must be used within a ContextProvider`);
+    throw new Error(`Context must be used within a 'ContextProvider'`);
   }
 
   return context;
 };
 
-export default GlobalContextProvider;
-
 if (__DEV__) {
   GlobalContext.displayName = 'GlobalContext';
 }
+
+export default GlobalContextProvider;
