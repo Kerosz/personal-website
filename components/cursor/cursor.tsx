@@ -31,12 +31,12 @@ const Cursor = () => {
 
   const touch = isTouch();
 
-  return !touch ? (
+  return (
     <CustomCursor
       className={`${!!cursorType ? cursorType : ''}`}
       style={{ left: `${mouseCoord.x}px`, top: `${mouseCoord.y}px` }}
     />
-  ) : null;
+  );
 };
 
 export default Cursor;

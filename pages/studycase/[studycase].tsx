@@ -1,4 +1,5 @@
 // components
+import Studycase from '@components/studycase';
 import { StudycaseLayout } from '@components/layout';
 // libraries
 import ErrorPage from 'next/error';
@@ -27,7 +28,7 @@ export async function getStaticProps({
   };
 }
 
-export default function Studycase({
+export default function StudycasePage({
   studycase,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const router = useRouter();
@@ -37,10 +38,16 @@ export default function Studycase({
   }
 
   return (
-    <Container maxW='87.5%'>
-      {router.isFallback ? <div>Loading...</div> : <h1>{studycase.name}</h1>}
-    </Container>
+    <>
+      {router.isFallback ? (
+        <Container maxW='87.5%'>
+          <div>Loading...</div>
+        </Container>
+      ) : (
+        <Studycase data={studycase} />
+      )}
+    </>
   );
 }
 
-Studycase.Layout = StudycaseLayout;
+StudycasePage.Layout = StudycaseLayout;

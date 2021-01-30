@@ -9,7 +9,7 @@ const GlobalStyles = createGlobalStyle`
     list-style: none;
     outline: none;
     font-size: 1.6rem;
-    cursor: ${(props) => (props.theme.touch ? 'default' : 'none !important')};
+    cursor: none !important;
   }
 
   html {

@@ -68,16 +68,13 @@ const PageTransition = () => {
   }, [canScroll]);
 
   function onAnimation() {
-    // Closure needed for the timeout side effect
-    return function () {
-      setTimeout((_) => {
-        toggleScrollState();
-        toggleTransitionState();
-      }, 500);
-    };
+    setTimeout(() => {
+      toggleScrollState();
+      toggleTransitionState();
+    }, 100);
   }
 
-  return isTransition ? (
+  return !isTransition ? null : (
     <>
       <MainStack
         as={motion.div}
@@ -99,7 +96,7 @@ const PageTransition = () => {
         </motion.figure>
       </SubStack>
     </>
-  ) : null;
+  );
 };
 
 const mainVariants = {
