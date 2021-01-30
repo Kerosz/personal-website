@@ -1,13 +1,11 @@
 // components
 import Branding from '@components/navbar/branding';
-
 // libraries
 import styled from 'styled-components';
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { isBrowser } from '@lib/utils/dom';
 import { Flex } from '@lib/ui';
-
 // hooks
 import { useGlobalContext } from 'context/root-context';
 

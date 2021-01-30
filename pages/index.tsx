@@ -5,21 +5,22 @@ import Showcase from '@components/showcase';
 import Contact from '@components/contact';
 import { Layout } from '@components/layout';
 // libraries
-import { getAllDataForHome, IStudycase, IHero, IBio } from '@lib/api';
+import { getAllDataForHome, IStudycase, IHero, IBio, IContact } from '@lib/api';
 
 export interface HomeProps {
   studycase: IStudycase[];
   hero: IHero[];
   bio: IBio[];
+  contact: IContact;
 }
 
-export default function Home({ studycase, bio, hero }: HomeProps) {
+export default function Home({ studycase, bio, hero, contact }: HomeProps) {
   return (
     <>
       <Hero data={hero} />
       <Showcase data={studycase} />
       <About data={bio} />
-      <Contact />
+      <Contact data={contact} />
     </>
   );
 }
@@ -28,9 +29,7 @@ export async function getStaticProps({ preview = false }) {
   const data = await getAllDataForHome(preview);
 
   if (!data) {
-    return {
-      notFound: true,
-    };
+    return { notFound: true };
   }
 
   return {

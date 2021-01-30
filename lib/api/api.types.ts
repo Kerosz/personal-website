@@ -23,6 +23,12 @@ export interface IBio {
   text: string;
 }
 
+export interface IContact {
+  _id: string;
+  content: string;
+  email: string;
+}
+
 export interface ITag {
   title: string;
 }

@@ -2,17 +2,16 @@
 import SectionTitle from '@components/title';
 import MotionWord from '@animations/motion-word';
 // libraries
+import { FC, memo } from 'react';
 import { Flex, Text } from '@lib/ui';
+import { IContact } from '@lib/api';
 // hooks
 import useActiveLink from '@hooks/use-active-link';
 import useCursor from '@hooks/use-cursor';
 // styles
 import { ContactWrapper } from './contact.styles';
 
-const sentence =
-  "Have something in mind and want to collaborate? Reach out and let's do it.";
-
-const Contact = () => {
+const Contact: FC<{ data: IContact }> = memo(({ data }) => {
   const onCursor = useCursor();
   const linkRef = useActiveLink('/#contact');
 
@@ -20,7 +19,7 @@ const Contact = () => {
     <ContactWrapper id='contact' component='section' direction='column'>
       <SectionTitle heading='Let’s talk' subHeading='Contact' />
       <Flex ref={linkRef} component='h3' wrap='wrap'>
-        {sentence.split(' ').map((word, idx) => (
+        {data.content.split(' ').map((word, idx) => (
           <MotionWord
             key={`${word}-motion-${idx}`}
             initialState='-50%'
@@ -32,16 +31,17 @@ const Contact = () => {
       </Flex>
       <Text
         component='a'
-        to='mailto:andrei@chirila.dev'
+        to={`mailto:${data.email}`}
         fit
         onMouseEnter={() => onCursor('hovered')}
         onMouseLeave={() => onCursor('default')}>
-        <MotionWord initialDelay={0.35 + sentence.split(' ').length * 0.025}>
-          andrei@chirila.dev
+        <MotionWord
+          initialDelay={0.35 + data.content.split(' ').length * 0.025}>
+          {data.email}
         </MotionWord>
       </Text>
     </ContactWrapper>
   );
-};
+});
 
 export default Contact;

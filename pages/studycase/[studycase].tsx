@@ -11,7 +11,7 @@ export async function getStaticPaths() {
   const allStudycases = await getAllStudycasesWithSlug();
 
   return {
-    paths: allStudycases?.map(({ slug }) => `/studycase/${slug}`),
+    paths: allStudycases?.map(({ slug }) => `/studycase/${slug}`) || [],
     fallback: true,
   };
 }
@@ -38,7 +38,7 @@ export default function Studycase({
 
   return (
     <Container maxW='87.5%'>
-      <h1>{studycase.name}</h1>
+      {router.isFallback ? <div>Loading...</div> : <h1>{studycase.name}</h1>}
     </Container>
   );
 }

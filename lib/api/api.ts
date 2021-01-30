@@ -1,6 +1,14 @@
 import client, { previewClient } from 'sanity';
-import { IBio, IHero, IStudycase } from './api.types';
-import { studycaseFields } from './constants';
+import { IBio, IHero, IStudycase, IContact } from './api.types';
+import {
+  allStudycaseQuery,
+  allBioQuery,
+  contactQuery,
+  allHeroQuery,
+  studycaseBySlugQuery,
+  allNavigationQuery,
+  studycaseWithSlugQuery,
+} from './constants';
 
 /**
  * Function that returns `previewClient` if preview is set to `true` or `client` if it's set to `false`
@@ -14,27 +22,29 @@ const getClient = (preview: boolean) => (preview ? previewClient : client);
  */
 export async function getAllDataForHome(
   preview: boolean
-): Promise<{ studycase: IStudycase; bio: IBio; hero: IHero }> {
+): Promise<{
+  studycase: IStudycase[];
+  bio: IBio[];
+  hero: IHero[];
+  contact: IContact;
+}> {
   const currentClient = getClient(preview);
 
-  const [studycase, bio, hero] = await Promise.all([
-    currentClient.fetch(`*[ _type == "studycase"] | order(date desc, _updatedAt desc){
-      ${studycaseFields}
-    }`),
-    currentClient.fetch('*[ _type == "bio" ]'),
-    currentClient.fetch('*[ _type == "hero" ]'),
+  const [studycase, bio, hero, contact] = await Promise.all([
+    currentClient.fetch(allStudycaseQuery),
+    currentClient.fetch(allBioQuery),
+    currentClient.fetch(allHeroQuery),
+    currentClient.fetch(contactQuery).then((res) => res?.[0]),
   ]);
 
-  return { studycase, bio, hero };
+  return { studycase, bio, hero, contact };
 }
 
 /** Functions that gets all the studycases as an `array` of objects. Returns a promise */
 export async function getAllStudycasesWithSlug(): Promise<
   Array<{ slug: string }>
 > {
-  const data = await client.fetch(
-    `*[_type == "studycase"]{ 'slug': slug.current }`
-  );
+  const data = await client.fetch(studycaseWithSlugQuery);
 
   return data;
 }
@@ -49,21 +59,14 @@ export async function getStudycaseBySlug(
   preview: boolean
 ) {
   const studycase = getClient(preview)
-    .fetch(
-      `*[_type == "studycase" && slug.current == '${slug}' ] | order(_updatedAt desc) {
-    ${studycaseFields}
-  }`
-    )
+    .fetch(studycaseBySlugQuery, { slug })
     .then((res) => res?.[0]);
 
   return studycase;
 }
 
 export async function getNavigationData() {
-  const navigation = await client.fetch(`*[ _type == 'nav' ] | order(date desc, _updatedAt desc) {
-    label,
-    'path': path.current
-  }`);
+  const navigation = await client.fetch(allNavigationQuery);
 
   return navigation;
 }

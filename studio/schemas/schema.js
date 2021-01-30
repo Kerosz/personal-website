@@ -6,9 +6,18 @@ import goal from './goal';
 import studycase from './studycase';
 import navigation from './navigation';
 import bio from './bio';
+import contact from './contact';
 import hero from './hero';
 
 export default createSchema({
   name: 'portfolio',
-  types: schemaTypes.concat([studycase, navigation, bio, hero, goal, tag]),
+  types: schemaTypes.concat([
+    studycase,
+    navigation,
+    bio,
+    contact,
+    hero,
+    goal,
+    tag,
+  ]),
 });
