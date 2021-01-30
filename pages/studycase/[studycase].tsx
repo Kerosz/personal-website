@@ -19,15 +19,17 @@ export default function StudycasePage({
   }
 
   return (
-    <StudycaseLayout data={navigation}>
+    <>
       {router.isFallback ? (
         <Container maxW='87.5%'>
           <div>Loading...</div>
         </Container>
       ) : (
-        <Studycase data={studycase} />
+        <StudycaseLayout data={navigation}>
+          <Studycase data={studycase} />
+        </StudycaseLayout>
       )}
-    </StudycaseLayout>
+    </>
   );
 }
 
