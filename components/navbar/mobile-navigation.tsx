@@ -1,11 +1,13 @@
 // components
-import Link from 'next/link';
+import Link from '@components/link';
 import ThemeSwitcher from './theme-switcher';
 import Branding from './branding';
 // libraries
 import { FC, memo } from 'react';
 import { motion, useCycle } from 'framer-motion';
 import { Container, Flex } from '@lib/ui';
+import { INavigation } from '@lib/api';
+import { isNull } from '@lib/utils/assertion';
 // hooks
 import useCursor from '@hooks/use-cursor';
 // styles
@@ -17,33 +19,10 @@ import {
   MenuItem,
 } from './navigation.styles';
 
-const navbarLinks = [
-  {
-    id: 0,
-    label: 'Home',
-    path: '/',
-  },
-  {
-    id: 1,
-    label: 'Showcase',
-    path: '/#showcase',
-  },
-  {
-    id: 2,
-    label: 'Introduction',
-    path: '/#introduction',
-  },
-  {
-    id: 4,
-    label: 'Contact',
-    path: '/#contact',
-  },
-];
-
 const MenuMotion = motion.custom(Menu);
 const MotionMenuItem = motion.custom(MenuItem);
 
-const TopNavigation: FC = memo(() => {
+const TopNavigation: FC<{ data: INavigation[] }> = memo(({ data }) => {
   const onCursor = useCursor();
   const [isOpen, toggleOpen] = useCycle(false, true);
 
@@ -51,7 +30,7 @@ const TopNavigation: FC = memo(() => {
     <MobileNavWrapper component='header'>
       <Container maxW='99.2%'>
         <Flex justify='space-between' align='center'>
-          <Link href='/'>
+          <Link to='/'>
             <Branding
               onMouseEnter={() => onCursor('hovered')}
               onMouseLeave={() => onCursor('default')}
@@ -85,23 +64,28 @@ const TopNavigation: FC = memo(() => {
                 Close
               </MotionMenuItem>
               <ThemeSwitcher />
-              {navbarLinks.map((link) => (
-                <Link key={link.id} href={link.path}>
-                  <MotionMenuItem
-                    onClick={() => setTimeout(() => toggleOpen(), 450)}
-                    animate
-                    whileHover={{
-                      scale: 1.113,
-                      rotate: -3,
-                    }}
-                    whileTap={{
-                      scale: 0.875,
-                      rotate: -6,
-                    }}>
-                    {link.label}
-                  </MotionMenuItem>
-                </Link>
-              ))}
+              {data.map((link, idx) =>
+                !isNull(link.path) ? (
+                  <Link
+                    key={`${link._id}-link_${idx}`}
+                    to={link.path}
+                    target={link.target}>
+                    <MotionMenuItem
+                      onClick={() => setTimeout(() => toggleOpen(), 450)}
+                      animate
+                      whileHover={{
+                        scale: 1.113,
+                        rotate: -3,
+                      }}
+                      whileTap={{
+                        scale: 0.875,
+                        rotate: -6,
+                      }}>
+                      {link.label}
+                    </MotionMenuItem>
+                  </Link>
+                ) : null
+              )}
             </MenuList>
           </MenuMotion>
         </Flex>

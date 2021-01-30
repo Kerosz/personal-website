@@ -1,6 +1,6 @@
 // libraries
 import { useEffect, useState } from 'react';
-import { isTouch } from '@lib/utils/assertion';
+import { isMobile } from 'react-device-detect';
 // context
 import { useGlobalContext } from 'context/root-context';
 // styles
@@ -29,9 +29,7 @@ const Cursor = () => {
     setMouseCoord({ x, y });
   }
 
-  const touch = isTouch();
-
-  return (
+  return isMobile ? null : (
     <CustomCursor
       className={`${!!cursorType ? cursorType : ''}`}
       style={{ left: `${mouseCoord.x}px`, top: `${mouseCoord.y}px` }}

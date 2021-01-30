@@ -1,14 +1,16 @@
 // components
 import Footer from '@components/footer';
 import Cursor from '@components/cursor';
-import { DesktopNavigation } from '@components/navbar';
+import { DesktopNavigation, MobileNavigation } from '@components/navbar';
 // libraries
 import { FC } from 'react';
+import { INavigation } from '@lib/api';
 
-const StudycaseLayout: FC = ({ children }) => {
+const StudycaseLayout: FC<{ data: INavigation[] }> = ({ children, data }) => {
   return (
     <>
-      <DesktopNavigation />
+      <MobileNavigation data={data} />
+      <DesktopNavigation data={data} />
       <main>{children}</main>
       <Footer />
       <Cursor />

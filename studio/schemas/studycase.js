@@ -20,6 +20,24 @@ export default {
       },
     },
     {
+      name: 'live',
+      title: 'Production version',
+      description: 'URL for the live production version',
+      type: 'url',
+    },
+    {
+      name: 'livePreview',
+      title: 'Preview version',
+      description: 'URL for the live preview version',
+      type: 'url',
+    },
+    {
+      name: 'source',
+      ttle: 'Source code',
+      description: 'URL for the project source code if available',
+      type: 'url',
+    },
+    {
       name: 'scheme',
       title: 'Color scheme',
       description:
@@ -63,8 +81,9 @@ export default {
       of: [{ type: 'reference', to: { type: 'goal' } }],
     },
     {
-      name: 'createdAt',
-      title: 'Created at',
+      name: 'finishDate',
+      title: 'Project finished at',
+      description: 'The datetime the project was finished',
       type: 'datetime',
     },
   ],

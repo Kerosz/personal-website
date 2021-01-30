@@ -1,70 +1,54 @@
 // components
-import Link from 'next/link';
+import Link from '@components/link';
 import ThemeSwitcher from './theme-switcher';
 // libraries
 import { FC, memo } from 'react';
 import { motion } from 'framer-motion';
+import { INavigation } from '@lib/api';
 // hooks
 import useCursor from '@hooks/use-cursor';
 // context
 import { useGlobalContext } from 'context/root-context';
 // styles
 import { DesktopNavWrapper, List, ListItem, Line } from './navigation.styles';
-
-const navbarLinks = [
-  {
-    id: 0,
-    label: 'Home',
-    path: '/',
-  },
-  {
-    id: 1,
-    label: 'Showcase',
-    path: '/#showcase',
-  },
-  {
-    id: 2,
-    label: 'Introduction',
-    path: '/#introduction',
-  },
-  {
-    id: 4,
-    label: 'Contact',
-    path: '/#contact',
-  },
-];
+import { isNull } from '@lib/utils/assertion';
 
 const MotionListItem = motion.custom(ListItem);
 
-const BottomNavigation: FC = memo(() => {
+const BottomNavigation: FC<{ data: INavigation[] }> = memo(({ data }) => {
   const { activePath } = useGlobalContext();
   const onCursor = useCursor();
 
   return (
     <DesktopNavWrapper component='nav' className='desktop'>
       <List>
-        {navbarLinks.map((link) => (
-          <Link key={link.id} href={link.path}>
-            <MotionListItem
-              layoutId={link.label}
-              className={activePath === link.path ? 'selected' : ''}
-              animate
-              whileHover={{
-                scale: 1.113,
-                rotate: -3,
-                transition: navTextTransition,
-              }}
-              whileTap={{
-                scale: 0.875,
-                rotate: -6,
-                transition: navTextTransition,
-              }}
-              onMouseEnter={() => onCursor('hovered')}
-              onMouseLeave={() => onCursor('default')}>
-              {link.label}
-            </MotionListItem>
-          </Link>
-        ))}
+        {data.map((link, idx) =>
+          !isNull(link.path) ? (
+            <Link
+              key={`${link._id}-link_${idx}`}
+              to={link.path}
+              target={link.target}>
+              <MotionListItem
+                layoutId={link.label}
+                className={activePath === link.path ? 'selected' : ''}
+                animate
+                whileHover={{
+                  scale: 1.113,
+                  rotate: -3,
+                  transition: navTextTransition,
+                }}
+                whileTap={{
+                  scale: 0.875,
+                  rotate: -6,
+                  transition: navTextTransition,
+                }}
+                onMouseEnter={() => onCursor('hovered')}
+                onMouseLeave={() => onCursor('default')}>
+                {link.label}
+              </MotionListItem>
+            </Link>
+          ) : null
+        )}
         <ListItem style={{ cursor: 'default' }}>
           <Line />
         </ListItem>

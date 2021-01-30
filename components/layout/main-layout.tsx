@@ -6,12 +6,13 @@ import { DesktopNavigation, MobileNavigation } from '@components/navbar';
 // libraries
 import { FC } from 'react';
 import { Container } from '@lib/ui';
+import { INavigation } from '@lib/api';
 
-const Layout: FC = ({ children }) => {
+const MainLayout: FC<{ data: INavigation[] }> = ({ children, data }) => {
   return (
     <>
-      <MobileNavigation />
-      <DesktopNavigation />
+      <MobileNavigation data={data} />
+      <DesktopNavigation data={data} />
       <main>
         <Container className='container' maxW='88%'>
           {children}
@@ -24,4 +25,4 @@ const Layout: FC = ({ children }) => {
   );
 };
 
-export default Layout;
+export default MainLayout;

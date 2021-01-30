@@ -9,7 +9,8 @@ const GlobalStyles = createGlobalStyle`
     list-style: none;
     outline: none;
     font-size: 1.6rem;
-    cursor: none !important;
+    cursor: ${(props) =>
+      props.theme.isMobile ? 'default' : 'none !important'};
   }
 
   html {

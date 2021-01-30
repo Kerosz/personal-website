@@ -6,13 +6,18 @@ import { imageBuilder } from 'sanity';
 import { IStudycase } from '@lib/api';
 import { Container, Text } from '@lib/ui';
 // styles
-import { ImageContainer } from './studycase.styles';
+import { ImageContainer, TopWrapper } from './studycase.styles';
 
 const MotionImageContainer = motion.custom(ImageContainer);
 
 const Studycase: FC<{ data: IStudycase }> = memo(({ data }) => {
   return (
     <>
+      <Container maxW='87.5%'>
+        <TopWrapper justify='center'>
+          <Text component='h1'>{data.name}</Text>
+        </TopWrapper>
+      </Container>
       <Container fluid padding='0px'>
         <MotionImageContainer layoutId={data._id}>
           <Image
@@ -22,9 +27,6 @@ const Studycase: FC<{ data: IStudycase }> = memo(({ data }) => {
             objectFit='cover'
           />
         </MotionImageContainer>
-      </Container>
-      <Container maxW='87.5%'>
-        <Text component='h1'>{data.name}</Text>
       </Container>
     </>
   );

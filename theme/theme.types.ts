@@ -26,7 +26,7 @@ export interface ThemeColors {
 
 export interface BaseThemeProps extends ThemeModeProps {
   mode?: string;
-  touch?: boolean | null;
+  isMobile?: boolean | null;
   colors: {
     black: string;
     white: string;

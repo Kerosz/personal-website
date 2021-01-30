@@ -1,5 +1,5 @@
 import client, { previewClient } from 'sanity';
-import { IBio, IHero, IStudycase, IContact } from './api.types';
+import { IBio, IHero, IStudycase, IContact, INavigation } from './api.types';
 import {
   allStudycaseQuery,
   allBioQuery,
@@ -57,7 +57,7 @@ export async function getAllStudycasesWithSlug(): Promise<
 export async function getStudycaseBySlug(
   slug: string | string[] | undefined,
   preview: boolean
-) {
+): Promise<IStudycase> {
   const studycase = getClient(preview)
     .fetch(studycaseBySlugQuery, { slug })
     .then((res) => res?.[0]);
@@ -65,8 +65,9 @@ export async function getStudycaseBySlug(
   return studycase;
 }
 
-export async function getNavigationData() {
-  const navigation = await client.fetch(allNavigationQuery);
+/** Function that queries a list of navigation items. Returns a promise */
+export async function getNavigationData(): Promise<INavigation[]> {
+  const navigation: INavigation[] = await client.fetch(allNavigationQuery);
 
   return navigation;
 }

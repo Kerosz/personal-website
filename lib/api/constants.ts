@@ -2,6 +2,9 @@ export const studycaseFields = `
   _id,
   name,
   "slug": slug.current,
+  live,
+  livePreview,
+  source,
   excerpt,
   scheme,
   align,
@@ -37,6 +40,7 @@ export const contactQuery = `*[ _type == "contact" ] | order(date desc, _updated
   }`;
 
 export const allNavigationQuery = `*[ _type == 'nav' ] | order(date desc, _updatedAt desc) {
+    _id,
     label,
     'path': path.current
   }`;

@@ -4,6 +4,9 @@ export interface IStudycase {
   slug: {
     current: string;
   };
+  live: string;
+  livePreview: string;
+  source: string;
   excerpt: string;
   scheme: string;
   src: Record<string, unknown>;
@@ -21,6 +24,13 @@ export interface IHero {
 export interface IBio {
   _id: string;
   text: string;
+}
+
+export interface INavigation {
+  _id: string;
+  label: string;
+  path: string | null;
+  target?: boolean;
 }
 
 export interface IContact {

@@ -1,7 +1,7 @@
 // libraries
 import { FC } from 'react';
 import { ThemeProvider } from 'styled-components';
-import { isTouch } from '@lib/utils/assertion';
+import { isMobile } from 'react-device-detect';
 // context
 import { useGlobalContext } from '../context/root-context';
 // theme
@@ -83,10 +83,9 @@ const Theme: FC = ({ children }) => {
   const { themeOption } = useGlobalContext();
   const themeBasedOnMode = themeOption === 'light' ? lightMode : darkMode;
   const theme = themeConstructor(themeBasedOnMode);
-  const touch = isTouch();
 
   return (
-    <ThemeProvider theme={{ ...theme, mode: themeOption as string, touch }}>
+    <ThemeProvider theme={{ ...theme, mode: themeOption as string, isMobile }}>
       <GlobalStyles />
       {children}
     </ThemeProvider>
