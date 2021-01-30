@@ -1,3 +1,5 @@
+import { isBrowser } from './dom';
+
 /**
  *  * Asserts if the environment is in `dev` mode
  *
@@ -98,4 +100,19 @@ export function isObject(value: any): value is Record<string, unknown> {
     (typeof value === 'object' || isFunction(value)) &&
     !isArray(value)
   );
+}
+
+/**
+ * Asserts if the `window` has touch mode enabled
+ */
+export function isTouch() {
+  if (isBrowser) {
+    return (
+      'ontouchstart' in window ||
+      navigator.maxTouchPoints > 0 ||
+      navigator.msMaxTouchPoints > 0
+    );
+  }
+
+  return;
 }

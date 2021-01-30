@@ -52,7 +52,12 @@ const SubStack = styled(MainStack)`
 `;
 
 const PageTransition = () => {
-  const { canScroll, toggleScrollState } = useGlobalContext();
+  const {
+    canScroll,
+    isTransition,
+    toggleScrollState,
+    toggleTransitionState,
+  } = useGlobalContext();
 
   useEffect(() => {
     if (isBrowser && !canScroll) {
@@ -62,7 +67,17 @@ const PageTransition = () => {
     }
   }, [canScroll]);
 
-  return (
+  function onAnimation() {
+    // Closure needed for the timeout side effect
+    return function () {
+      setTimeout((_) => {
+        toggleScrollState();
+        toggleTransitionState();
+      }, 500);
+    };
+  }
+
+  return isTransition ? (
     <>
       <MainStack
         as={motion.div}
@@ -72,7 +87,7 @@ const PageTransition = () => {
       />
       <SubStack
         as={motion.div}
-        onAnimationComplete={toggleScrollState}
+        onAnimationComplete={onAnimation}
         variants={subVariants}
         initial='initial'
         animate='animate'>
@@ -84,7 +99,7 @@ const PageTransition = () => {
         </motion.figure>
       </SubStack>
     </>
-  );
+  ) : null;
 };
 
 const mainVariants = {

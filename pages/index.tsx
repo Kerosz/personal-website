@@ -5,16 +5,15 @@ import Showcase from '@components/showcase';
 import Contact from '@components/contact';
 import { Layout } from '@components/layout';
 // libraries
-import { getAllDataForHome, IStudycase, IHero, IBio, IContact } from '@lib/api';
+import { InferGetStaticPropsType } from 'next';
+import { getAllDataForHome } from '@lib/api';
 
-export interface HomeProps {
-  studycase: IStudycase[];
-  hero: IHero[];
-  bio: IBio[];
-  contact: IContact;
-}
-
-export default function Home({ studycase, bio, hero, contact }: HomeProps) {
+export default function Home({
+  studycase,
+  bio,
+  hero,
+  contact,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
       <Hero data={hero} />

@@ -1,5 +1,6 @@
 // libraries
 import { useEffect, useState } from 'react';
+import { isTouch } from '@lib/utils/assertion';
 // context
 import { useGlobalContext } from 'context/root-context';
 // styles
@@ -12,7 +13,7 @@ interface Point {
 
 const Cursor = () => {
   const { cursorType } = useGlobalContext();
-  const [mouseCoord, setMouseCoord] = useState<Point>({ x: 500, y: 500 });
+  const [mouseCoord, setMouseCoord] = useState<Point>({ x: 275, y: 275 });
 
   useEffect(() => {
     document.addEventListener('mousemove', onMouseMove);
@@ -28,12 +29,14 @@ const Cursor = () => {
     setMouseCoord({ x, y });
   }
 
-  return (
+  const touch = isTouch();
+
+  return !touch ? (
     <CustomCursor
       className={`${!!cursorType ? cursorType : ''}`}
       style={{ left: `${mouseCoord.x}px`, top: `${mouseCoord.y}px` }}
     />
-  );
+  ) : null;
 };
 
 export default Cursor;

@@ -1,10 +1,14 @@
+// libraries
 import { FC } from 'react';
 import { ThemeProvider } from 'styled-components';
-import { BaseThemeProps, ThemeModeProps } from './theme.types';
+import { isTouch } from '@lib/utils/assertion';
+// context
 import { useGlobalContext } from '../context/root-context';
+// theme
 import GlobalStyles from './global-styles';
 import darkMode from './modes/dark';
 import lightMode from './modes/light';
+import { BaseThemeProps, ThemeModeProps } from './theme.types';
 
 function themeConstructor(themeBasedOnMode: ThemeModeProps): BaseThemeProps {
   return {
@@ -79,9 +83,10 @@ const Theme: FC = ({ children }) => {
   const { themeOption } = useGlobalContext();
   const themeBasedOnMode = themeOption === 'light' ? lightMode : darkMode;
   const theme = themeConstructor(themeBasedOnMode);
+  const touch = isTouch();
 
   return (
-    <ThemeProvider theme={{ ...theme, mode: themeOption as string }}>
+    <ThemeProvider theme={{ ...theme, mode: themeOption as string, touch }}>
       <GlobalStyles />
       {children}
     </ThemeProvider>
