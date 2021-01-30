@@ -8,17 +8,11 @@ import useAnimationView from '@hooks/use-animation-view';
 import useActiveLink from '@hooks/use-active-link';
 import useCursor from '@hooks/use-cursor';
 // libraries
+import { FC, memo } from 'react';
 import { motion } from 'framer-motion';
-import {
-  Badge,
-  Flex,
-  List,
-  ListItem,
-  Accordion,
-  AccordionHeader,
-  AccordionBody,
-} from '@lib/ui';
+import { Badge, Flex, List, ListItem } from '@lib/ui';
 import { ArrowRight } from '@lib/icons';
+import { IStudycase } from '@lib/api';
 // styles
 import {
   ShowcaseWrapper,
@@ -33,11 +27,11 @@ import {
   MoreInfo,
   Preview,
 } from './showcase.styles';
+import { imageBuilder } from 'sanity';
 
-import studycase from '@constants/studycase';
-import moreProjects from '@constants/more-projects';
-
-export type ProjectProps = typeof studycase[0];
+export interface ShowcaseProps {
+  data: IStudycase[];
+}
 
 // Framer Motion Components
 const MarqueeTextMotion = motion.custom(MarqueeText);
@@ -48,15 +42,15 @@ const ItemMotion = motion.custom(ListItem);
 const MoreInfoMotion = motion.custom(MoreInfo);
 const PreviewMotion = motion.custom(Preview);
 
-const Showcase = () => {
-  const onCursor = useCursor();
+const Showcase: FC<ShowcaseProps> = memo(({ data }) => {
   const linkRef = useActiveLink('/#showcase');
+  const onCursor = useCursor();
 
   return (
     <ShowcaseWrapper id='showcase' component='section' direction='column'>
       <SectionTitle heading='Study Case' subHeading='Showcase' />
       <Flex direction='column' ref={linkRef}>
-        {studycase.map((project: ProjectProps, idx) => {
+        {data.map((project: IStudycase, idx) => {
           const { ref: titleRef, animation: titleAnimation } = useAnimationView(
             {
               threshold: 0.25,
@@ -71,7 +65,7 @@ const Showcase = () => {
             .map((name) => name);
 
           return (
-            <Project direction='column' key={`${project.name}-project_${idx}`}>
+            <Project direction='column' key={`${project._id}-project_${idx}`}>
               <Marquee align={project.align}>
                 <MarqueeTextMotion
                   animate={{
@@ -105,7 +99,7 @@ const Showcase = () => {
                     wrap='wrap'>
                     {project.tags.map((tag, idx) => (
                       <Badge
-                        key={`${tag}-badge_${idx}`}
+                        key={`${project._id}-tag_${idx}`}
                         style={{ fontSize: 'inherit' }}
                         mb='12px'>
                         {tag}
@@ -114,9 +108,9 @@ const Showcase = () => {
                   </BadgeMotion>
                   <SubTitle component='h4'>Summary</SubTitle>
                   <Description>
-                    {project.summary.split(' ').map((word, idx) => (
+                    {project.excerpt.split(' ').map((word, idx) => (
                       <MotionWord
-                        key={`${word}-motion-${idx}`}
+                        key={`${word}-motion_${idx}`}
                         initialDelay={0.15}
                         index={idx}>
                         {word}&nbsp;
@@ -132,7 +126,7 @@ const Showcase = () => {
                     animate={listAnimation}>
                     {project.goals.map((goal, idx) => (
                       <ItemMotion
-                        key={`${goal}-goal_${idx}`}
+                        key={`${project._id}-goal_${idx}`}
                         variants={itemVariants}>
                         {goal}
                       </ItemMotion>
@@ -167,17 +161,20 @@ const Showcase = () => {
                   animate={titleAnimation}>
                   <Link href={`/studycase/${project.slug}`}>
                     {/* Extra fragment needed to workarond next/image not being able to recieve refs */}
-                    <a
+                    <motion.a
+                      layoutId={project._id}
+                      aria-label={project.name}
                       onMouseEnter={() => onCursor('hovered')}
                       onMouseLeave={() => onCursor('default')}>
                       <Image
-                        src={project.src}
+                        src={imageBuilder.image(project.src).url() as string}
                         alt={`Display of mockups for ${project.name} project`}
                         width={600}
                         height={600}
                         layout='responsive'
+                        priority
                       />
-                    </a>
+                    </motion.a>
                   </Link>
                 </PreviewMotion>
               </Content>
@@ -185,7 +182,8 @@ const Showcase = () => {
           );
         })}
       </Flex>
-      <Flex direction='column' mt='10%'>
+      {/* TO BO ADDED LATER */}
+      {/* <Flex direction='column' mt='10%'>
         <SectionTitle heading='More Projects' />
         {moreProjects.map((project: ProjectProps) => (
           <Accordion key={project.id}>
@@ -193,10 +191,10 @@ const Showcase = () => {
             <AccordionBody>{project.summary}</AccordionBody>
           </Accordion>
         ))}
-      </Flex>
+      </Flex> */}
     </ShowcaseWrapper>
   );
-};
+});
 
 const titleVariants = {
   hidden: { x: '-4.5vw', opacity: 0 },

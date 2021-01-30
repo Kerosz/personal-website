@@ -3,7 +3,7 @@ import Link from 'next/link';
 import ThemeSwitcher from './theme-switcher';
 import Branding from './branding';
 // libraries
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import { motion, useCycle } from 'framer-motion';
 import { Container, Flex } from '@lib/ui';
 // hooks
@@ -17,12 +17,33 @@ import {
   MenuItem,
 } from './navigation.styles';
 
-import navbarLinks from '@constants/navbar';
+const navbarLinks = [
+  {
+    id: 0,
+    label: 'Home',
+    path: '/',
+  },
+  {
+    id: 1,
+    label: 'Showcase',
+    path: '/#showcase',
+  },
+  {
+    id: 2,
+    label: 'Introduction',
+    path: '/#introduction',
+  },
+  {
+    id: 4,
+    label: 'Contact',
+    path: '/#contact',
+  },
+];
 
 const MenuMotion = motion.custom(Menu);
 const MotionMenuItem = motion.custom(MenuItem);
 
-const TopNavigation: FC = () => {
+const TopNavigation: FC = memo(() => {
   const onCursor = useCursor();
   const [isOpen, toggleOpen] = useCycle(false, true);
 
@@ -87,6 +108,6 @@ const TopNavigation: FC = () => {
       </Container>
     </MobileNavWrapper>
   );
-};
+});
 
 export default TopNavigation;

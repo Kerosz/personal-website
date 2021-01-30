@@ -1,6 +1,6 @@
 import SEO from '@lib/seo';
 import NextHead from 'next/head';
-import config from '@constants/seo.config.json';
+import config from 'seo.config.json';
 
 const Head = () => {
   return (

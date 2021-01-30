@@ -1,16 +1,20 @@
 // libraries
+import { FC, memo } from 'react';
 import { motion } from 'framer-motion';
+import { IHero } from '@lib/api';
 // hooks
 import useActiveLink from '@hooks/use-active-link';
 // styles
 import { Text, HeroWrapper, Scroll } from './hero.styles';
 
-import hero from '@constants/hero';
+export interface HeroProps {
+  data: IHero[];
+}
 
 const MotionHeroWrapper = motion.custom(HeroWrapper);
 const MotionScroll = motion.custom(Scroll);
 
-const Hero = () => {
+const Hero: FC<HeroProps> = memo(({ data }) => {
   const linkRef = useActiveLink('/');
 
   return (
@@ -22,9 +26,9 @@ const Hero = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ delay: 0.15 }}>
-      {hero.map((text, idx) => (
+      {data.map((text, idx) => (
         <Text
-          key={`${text.id}-text_${idx}`}
+          key={`${text._id}-text_${idx}`}
           align={text.align as 'left' | 'right'}
           dangerouslySetInnerHTML={{ __html: text.html }}
         />
@@ -42,6 +46,6 @@ const Hero = () => {
       </MotionScroll>
     </MotionHeroWrapper>
   );
-};
+});
 
 export default Hero;

@@ -5,7 +5,7 @@ import Theme from '../theme';
 // libraries
 import { FC } from 'react';
 import { AppProps } from 'next/app';
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence, AnimateSharedLayout } from 'framer-motion';
 
 const Fragment: FC = ({ children }) => <>{children}</>;
 
@@ -18,8 +18,10 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       <GlobalContextProvider>
         <Theme>
           <AnimatePresence exitBeforeEnter>
-            <Layout>
-              <Component {...pageProps} />
+            <Layout {...pageProps}>
+              <AnimateSharedLayout>
+                <Component {...pageProps} />
+              </AnimateSharedLayout>
             </Layout>
           </AnimatePresence>
         </Theme>

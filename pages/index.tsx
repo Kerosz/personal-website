@@ -1,18 +1,41 @@
+// components
 import Hero from '@components/hero';
 import About from '@components/about';
 import Showcase from '@components/showcase';
 import Contact from '@components/contact';
 import { Layout } from '@components/layout';
+// libraries
+import { getAllDataForHome, IStudycase, IHero, IBio } from '@lib/api';
 
-export default function Home() {
+export interface HomeProps {
+  studycase: IStudycase[];
+  hero: IHero[];
+  bio: IBio[];
+}
+
+export default function Home({ studycase, bio, hero }: HomeProps) {
   return (
     <>
-      <Hero />
-      <Showcase />
-      <About />
+      <Hero data={hero} />
+      <Showcase data={studycase} />
+      <About data={bio} />
       <Contact />
     </>
   );
+}
+
+export async function getStaticProps({ preview = false }) {
+  const data = await getAllDataForHome(preview);
+
+  if (!data) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props: { ...data },
+  };
 }
 
 Home.Layout = Layout;
