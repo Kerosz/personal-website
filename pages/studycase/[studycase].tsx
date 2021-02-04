@@ -50,8 +50,8 @@ export async function getStaticProps({
   const navigation = [
     {
       _id: studycase._id,
-      path: '/',
-      label: 'Home',
+      path: '/#showcase',
+      label: 'Back',
       target: false,
     },
     {

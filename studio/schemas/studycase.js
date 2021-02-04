@@ -54,6 +54,22 @@ export default {
       },
     },
     {
+      name: 'issues',
+      title: 'Problems',
+      description:
+        'The problems that were presented during the initial meeting',
+      type: 'reference',
+      to: { type: 'research' },
+    },
+    {
+      name: 'solutions',
+      title: 'Solutions',
+      description:
+        'The solutions that were presented during the project presentation',
+      type: 'reference',
+      to: { type: 'research' },
+    },
+    {
       name: 'tags',
       title: 'Tags',
       description: 'A list of keywords to described the project',
@@ -64,6 +80,12 @@ export default {
       name: 'excerpt',
       title: 'Excerpt',
       description: 'Short description of the project',
+      type: 'text',
+    },
+    {
+      name: 'overview',
+      title: 'Overview',
+      description: 'More in depth description of the project',
       type: 'text',
     },
     {
@@ -81,7 +103,7 @@ export default {
       of: [{ type: 'reference', to: { type: 'goal' } }],
     },
     {
-      name: 'finishDate',
+      name: 'finish',
       title: 'Project finished at',
       description: 'The datetime the project was finished',
       type: 'datetime',

@@ -2,15 +2,12 @@ export const studycaseFields = `
   _id,
   name,
   "slug": slug.current,
-  live,
-  livePreview,
-  source,
   excerpt,
   scheme,
   align,
   "src": src.asset->url,
   "tags": tags[]->title,
-  "goals": goals[]->content
+  "goals": goals[]->content,
 `;
 
 export const contactFields = `
@@ -25,6 +22,13 @@ export const allStudycaseQuery = `*[ _type == "studycase"] | order(date desc, _u
 
 export const studycaseBySlugQuery = `*[_type == "studycase" && slug.current == $slug ] | order(_updatedAt desc) {
   ${studycaseFields}
+  overview,
+  live,
+  livePreview,
+  source,
+  finish,
+  "issues": issues->{title, "listItem": listItem[]->content, "paragraph": paragraph[]->content },
+	"solutions": solutions->{title, "listItem": listItem[]->content, "paragraph": paragraph[]->content },
 }`;
 
 export const studycaseWithSlugQuery = `*[_type == "studycase"]{ 'slug': slug.current }`;

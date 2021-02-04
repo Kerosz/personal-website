@@ -1,6 +1,8 @@
 // libraries
 import NextLink from 'next/link';
 import { forwardRef, ReactElement, ReactNode } from 'react';
+// hooks
+import useCursor from '@hooks/use-cursor';
 
 export interface LinkProps {
   to: string;
@@ -10,6 +12,7 @@ export interface LinkProps {
 
 const Link = forwardRef<HTMLAnchorElement, LinkProps>((props, ref) => {
   const { to, target = false, children, ...restProps } = props;
+  const onCursor = useCursor();
 
   return target ? (
     <a
@@ -17,12 +20,19 @@ const Link = forwardRef<HTMLAnchorElement, LinkProps>((props, ref) => {
       href={to}
       target='_blank'
       rel='noopener noreferrer'
-      {...restProps}>
+      {...restProps}
+      onMouseEnter={() => onCursor('hovered')}
+      onMouseLeave={() => onCursor('default')}>
       {children}
     </a>
   ) : (
     <NextLink href={to} {...restProps}>
-      {children}
+      <div
+        style={{ fontSize: 'inherit' }}
+        onMouseEnter={() => onCursor('hovered')}
+        onMouseLeave={() => onCursor('default')}>
+        {children}
+      </div>
     </NextLink>
   );
 });

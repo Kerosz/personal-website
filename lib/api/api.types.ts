@@ -1,18 +1,25 @@
-export interface IStudycase {
+export interface IStudycaseBase {
   _id: string;
   name: string;
   slug: {
     current: string;
   };
-  live: string;
-  livePreview: string;
-  source: string;
   excerpt: string;
   scheme: string;
-  src: Record<string, unknown>;
+  src: string;
   tags: ITag[];
   align: string;
   goals: IGoal[];
+}
+
+export interface IStudycase extends IStudycaseBase {
+  overview: string;
+  live: string;
+  livePreview: string;
+  source: string;
+  finish: string;
+  issues: IResearch;
+  solutions: IResearch;
 }
 
 export interface IHero {
@@ -45,4 +52,10 @@ export interface ITag {
 
 export interface IGoal {
   content: string;
+}
+
+export interface IResearch {
+  title: string;
+  listItem: string[];
+  paragraph: string[];
 }

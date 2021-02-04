@@ -2,6 +2,8 @@ import styled, { css } from 'styled-components';
 import { ListItemProps, ListProps } from './list';
 
 export const ListWrapper = styled.ul<ListProps>`
+  font-size: inherit;
+
   ${(props) =>
     props.listStyle &&
     css`
@@ -94,6 +96,9 @@ export const ListWrapper = styled.ul<ListProps>`
 `;
 
 export const ListItemWrapper = styled.li<ListItemProps>`
+  display: flex;
+  font-size: inherit;
+
   ${(props) =>
     props.margin &&
     css`

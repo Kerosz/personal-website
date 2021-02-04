@@ -1,18 +1,18 @@
 // components
 import SectionTitle from '@components/title';
-import Link from 'next/link';
+import Link from '@components/link';
 import Image from 'next/image';
 import MotionWord from '@animations/motion-word';
+import MotionList from '@animations/motion-list';
 // hooks
 import useAnimationView from '@hooks/use-animation-view';
 import useActiveLink from '@hooks/use-active-link';
-import useCursor from '@hooks/use-cursor';
 // libraries
 import { FC, memo } from 'react';
 import { motion } from 'framer-motion';
-import { Badge, Flex, List, ListItem } from '@lib/ui';
+import { Badge, Flex } from '@lib/ui';
 import { ArrowRight } from '@lib/icons';
-import { IStudycase } from '@lib/api';
+import { IStudycaseBase } from '@lib/api';
 // styles
 import {
   ShowcaseWrapper,
@@ -30,27 +30,24 @@ import {
 import { imageBuilder } from 'sanity';
 
 export interface ShowcaseProps {
-  data: IStudycase[];
+  data: IStudycaseBase[];
 }
 
 // Framer Motion Components
 const MarqueeTextMotion = motion.custom(MarqueeText);
 const TitleMotion = motion.custom(Title);
 const BadgeMotion = motion.custom(BadgeWrapper);
-const ListMotion = motion.custom(List);
-const ItemMotion = motion.custom(ListItem);
 const MoreInfoMotion = motion.custom(MoreInfo);
 const PreviewMotion = motion.custom(Preview);
 
 const Showcase: FC<ShowcaseProps> = memo(({ data }) => {
   const linkRef = useActiveLink('/#showcase');
-  const onCursor = useCursor();
 
   return (
     <ShowcaseWrapper id='showcase' component='section' direction='column'>
       <SectionTitle heading='Study Case' subHeading='Showcase' />
       <Flex direction='column' ref={linkRef}>
-        {data.map((project: IStudycase, idx) => {
+        {data.map((project: IStudycaseBase, idx) => {
           const { ref: titleRef, animation: titleAnimation } = useAnimationView(
             {
               threshold: 0.25,
@@ -120,52 +117,37 @@ const Showcase: FC<ShowcaseProps> = memo(({ data }) => {
                   <SubTitle ref={listRef} component='h4'>
                     Goals
                   </SubTitle>
-                  <ListMotion
-                    variants={listVariants}
-                    initial='hidden'
-                    animate={listAnimation}>
-                    {project.goals.map((goal, idx) => (
-                      <ItemMotion
-                        key={`${project._id}-goal_${idx}`}
-                        variants={itemVariants}>
-                        {goal}
-                      </ItemMotion>
-                    ))}
-                  </ListMotion>
-                  <Link href={`/studycase/${project.slug}`}>
-                    <MoreInfoMotion
-                      style={{ color: project.scheme }}
-                      animate={{
-                        x: [
-                          '-2.5rem',
-                          '-1.5rem',
-                          '-0.1rem',
-                          '-1.5rem',
-                          '-2.5rem',
-                        ],
-                      }}
-                      transition={{
-                        ease: 'linear',
-                        duration: 1.55,
-                        repeat: Infinity,
-                      }}
-                      onMouseEnter={() => onCursor('hovered')}
-                      onMouseLeave={() => onCursor('default')}>
+                  <MotionList
+                    listData={project.goals}
+                    listAnimation={listAnimation}
+                  />
+                  <MoreInfoMotion
+                    style={{ color: project.scheme }}
+                    animate={{
+                      x: [
+                        '-2.5rem',
+                        '-1.5rem',
+                        '-0.1rem',
+                        '-1.5rem',
+                        '-2.5rem',
+                      ],
+                    }}
+                    transition={{
+                      ease: 'linear',
+                      duration: 1.55,
+                      repeat: Infinity,
+                    }}>
+                    <Link to={`/studycase/${project.slug}`}>
                       Study Case <ArrowRight />
-                    </MoreInfoMotion>
-                  </Link>
+                    </Link>
+                  </MoreInfoMotion>
                 </Flex>
                 <PreviewMotion
                   variants={previewVariants}
                   initial='hidden'
                   animate={titleAnimation}>
-                  <Link href={`/studycase/${project.slug}`}>
-                    {/* Extra fragment needed to workarond next/image not being able to recieve refs */}
-                    <motion.a
-                      layoutId={project._id}
-                      aria-label={project.name}
-                      onMouseEnter={() => onCursor('hovered')}
-                      onMouseLeave={() => onCursor('default')}>
+                  <Link to={`/studycase/${project.slug}`}>
+                    <motion.a layoutId={project._id} aria-label={project.name}>
                       <Image
                         src={imageBuilder.image(project.src).url() as string}
                         alt={`Display of mockups for ${project.name} project`}
@@ -209,27 +191,6 @@ const previewVariants = {
 const badgeVariants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1, transition: { duration: 1 } },
-};
-
-const listVariants = {
-  visible: {
-    opacity: 1,
-    transition: {
-      when: 'beforeChildren',
-      staggerChildren: 0.3,
-    },
-  },
-  hidden: {
-    opacity: 0,
-    transition: {
-      when: 'afterChildren',
-    },
-  },
-};
-
-const itemVariants = {
-  visible: { opacity: 1, x: 0 },
-  hidden: { opacity: 0, x: -100 },
 };
 
 export default Showcase;

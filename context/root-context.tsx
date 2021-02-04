@@ -23,7 +23,6 @@ export interface ContextProps extends UiState {
 
 const defaultContextState = ({
   ...initialUiState,
-  dispatch: null,
 } as unknown) as ContextProps;
 
 export const GlobalContext = createContext(defaultContextState);

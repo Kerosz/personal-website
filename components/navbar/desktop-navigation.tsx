@@ -41,15 +41,13 @@ const BottomNavigation: FC<{ data: INavigation[] }> = memo(({ data }) => {
                   scale: 0.875,
                   rotate: -6,
                   transition: navTextTransition,
-                }}
-                onMouseEnter={() => onCursor('hovered')}
-                onMouseLeave={() => onCursor('default')}>
+                }}>
                 {link.label}
               </MotionListItem>
             </Link>
           ) : null
         )}
-        <ListItem style={{ cursor: 'default' }}>
+        <ListItem>
           <Line />
         </ListItem>
         <ListItem

@@ -8,11 +8,13 @@ import navigation from './navigation';
 import bio from './bio';
 import contact from './contact';
 import hero from './hero';
+import research from './research';
 
 export default createSchema({
   name: 'portfolio',
   types: schemaTypes.concat([
     studycase,
+    research,
     navigation,
     bio,
     contact,
