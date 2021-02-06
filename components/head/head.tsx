@@ -11,7 +11,7 @@ const Head = () => {
       <NextHead>
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <meta rel='shortcut icon' content='/favicon.ico' />
-        <meta rel='manifest' content='/manifest.json' />
+        <link rel='manifest' href='manifest.webmanifest' />
         <meta rel='application-name' content='Chirila Andrei Portfolio' />
         <meta
           rel='apple-mobile-web-app-title'
