@@ -33,7 +33,7 @@ const SectionTitle: FC<TitleProps> = (props) => {
       animate={animation}>
       {subHeading && (
         <>
-          <MotionText component='h5' weight={300} m='0 0 2.4%'>
+          <MotionText component='p' weight={300} m='0 0 2.4%'>
             {subHeading}
           </MotionText>
           <MotionDevider />

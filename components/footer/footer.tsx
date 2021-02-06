@@ -14,7 +14,7 @@ const Footer: FC = () => {
       <Container maxW='88%'>
         <Devider />
         <Flex justify='center'>
-          <Powered>
+          <Powered component='p'>
             Powered by
             <a
               rel='noopener noreferrer'

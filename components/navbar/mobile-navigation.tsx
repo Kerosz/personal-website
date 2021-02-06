@@ -57,27 +57,25 @@ const TopNavigation: FC<{ data: INavigation[] }> = memo(({ data }) => {
                 }}>
                 Close
               </MotionMenuItem>
-              <ThemeSwitcher />
+              <ThemeSwitcher component='li' />
               {data.map((link, idx) =>
                 !isNull(link.path) ? (
-                  <Link
+                  <MotionMenuItem
                     key={`${link._id}-link_${idx}`}
-                    to={link.path}
-                    target={link.target}>
-                    <MotionMenuItem
-                      onClick={() => setTimeout(() => toggleOpen(), 750)}
-                      animate
-                      whileHover={{
-                        scale: 1.113,
-                        rotate: -3,
-                      }}
-                      whileTap={{
-                        scale: 0.875,
-                        rotate: -6,
-                      }}>
+                    onClick={() => setTimeout(() => toggleOpen(), 750)}
+                    animate
+                    whileHover={{
+                      scale: 1.113,
+                      rotate: -3,
+                    }}
+                    whileTap={{
+                      scale: 0.875,
+                      rotate: -6,
+                    }}>
+                    <Link to={link.path} target={link.target}>
                       {link.label}
-                    </MotionMenuItem>
-                  </Link>
+                    </Link>
+                  </MotionMenuItem>
                 ) : null
               )}
             </MenuList>

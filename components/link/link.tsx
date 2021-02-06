@@ -27,12 +27,12 @@ const Link = forwardRef<HTMLAnchorElement, LinkProps>((props, ref) => {
     </a>
   ) : (
     <NextLink href={to} {...restProps}>
-      <div
+      <span
         style={{ fontSize: 'inherit' }}
         onMouseEnter={() => onCursor('hovered')}
         onMouseLeave={() => onCursor('default')}>
         {children}
-      </div>
+      </span>
     </NextLink>
   );
 });

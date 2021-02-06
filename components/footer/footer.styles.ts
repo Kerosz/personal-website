@@ -55,7 +55,7 @@ export const Powered = styled(Flex)`
   }
 `;
 
-export const Line = styled.div`
+export const Line = styled.span`
   width: 2.7vw;
   height: 0.1rem;
   background: ${(props) => props.theme.palette.text.main};

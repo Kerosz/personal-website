@@ -1,10 +1,11 @@
 // libraries
 import styled from 'styled-components';
-import { FC } from 'react';
+import { Flex } from '@lib/ui';
+import { FC, JSXElementConstructor } from 'react';
 // hooks
 import useThemeMode from '@hooks/use-theme-mode';
 
-const Switcher = styled.div`
+const Switcher = styled(Flex)`
   width: 8vw;
   height: 8vw;
   border-radius: 50%;
@@ -26,10 +27,12 @@ const Switcher = styled.div`
   }
 `;
 
-const ThemeSwitcher: FC = () => {
+const ThemeSwitcher: FC<{
+  component?: string | JSXElementConstructor<any>;
+}> = ({ component = 'div' }) => {
   const { change } = useThemeMode({});
 
-  return <Switcher onClick={change} />;
+  return <Switcher component={component} onClick={change} />;
 };
 
 export default ThemeSwitcher;

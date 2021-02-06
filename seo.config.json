@@ -1,10 +1,55 @@
 {
-  "title": "Developer Portfolio",
-  "titleTemplate": "%s - Andrei Chirila",
-  "description": "My portfolio website",
+  "title": "Andrei Chirila",
+  "titleTemplate": "%s - Developer portfolio",
+  "description": "My portfolio website portfolio to share my work, a little bit about my self and some get in touch information",
+  "canonical": "https://chirila.dev/",
   "twitter": {
     "handle": "@chirila_",
     "site": "@chirila_",
     "cardType": "summary_large_image"
-  }
+  },
+  "extraMeta": [
+    {
+      "name": "theme-color",
+      "content": "#171923"
+    },
+    {
+      "name": "msapplication-TileColor",
+      "content": "#171923"
+    },
+    {
+      "name": "msapplication-config",
+      "content": "/browserconfig.xml"
+    },
+    {
+      "rel": "manifest",
+      "content": "/manifest.json"
+    },
+    {
+      "rel": "shortcut icon",
+      "content": "/favicon.ico"
+    },
+    {
+      "rel": "mask-icon",
+      "content": "/images/safari-pinned-tab.svg",
+      "color": "#171923"
+    },
+    {
+      "rel": "apple-touch-icon",
+      "href": "images/apple-touch-icon.png",
+      "sizes": "76x76"
+    },
+    {
+      "rel": "icon",
+      "href": "images/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "icon"
+    },
+    {
+      "rel": "icon",
+      "href": "images/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "icon"
+    }
+  ]
 }

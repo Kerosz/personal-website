@@ -24,27 +24,25 @@ const BottomNavigation: FC<{ data: INavigation[] }> = memo(({ data }) => {
       <List>
         {data.map((link, idx) =>
           !isNull(link.path) ? (
-            <Link
+            <MotionListItem
+              layoutId={link.label}
               key={`${link._id}-link_${idx}`}
-              to={link.path}
-              target={link.target}>
-              <MotionListItem
-                layoutId={link.label}
-                className={activePath === link.path ? 'selected' : ''}
-                animate
-                whileHover={{
-                  scale: 1.113,
-                  rotate: -3,
-                  transition: navTextTransition,
-                }}
-                whileTap={{
-                  scale: 0.875,
-                  rotate: -6,
-                  transition: navTextTransition,
-                }}>
+              className={activePath === link.path ? 'selected' : ''}
+              animate
+              whileHover={{
+                scale: 1.113,
+                rotate: -3,
+                transition: navTextTransition,
+              }}
+              whileTap={{
+                scale: 0.875,
+                rotate: -6,
+                transition: navTextTransition,
+              }}>
+              <Link to={link.path} target={link.target}>
                 {link.label}
-              </MotionListItem>
-            </Link>
+              </Link>
+            </MotionListItem>
           ) : null
         )}
         <ListItem>

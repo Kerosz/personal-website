@@ -1,6 +1,12 @@
 // libraries
 import flush from 'styled-jsx/server';
-import Document, { DocumentContext } from 'next/document';
+import Document, {
+  DocumentContext,
+  Html,
+  Head,
+  Main,
+  NextScript,
+} from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -28,5 +34,17 @@ export default class MyDocument extends Document {
     } finally {
       styledComponentSheet.seal();
     }
+  }
+
+  render() {
+    return (
+      <Html lang='en-GB'>
+        <Head />
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    );
   }
 }

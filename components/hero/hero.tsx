@@ -19,6 +19,7 @@ const Hero: FC<HeroProps> = memo(({ data }) => {
 
   return (
     <MotionHeroWrapper
+      as='h1'
       ref={linkRef}
       id='hero'
       component='section'
@@ -33,7 +34,6 @@ const Hero: FC<HeroProps> = memo(({ data }) => {
           dangerouslySetInnerHTML={{ __html: text.html }}
         />
       ))}
-
       <MotionScroll
         initial={{ rotate: 90 }}
         animate={{ y: ['-1.5rem', '-1.0rem', '-0.5rem', '-1.0rem', '-1.5rem'] }}
