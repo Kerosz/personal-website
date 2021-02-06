@@ -10,6 +10,42 @@ const Head = () => {
       <SEO {...config} />
       <NextHead>
         <meta name='viewport' content='width=device-width, initial-scale=1' />
+        <meta rel='shortcut icon' content='/favicon.ico' />
+        <meta rel='manifest' content='/manifest.json' />
+        <meta rel='application-name' content='Chirila Andrei Portfolio' />
+        <meta
+          rel='apple-mobile-web-app-title'
+          content='Chirila Andrei Portfolio'
+        />
+
+        <meta name='theme-color' content='#171923' />
+        <meta name='msapplication-TileColor' content='#171923' />
+        <meta name='msapplication-starturl' content='/' />
+        <meta name='msapplication-config' content='/browserconfig.xml' />
+        <meta rel='mobile-web-app-capable' content='yes' />
+        <meta rel='apple-mobile-web-app-capable' content='yes' />
+        <meta
+          rel='mask-icon'
+          content='/images/safari-pinned-tab.svg'
+          color='#171923'
+        />
+        <meta
+          rel='apple-touch-icon'
+          href='images/apple-touch-icon.png'
+          sizes='76x76'
+        />
+        <meta
+          rel='icon'
+          href='images/favicon-32x32.png'
+          sizes='32x32'
+          type='icon'
+        />
+        <meta
+          rel='icon'
+          href='images/favicon-16x16.png'
+          sizes='16x16'
+          type='icon'
+        />
         <link rel='preconnect' href='https://fonts.gstatic.com' />
         <link
           rel='preload'
